@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ticket System</title>
+        <title>JhunJhun Travels</title>
+
+        <link rel="icon" type="image/png" href="{{asset('images/jhunLogo.png')}}" />
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -29,6 +31,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#popular">Popular Destinations</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                     @if (Route::has('login'))
@@ -64,7 +67,7 @@
             </div>
         </header>
         <div class="container">
-            <div class="row row-content">
+            <div class="row row-content" id="popular">
                 <div class="col">
                     <div id="mycarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
@@ -107,11 +110,63 @@
                     </div>
                 </div>
             </div>
+            <div class="row row-content align-items-center" id="about">
+                <div class="col-12 col-sm-4 order-sm-last col-md-3">
+                    <h3>Founder</h3>
+                    <p class="d-none d-sm-block">"We have been established with the motive of providing the best travel service" </p>
+                </div>
+                <div class="col col-sm order-sm-first col-md">
+                    <h2 class="mt-0">About Us</h2>
+                    <p class="d-none d-sm-block">Our motive is to keep customer satisfaction the top most priority.
+                        We make sure that each customer is safe and adopt the necessary measures.</p>
+                </div>
+            </div>
         </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 offset-1 col-sm-2">
+                        <h5>Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-7 col-sm-5" id="contact">
+                        <h5>Our Address</h5>
+                        <address>
+                            Kirtipur<br>
+                            Kathmandu<br>
+                            Nepal<br>
+                            <i class="fa fa-phone fa-lg"></i> +977 4124124<br>
+                            <i class="fa fa-fax fa-lg"></i> +977 26534232<br>
+                            <i class="fa fa-envelope fa-lg"></i>
+                            <a href="mailto:jhunTravels@travel.net">jhunTravels@travel.net</a>
+                        </address>
+                    </div>
+                    <div class="col-12 col-sm-4 align-self-center">
+                        <div class="text-center">
+                            <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                            <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                            <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                            <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                            <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <p>© Copyright 2020 Jhun Travels</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
     <!-- jQuery, Popper.js, Bootstrap JS. -->
     <script src="{{asset('js/jquery.slim.min.js')}}"></script>
-{{--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>--}}
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script>

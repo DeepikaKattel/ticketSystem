@@ -18,7 +18,9 @@ a:hover{
 .footer {
   background-color: black;
   margin: 0px auto;
-  padding: 20px 0px; }
+  padding: 20px 0px;
+  color: white;
+}
 
 .jumbotron {
   margin: 0px auto;
@@ -30,7 +32,7 @@ a:hover{
 address {
   font-size: 80%;
   margin: 0px;
-  color: #0f0f0f; }
+  color: white; }
 
 body {
   padding: 50px 0px 0px 0px;
@@ -60,6 +62,9 @@ body {
   position: absolute;
   bottom: 0px;
   z-index: 1; }
+body{
+    background: lightgrey;
+}
 
 .modal-header {
   background-color: #512DA8;
