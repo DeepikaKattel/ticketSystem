@@ -58,10 +58,8 @@
                         <img src="{{asset('images/jhunLogo.png')}}" class="img-fluid">
                     </div>
                     <div class="col-12 col-sm-3 align-self-center">
-                        <a id="reserveButton" role="button" class="btn btn-block nav-link btn-warning">Reserve Table</a>
+                        <a id="reserveButton" role="button" class="btn btn-block nav-link btn-warning">Book Ticket</a>
                     </div>
-                    <!-- removed code for tooltip -->
-                    <!-- data-toggle="tooltip" data-html="true"  title="Or Call us at  <br><strong>+852 12345678</strong>" data-placement="bottom" href="#reserveform"> -->
                 </div>
             </div>
         </header>
@@ -72,37 +70,26 @@
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
                                 <img class="d-block img-fluid"
-                                     src="img/uthappizza.png" alt="Uthappizza">
+                                     src="{{asset('images/pokhara.jpg')}}" alt="Pokhara">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h2>Uthappizza <span class="badge badge-danger">HOT</span> <span class="badge badge-pill badge-default">$4.99</span></h2>
-                                    <p class="d-none d-sm-block">A unique combination of Indian Uthappam (pancake) and
-                                        Italian pizza, topped with Cerignola olives, ripe vine
-                                        cherry tomatoes, Vidalia onion, Guntur chillies and
-                                        Buffalo Paneer.
-                                    </p>
+                                    <h2>Pokhara<span class="badge badge-danger">Popular</span></h2>
+                                    <p class="d-none d-sm-block">A place full of diversity and natural beauty.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <img class="d-block img-fluid"
-                                     src="img/buffet.png" alt="Buffet">
+                                     src="{{asset('images/lumbini.jpg')}}" alt="Lumbini">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h2>Weekend Grand Buffet<span class="badge badge-danger">New</span></h2>
-                                    <p class="d-none d-sm-block">Featuring mouthwatering combinations with a choice of
-                                        five different salads, six enticing appetizers, six main entrees and five choicest
-                                        desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
+                                    <h2>Lumbini<span class="badge badge-danger">Popular</span></h2>
+                                    <p class="d-none d-sm-block">A place with history and peace.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <img class="d-block img-fluid"
-                                     src="img/alberto.png" alt="Alberto Somayya">
+                                     src="{{asset('images/janakpur.jpg')}}" alt="Janakpur">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h2 >Alberto Somayya</h2>
-                                    <h4>Executive Chef</h4>
-                                    <p class="d-none d-sm-block">Award winning three-star Michelin chef with wide
-                                        International experience having worked closely with
-                                        whos-who in the culinary world, he specializes in
-                                        creating mouthwatering Indo-Italian fusion experiences.
-                                    </p>
+                                    <h2>Janakpur<span class="badge badge-danger">Popular</span></h2>
+                                    <p class="d-none d-sm-block">A place of belief and cultural diversity.</p>
                                 </div>
                             </div>
                         </div>
@@ -117,13 +104,25 @@
                         <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </a>
-                        <button class="btn btn-danger btn-sm" id="carouselButton">
-                            <span id="carousel-button-icon" class="fa fa-pause"></span>
-                        </button>
                     </div>
                 </div>
             </div>
-
         </div>
     </body>
+    <!-- jQuery, Popper.js, Bootstrap JS. -->
+    <script src="{{asset('js/jquery.slim.min.js')}}"></script>
+{{--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>--}}
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#mycarousel").carousel( { interval: 2000 } );
+            $("#reserveButton").click(function () {
+                $('#reserveModal').modal('show');
+            });
+            $("#loginButton").click(function () {
+                $('#loginModal').modal('show');
+            });
+        });
+    </script>
 </html>

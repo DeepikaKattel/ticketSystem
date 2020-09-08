@@ -12,7 +12,8 @@ a:hover{
   margin: 0px auto;
   padding: 50px 0px;
   border-bottom: 1px ridge;
-  min-height: 400px; }
+  min-height: 400px;
+}
 
 .footer {
   background-color: black;
@@ -45,7 +46,7 @@ body {
   padding: 10px; }
 
 .carousel {
-  background: #512DA8; }
+  background: grey; }
   .carousel .carousel-item {
     height: 300px; }
     .carousel .carousel-item img {
