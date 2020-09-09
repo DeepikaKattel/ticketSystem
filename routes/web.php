@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+    Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
+});
