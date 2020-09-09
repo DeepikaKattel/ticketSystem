@@ -3,7 +3,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Psy\Util\Str;
+use Illuminate\Support\Str;
 
 
 class AdminSeeder extends Seeder
