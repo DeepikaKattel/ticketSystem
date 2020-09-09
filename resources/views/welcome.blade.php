@@ -260,7 +260,7 @@
                             <div class="form-group row">
                                 <label for="date" class="col-md-2 col-form-label">Date</label>
                                 <div class="col-5 col-md-3">
-                                    <input type="text" class="form-control" id="date" name="date" placeholder="Date">
+                                    <input type="date" class="form-control" id="date" name="date" placeholder="Date">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -268,7 +268,6 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
                                     <button type="submit" class="btn btn-primary">Book</button>
                                 </div>
-                            </div>
                             </div>
                         </form>
                     </div>
