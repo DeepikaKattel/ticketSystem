@@ -40,15 +40,15 @@
         </div>
     @endcan
     @can('customer_access')
-        <div class="row justify-content-center ml-5">
-            <div class="col-xs-12 col-md-5">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fa fa-file fa-lg" style="color: green"></i><h2 style="color: #1b4b72;font-weight: bold;font-family: Arial">Total Appointments {{$data ?? ''}} </h2>
-                        <button class="btn btn-primary" style="background: darkred;display:inline-block;font-size: 10px;"><a href="{{route('getReport')}}" style="color: white">View Service Report</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="row justify-content-center ml-5">--}}
+{{--            <div class="col-xs-12 col-md-5">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-body">--}}
+{{--                        <i class="fa fa-file fa-lg" style="color: green"></i><h2 style="color: #1b4b72;font-weight: bold;font-family: Arial">Total Appointments {{$data ?? ''}} </h2>--}}
+{{--                        <button class="btn btn-primary" style="background: darkred;display:inline-block;font-size: 10px;"><a href="{{route('getReport')}}" style="color: white">View Service Report</a></button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     @endcan
 @endsection

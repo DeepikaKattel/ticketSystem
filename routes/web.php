@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/staff', 'StaffController');
 Route::get('/staff/destroy/{id}', 'StaffController@destroy')->name('s.destroy');
 
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
     Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
     Route::resource('/staff', 'StaffController');
     Route::get('/staff/destroy/{id}', 'StaffController@destroy')->name('s.destroy');
+    Route::resource('/agent', 'AgentController');
+    Route::get('/agent/destroy/{id}', 'AgentController@destroy')->name('a.destroy');
 });

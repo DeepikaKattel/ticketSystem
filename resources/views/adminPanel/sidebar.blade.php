@@ -23,6 +23,12 @@
                     <span class="nav-text">Staff</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('agent.index') }}">
+                    <i class="fa fa-user fa-lg"></i>
+                    <span class="nav-text">Agent</span>
+                </a>
+            </li>
 {{--            <li>--}}
 {{--                <a href="{{ url('/') }}/customerDetails">--}}
 {{--                    <i class="fa fa-users fa-lg"></i>--}}
@@ -42,12 +48,7 @@
 {{--                </a>--}}
 {{--            </li>--}}
 
-{{--            <li>--}}
-{{--                <a href="{{ route('services.index') }}">--}}
-{{--                    <i class="fa fa-car fa-lg"></i>--}}
-{{--                    <span class="nav-text">Services</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+
 {{--            <li>--}}
 {{--                <a href="{{ route('content.index') }}">--}}
 {{--                    <i class="fa fa-book fa-lg"></i>--}}
@@ -72,62 +73,31 @@
     </div>
     @endcan
     @can('customer_access')
-    <div class="scrollbar" id="style-1">
-        <ul>
-            <li>
-                <a href="{{ url('/') }}/customerOnlyPage">
-                    <i class="fa fa-home fa-lg"></i>
-                    <span class="nav-text">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('customer.index')}}">
-                    <i class="fa fa-user fa-lg"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
-            </li>
+{{--    <div class="scrollbar" id="style-1">--}}
+{{--        <ul>--}}
+{{--            <li>--}}
+{{--                <a href="{{ url('/') }}/customerOnlyPage">--}}
+{{--                    <i class="fa fa-home fa-lg"></i>--}}
+{{--                    <span class="nav-text">Home</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="{{route('customer.index')}}">--}}
+{{--                    <i class="fa fa-user fa-lg"></i>--}}
+{{--                    <span class="nav-text">Profile</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
-            <li>
-                <a href="{{ route('vehicles.index')}}">
-                    <i class="fa fa-car fa-lg"></i>
-                    <span class="nav-text">Vehicles</span>
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="{{ route('vehicles.index')}}">--}}
+{{--                    <i class="fa fa-car fa-lg"></i>--}}
+{{--                    <span class="nav-text">Vehicles</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
-        </ul>
-    </div>
+{{--        </ul>--}}
+{{--    </div>--}}
     @endcan
-    @can('staff_access')
-    <div class="scrollbar" id="style-1">
-        <ul>
-            <li>
-                <a href="{{ url('/') }}/staffOnlyPage">
-                    <i class="fa fa-home fa-lg"></i>
-                    <span class="nav-text">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('staff.index')}}">
-                    <i class="fa fa-user fa-lg"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
-            </li>
 
-            <li>
-                <a href="{{ route('bookAppointment.index') }}">
-                    <i class="fa fa-align-left fa-lg"></i>
-                    <span class="nav-text">Appointments</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ url('/') }}/attendedCustomers">
-                    <i class="fa fa-users fa-lg"></i>
-                    <span class="nav-text">Attended Customers</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    @endcan
 </nav>
 
