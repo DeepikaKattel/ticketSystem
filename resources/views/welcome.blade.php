@@ -60,7 +60,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form id="bookingForm" action="{{route('bookTicket.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+                        <form id="bookingForm" action="" method="post" enctype="multipart/form-data" autocomplete="off">
                             <div class="form-group row">
                                 <label for="destination" class="col-md-2 col-form-label">Destination</label>
                                 <div class="col-5 col-md-3">

@@ -8,6 +8,11 @@ class Staff extends Model
 {
     protected $table = 'staff';
     protected $fillable = ([
-        'name','phoneNumber','email'
+        'name','phoneNumber','address'
     ]);
+
+    public function routes()
+    {
+        return $this->hasMany(Route::class);
+    }
 }
