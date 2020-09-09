@@ -17,7 +17,8 @@ class AdminSeeder extends Seeder
     {
         DB::table('users')->insert([
             'role_id' => '1',
-            'name' => 'Admin',
+            'firstName' => 'Admin',
+            'lastName' => 'Admin',
             'email' => 'admin@jhunTravels.com',
             'password' => bcrypt('1234'),
             'email_verified_at' => now(),

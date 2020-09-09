@@ -17,6 +17,12 @@
                     <span class="nav-text">Home</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('staff.index') }}">
+                    <i class="fa fa-users fa-lg"></i>
+                    <span class="nav-text">Staff</span>
+                </a>
+            </li>
 {{--            <li>--}}
 {{--                <a href="{{ url('/') }}/customerDetails">--}}
 {{--                    <i class="fa fa-users fa-lg"></i>--}}

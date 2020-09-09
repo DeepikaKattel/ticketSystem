@@ -39,10 +39,10 @@
                         <div class="top-right links">
                             @auth
                                 @if(Auth::user()->role_id=1)
-                                    <a href="{{ url('/') }}/adminOnlyPage" style="margin:5px">{{Auth::user()->name}}</a>
+                                    <a href="{{ url('/') }}/adminOnlyPage" style="margin:5px">{{Auth::user()->firstName}}</a>
 
                                 @elseif(Auth::user()->role_id=2)
-                                    <a href="{{ url('/') }}/staffOnlyPage" style="margin:5px">{{Auth::user()->name}}</a>
+                                    <a href="{{ url('/') }}/staffOnlyPage" style="margin:5px">{{Auth::user()->secondName}}</a>
                                 @endif
                             @else
                                 <a href="{{ route('login') }}">Login</a>

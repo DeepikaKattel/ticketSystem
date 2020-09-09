@@ -21,6 +21,11 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('/staff', 'StaffController');
+Route::get('/staff/destroy/{id}', 'StaffController@destroy')->name('s.destroy');
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
     Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
+    Route::resource('/staff', 'StaffController');
+    Route::get('/staff/destroy/{id}', 'StaffController@destroy')->name('s.destroy');
 });
