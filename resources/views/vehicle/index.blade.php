@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center ml-5">
             <div class="col-xs-20 col-md-15 col-lg-12 mx-5">
-            <h1>Vehicle Type</h1>
+            <h1>Vehicle</h1>
                 <form>
                     <label>Show</label>
                     <select id="pagination">
@@ -15,38 +15,46 @@
                     </select>
                     <label>entries</label>
                 </form>
-            <a href="{{route('vehicleType.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Add Vehicle Type</a>
+            <a href="{{route('vehicle.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Add Vehicle</a>
             <table class="table">
                 <thead class="thead-dark">
                 <tr style="font-size: 14px">
                     <th scope="col">S.N</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Layout</th>
-                    <th scope="col">Total Seat</th>
-                    <th scope="col">Facility ID</th>
+                    <th scope="col">Reg. No.</th>
+                    <th scope="col">Vehicle Type</th>
+                    <th scope="col">Engine</th>
+                    <th scope="col">Chassis</th>
+                    <th scope="col">Model No.</th>
+                    <th scope="col">Owner Name</th>
+                    <th scope="col">Owner Number</th>
+                    <th scope="col">Brand</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="none">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($vehicleType as $v)
+                @foreach($vehicle as $ve)
                     <tr style="font-size: 14px">
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$v->name}}</td>
-                        <td>{{$v->layout}}</td>
-                        <td>{{$v->seat}}</td>
-                        <td>{{$v->facility_id}}</td>
-                        <td id="none">@if($v->status==0) <span style="color:red;font-weight: bold">Inactive</span> @else <span style="color:green;font-weight: bold">Active</span> @endif</td>
-                        <td id="none"><a href="{{route('status', ['id'=>$v->id])}}" style="font-weight: bold">@if($v->status==1)<button class="btn-sm btn-primary btn-danger"> Inactive </button>@else<button class="btn-sm btn-primary btn-success"> Active </button>@endif</a>
-                            <a href="{{route('vehicleType.edit',$v->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                        <td>{{$ve->reg_number}}</td>
+                        <td>{{$ve->vehicleType}}</td>
+                        <td>{{$ve->engine}}</td>
+                        <td>{{$ve->chassis}}</td>
+                        <td>{{$ve->model}}</td>
+                        <td>{{$ve->owner_name}}</td>
+                        <td>{{$ve->owner_number}}</td>
+                        <td>{{$ve->brand_name}}</td>
+                        <td id="none">@if($ve->status==0) <span style="color:red;font-weight: bold">Inactive</span> @else <span style="color:green;font-weight: bold">Active</span> @endif</td>
+                        <td id="none"><a href="{{route('statusV', ['id'=>$ve->id])}}" style="font-weight: bold">@if($ve->status==1)<button class="btn-sm btn-primary btn-danger"> Inactive </button>@else<button class="btn-sm btn-primary btn-success"> Active </button>@endif</a>
+                            <a href="{{route('vehicle.edit',$ve->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('v.destroy',$v->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('ve.destroy',$ve->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-                {!!$vehicleType->links()!!}
+                {!!$vehicle->links()!!}
             </div>
         </div>
     </div>

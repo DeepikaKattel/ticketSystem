@@ -41,5 +41,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::resource('/vehicleType', 'VehicleTypeController');
     Route::get('/vehicleType/destroy/{id}', 'VehicleTypeController@destroy')->name('v.destroy');
 
+    Route::resource('/vehicle', 'VehicleController');
+    Route::get('/vehicle/destroy/{id}', 'VehicleController@destroy')->name('ve.destroy');
+
     Route::get('status{id}', 'HomeController@status')->name('status');
+
+    Route::get('statusV{id}', 'VehicleController@status')->name('statusV');
 });

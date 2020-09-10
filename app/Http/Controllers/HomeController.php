@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Model\VehicleType;
 use Illuminate\Http\Request;
 
@@ -39,4 +40,6 @@ class HomeController extends Controller
         $data->save();
         return redirect()->back()->with('message', 'Status of'.' '.$data->name.' '.'has been changed successfully');
     }
+
+
 }

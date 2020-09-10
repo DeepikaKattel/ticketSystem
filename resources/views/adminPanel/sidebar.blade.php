@@ -41,6 +41,13 @@
                     <span class="nav-text">Vehicle Type</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('vehicle.index')}}">
+                    <i class="fa fa-car fa-lg"></i>
+                    <span class="nav-text">Vehicle</span>
+                </a>
+            </li>
+
 {{--            <li>--}}
 {{--                <a href="{{ url('/') }}/customerDetails">--}}
 {{--                    <i class="fa fa-users fa-lg"></i>--}}
