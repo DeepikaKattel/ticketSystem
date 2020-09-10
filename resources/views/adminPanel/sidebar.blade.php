@@ -29,6 +29,12 @@
                     <span class="nav-text">Agent</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('facility.index')}}">
+                    <i class="fa fa-shopping-cart fa-lg"></i>
+                    <span class="nav-text">Vehicle Facilities</span>
+                </a>
+            </li>
 {{--            <li>--}}
 {{--                <a href="{{ url('/') }}/customerDetails">--}}
 {{--                    <i class="fa fa-users fa-lg"></i>--}}
@@ -88,12 +94,7 @@
 {{--                </a>--}}
 {{--            </li>--}}
 
-{{--            <li>--}}
-{{--                <a href="{{ route('vehicles.index')}}">--}}
-{{--                    <i class="fa fa-car fa-lg"></i>--}}
-{{--                    <span class="nav-text">Vehicles</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+
 
 {{--        </ul>--}}
 {{--    </div>--}}
