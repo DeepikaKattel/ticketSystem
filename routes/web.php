@@ -37,4 +37,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
     Route::resource('/facility', 'FacilitiesController');
     Route::get('/facility/destroy/{id}', 'FacilitiesController@destroy')->name('f.destroy');
+
+    Route::resource('/vehicleType', 'VehicleTypeController');
+    Route::get('/vehicleType/destroy/{id}', 'VehicleTypeController@destroy')->name('v.destroy');
+
+    Route::get('status{id}', 'HomeController@status')->name('status');
 });

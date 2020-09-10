@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\VehicleType;
+use App\Model\VehicleType;
 use Illuminate\Http\Request;
 
 class VehicleTypeController extends Controller
@@ -12,9 +12,17 @@ class VehicleTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $vehicleType = VehicleType::orderBy('id');
+        if($request->session()->has('globalPageLimit') &&
+            strtolower($request->session()->get('globalPageLimit')) === "all"){
+            $vehicleType = $vehicleType->Paginate($vehicleType->count());
+        }
+        else{
+            $vehicleType = $vehicleType->Paginate($request->session()->get('globalPageLimit')?:5);
+        }
+        return view('vehicleType.index', compact('vehicleType'));
     }
 
     /**
@@ -24,7 +32,7 @@ class VehicleTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehicleType.create');
     }
 
     /**
@@ -35,7 +43,18 @@ class VehicleTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehicleType = new VehicleType();
+        $vehicleType->name = request('name');
+        $vehicleType->layout = request('layout');
+        $vehicleType->seat = request('seat');
+        $vehicleType->facility_id = request('facility_id');
+        $vehicleType->save();
+        $vehicleTypesave = $vehicleType->save();
+        if ($vehicleTypesave) {
+            return redirect('/vehicleType')->with("status", "The record has been stored");
+        } else {
+            return redirect('/vehicleType')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -55,9 +74,10 @@ class VehicleTypeController extends Controller
      * @param  \App\VehicleType  $vehicleType
      * @return \Illuminate\Http\Response
      */
-    public function edit(VehicleType $vehicleType)
+    public function edit($id)
     {
-        //
+        $vehicleType = VehicleType::find($id);
+        return view('vehicleType.edit', compact('vehicleType'));
     }
 
     /**
@@ -67,9 +87,20 @@ class VehicleTypeController extends Controller
      * @param  \App\VehicleType  $vehicleType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VehicleType $vehicleType)
+    public function update(Request $request, $id)
     {
-        //
+        $vehicleType = VehicleType::find($id);
+        $vehicleType->name = request('name');
+        $vehicleType->layout = request('layout');
+        $vehicleType->seat = request('seat');
+        $vehicleType->facility_id = request('facility_id');
+        $vehicleType->save();
+        $vehicleTypeave = $vehicleType->save();
+        if ($vehicleTypeave) {
+            return redirect('/vehicleType')->with("status", "The record has been updated");
+        } else {
+            return redirect('/vehicleType')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -78,8 +109,9 @@ class VehicleTypeController extends Controller
      * @param  \App\VehicleType  $vehicleType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VehicleType $vehicleType)
+    public function destroy($id)
     {
-        //
+        $vehicleType = VehicleType::find($id)->delete();
+        return redirect('/vehicleType')->with('status','Deleted Successfully');
     }
 }

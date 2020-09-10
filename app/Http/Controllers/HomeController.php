@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\VehicleType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,5 +25,18 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function status(Request $request, $id){
+        $data=VehicleType::find($id);
+
+        if($data->status==0){
+            $data->status=1;
+        }else{
+            $data->status=0;
+        }
+
+        $data->save();
+        return redirect()->back()->with('message', 'Status of'.' '.$data->name.' '.'has been changed successfully');
     }
 }
