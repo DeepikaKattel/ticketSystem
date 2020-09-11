@@ -114,4 +114,17 @@ class VehicleTypeController extends Controller
         $vehicleType = VehicleType::find($id)->delete();
         return redirect('/vehicleType')->with('status','Deleted Successfully');
     }
+
+    public function status(Request $request, $id){
+        $data=VehicleType::find($id);
+
+        if($data->status==0){
+            $data->status=1;
+        }else{
+            $data->status=0;
+        }
+
+        $data->save();
+        return redirect()->back()->with('message', 'Status of'.' '.$data->name.' '.'has been changed successfully');
+    }
 }

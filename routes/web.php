@@ -22,10 +22,6 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/staff', 'StaffController');
-Route::get('/staff/destroy/{id}', 'StaffController@destroy')->name('s.destroy');
-
-
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
     Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
 
@@ -44,7 +40,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::resource('/vehicle', 'VehicleController');
     Route::get('/vehicle/destroy/{id}', 'VehicleController@destroy')->name('ve.destroy');
 
-    Route::get('status{id}', 'HomeController@status')->name('status');
+    Route::resource('/destination', 'DestinationController');
+    Route::get('/destination/destroy/{id}', 'DestinationController@destroy')->name('de.destroy');
 
     Route::get('statusV{id}', 'VehicleController@status')->name('statusV');
+
+    Route::get('statusd{id}', 'DestinationController@status')->name('statusd');
+
+    Route::get('status{id}', 'VehicleTypeController@status')->name('status');
+
+
 });

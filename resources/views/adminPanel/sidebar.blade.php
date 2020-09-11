@@ -47,6 +47,12 @@
                     <span class="nav-text">Vehicle</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('destination.index')}}">
+                    <i class="fa fa-car fa-lg"></i>
+                    <span class="nav-text">Destination</span>
+                </a>
+            </li>
 
 {{--            <li>--}}
 {{--                <a href="{{ url('/') }}/customerDetails">--}}

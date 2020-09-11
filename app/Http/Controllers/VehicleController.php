@@ -137,5 +137,6 @@ class VehicleController extends Controller
 
         $data->save();
         return redirect()->back()->with('message', 'Status of'.' '.$data->reg_number.' '.'has been changed successfully');
+
     }
 }
