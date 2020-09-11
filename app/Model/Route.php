@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,6 @@ class Route extends Model
 {
     protected $table = 'routes';
     protected $fillable = ([
-        'staff_id', 'firstDestination', 'lastDestination', 'totalDuration', 'departure', 'arrival'
+        'name', 'start_point', 'end_point', 'stoppage_points', 'distance', 'child_seat','special_seat', 'status'
     ]);
 }
