@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Trip;
+use App\Model\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TripController extends Controller
 {
@@ -12,9 +13,17 @@ class TripController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $trip = Trip::orderBy('id');
+        if($request->session()->has('globalPageLimit') &&
+            strtolower($request->session()->get('globalPageLimit')) === "all"){
+            $trip = $trip->Paginate($trip->count());
+        }
+        else{
+            $trip = $trip->Paginate($request->session()->get('globalPageLimit')?:5);
+        }
+        return view('trip.index', compact('trip'));
     }
 
     /**
@@ -24,7 +33,9 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
+        $vehicleType = DB::table('vehicle_type')->get();
+        $route = DB::table('routes')->get();
+        return view('trip.create', compact('vehicleType','route'));
     }
 
     /**
@@ -35,7 +46,17 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $trip = new Trip();
+        $trip->title = request('title');
+        $trip->vehicleType = request('vehicleType');
+        $trip->route = request('route');
+        $trip->save();
+        $tripsave = $trip->save();
+        if ($tripsave) {
+            return redirect('/trip')->with("status", "The record has been stored");
+        } else {
+            return redirect('/trip')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -55,9 +76,12 @@ class TripController extends Controller
      * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trip $trip)
+    public function edit($id)
     {
-        //
+        $trip = Trip::find($id);
+        $vehicleType = DB::table('vehicle_type')->get();
+        $route = DB::table('route')->get();
+        return view('trip.edit', compact('trip','vehicleType','route'));
     }
 
     /**
@@ -67,9 +91,19 @@ class TripController extends Controller
      * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update( $id)
     {
-        //
+        $trip = Trip::find($id);
+        $trip->title = request('title');
+        $trip->vehicleType = request('vehicleType');
+        $trip->route = request('route');
+        $trip->save();
+        $tripsave = $trip->save();
+        if ($tripsave) {
+            return redirect('/trip')->with("status", "The record has been updated");
+        } else {
+            return redirect('/trip')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -78,8 +112,23 @@ class TripController extends Controller
      * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trip $trip)
+    public function destroy($id)
     {
-        //
+        $trip = Trip::find($id)->delete();
+        return redirect('/trip')->with('status','Deleted Successfully');
+    }
+
+    public function status($id){
+        $data=Trip::find($id);
+
+        if($data->status==0){
+            $data->status=1;
+        }else{
+            $data->status=0;
+        }
+
+        $data->save();
+        return redirect()->back()->with('message', 'Status of'.' '.$data->title.' '.'has been changed successfully');
+
     }
 }

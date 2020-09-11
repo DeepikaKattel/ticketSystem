@@ -14,7 +14,11 @@ class CreateTripsTable extends Migration
     public function up()
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('vehicleType');
+            $table->string('route');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

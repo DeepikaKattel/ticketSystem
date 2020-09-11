@@ -31,13 +31,13 @@
             </li>
             <li>
                 <a href="{{ route('facility.index')}}">
-                    <i class="fa fa-shopping-cart fa-lg"></i>
+                    <i class="fa fa-cog fa-lg"></i>
                     <span class="nav-text">Vehicle Facilities</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('vehicleType.index')}}">
-                    <i class="fa fa-bus fa-lg"></i>
+                    <i class="fa fa-spinner fa-lg"></i>
                     <span class="nav-text">Vehicle Type</span>
                 </a>
             </li>
@@ -49,7 +49,7 @@
             </li>
             <li>
                 <a href="{{ route('destination.index')}}">
-                    <i class="fa fa-bike fa-lg"></i>
+                    <i class="fa fa-building fa-lg"></i>
                     <span class="nav-text">Destination</span>
                 </a>
             </li>
@@ -57,6 +57,12 @@
                 <a href="{{ route('route.index')}}">
                     <i class="fa fa-road fa-lg"></i>
                     <span class="nav-text">Routes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('trip.index')}}">
+                    <i class="fa fa-cab fa-lg"></i>
+                    <span class="nav-text">Trip</span>
                 </a>
             </li>
 

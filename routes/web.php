@@ -46,11 +46,16 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::resource('/route', 'RouteController');
     Route::get('/route/destroy/{id}', 'RouteController@destroy')->name('r.destroy');
 
+    Route::resource('/trip', 'TripController');
+    Route::get('/trip/destroy/{id}', 'TripController@destroy')->name('t.destroy');
+
     Route::get('statusV{id}', 'VehicleController@status')->name('statusV');
 
     Route::get('statusd{id}', 'DestinationController@status')->name('statusd');
 
     Route::get('statusr{id}', 'RouteController@status')->name('statusr');
+
+    Route::get('statust{id}', 'TripController@status')->name('statust');
 
     Route::get('status{id}', 'VehicleTypeController@status')->name('status');
 
