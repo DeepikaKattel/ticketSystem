@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\VehicleType;
+use App\Model\VehicleType;
 use Illuminate\Database\Eloquent\Model;
 
 class Facilities extends Model
