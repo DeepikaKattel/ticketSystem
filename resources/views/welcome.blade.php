@@ -20,6 +20,18 @@
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
         <link rel="stylesheet" href="{{asset('css/seatLayout.css')}}">
     </head>
+    <style>
+        .seat{
+            font-weight: bold;
+            border-radius: 1px;
+            background-color: darkred;
+            float:left;
+        }
+
+        input:checked ~ .seat {
+            background:green;
+        }
+    </style>
     <body>
         <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
             <div class="container">
@@ -65,209 +77,193 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form id="bookingForm" action="" method="post" enctype="multipart/form-data" autocomplete="off">
-                            <div class="form-group row">
-                                <label for="destination" class="col-md-2 col-form-label">Destination</label>
-                                <div class="col-5 col-md-3">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="mr-1 col-form-label">From:</label><input class="mr-2" type="text" name="from" id="from" autocomplete="off">
-                                        <label class="mr-1 col-form-label">To:</label><input type="text" name="from" id="from" autocomplete="off">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="lastname" class="col-md-2 col-form-label">Number of Passengers</label>
-                                <div class="col-md-10">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">1</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">2</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                        <label class="form-check-label" for="inlineRadio3">3</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                                        <label class="form-check-label" for="inlineRadio4">4</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
-                                        <label class="form-check-label" for="inlineRadio5">5</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option6">
-                                        <label class="form-check-label" for="inlineRadio6">6</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="date" class="col-md-2 col-form-label">Vehicle Type</label>
-                                <div class="col-5 col-md-3">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-success active">
-                                            <input type="radio" name="options" id="nonSmoking" autocomplete="off" checked> AC Deluxe Bus
-                                        </label>
-                                        <label class="btn btn-warning">
-                                            <input type="radio" name="options" id="smoking" autocomplete="off"> Normal Deluxe Bus
-                                        </label>
-                                        <label class="btn btn-danger">
-                                            <input type="radio" name="options" id="smoking" autocomplete="off"> Micro
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="date" class="col-md-2 col-form-label">Select Seat:</label>
-                                <div>
-                                    <ol class="cabin">
-                                        <li class="row row--1">
-                                            <ol class="seats">
-                                                <li class="seat">
-                                                    <input type="checkbox" id="1A" />
-                                                    <label for="1A">1A</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="1B" />
-                                                    <label for="1B">1B</label>
-                                                </li>
-
-                                                <li class="seat">
-                                                    <input type="checkbox" disabled id="1C" />
-                                                    <label for="1C">Driver's Seat</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" disabled id="1D" />
-                                                    <label for="1D">1D</label>
-                                                </li>
-
-                                            </ol>
-                                        </li>
-                                        <li class="row row--2">
-                                            <ol class="seats">
-                                                <li class="seat">
-                                                    <input type="checkbox" id="2A" />
-                                                    <label for="2A">2A</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="2B" />
-                                                    <label for="2B">2B</label>
-                                                </li>
-
-                                                <li class="seat">
-                                                    <input type="checkbox" id="2C" />
-                                                    <label for="2C">2C</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="2D" />
-                                                    <label for="2D">2D</label>
-                                                </li>
-
-                                            </ol>
-                                        </li>
-                                        <li class="row row--3">
-                                            <ol class="seats">
-                                                <li class="seat">
-                                                    <input type="checkbox" id="3A" />
-                                                    <label for="3A">3A</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="3B" />
-                                                    <label for="3B">3B</label>
-                                                </li>
-
-                                                <li class="seat">
-                                                    <input type="checkbox" id="3C" />
-                                                    <label for="3C">3C</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="3D" />
-                                                    <label for="3D">3D</label>
-                                                </li>
-
-                                            </ol>
-                                        </li>
-                                        <li class="row row--4">
-                                            <ol class="seats" >
-                                                <li class="seat">
-                                                    <input type="checkbox" id="4A" />
-                                                    <label for="4A">4A</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="4B" />
-                                                    <label for="4B">4B</label>
-                                                </li>
-
-                                                <li class="seat">
-                                                    <input type="checkbox" id="4C" />
-                                                    <label for="4C">4C</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="4D" />
-                                                    <label for="4D">4D</label>
-                                                </li>
-
-                                            </ol>
-                                        </li>
-                                        <li class="row row--5">
-                                            <ol class="seats">
-                                                <li class="seat">
-                                                    <input type="checkbox" id="5A" />
-                                                    <label for="5A">5A</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="5B" />
-                                                    <label for="5B">5B</label>
-                                                </li>
-
-                                                <li class="seat">
-                                                    <input type="checkbox" id="5C" />
-                                                    <label for="5C">5C</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="5D" />
-                                                    <label for="5D">5D</label>
-                                                </li>
-
-                                            </ol>
-                                        </li>
-                                        <li class="row row--6">
-                                            <ol class="seats">
-                                                <li class="seat">
-                                                    <input type="checkbox" id="6A" />
-                                                    <label for="6A">6A</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="6B" />
-                                                    <label for="6B">6B</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="6C" />
-                                                    <label for="6C">6C</label>
-                                                </li>
-                                                <li class="seat">
-                                                    <input type="checkbox" id="6D" />
-                                                    <label for="6D">6D</label>
-                                                </li>
-
-                                            </ol>
-                                        </li>
-                                    </ol>
-                                    <div class="exit exit--back fuselage">
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="form-group row">
-                                <label for="date" class="col-md-2 col-form-label">Date</label>
-                                <div class="col-5 col-md-3">
+                        <form id="bookingForm" action="{{route('bookTicket.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="date">Date</label>
                                     <input type="date" class="form-control" id="date" name="date" placeholder="Date">
                                 </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="destination">Vehicle Type</label>
+                                    <select class="form-control" id="vehicleType" name="vehicleType" required >
+                                            @foreach($vehicleType as $vehicle)
+                                                <option value="{{$vehicle->name}}">{{$vehicle->name}}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="destination">Route</label>
+                                    <select class="form-control" id="route" name="route" required >
+                                            @foreach($route as $r)
+                                                <option value="{{$r->name}}">{{$r->name}}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="passengers">Number of Adult Passengers</label>
+                                    <input type="text" name="passengers" class="form-control" required placeholder="Number of Adult Passengers">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="children">Children Passengers</label>
+                                    <input type="text" name="children" class="form-control" required placeholder="Number of children">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="special">Special Passengers</label>
+                                    <input type="text" name="special" class="form-control" required placeholder="Number of special passengers">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date" class="col-md-2 col-form-label">Select Seat:</label>
+                                <div class="col-6 col-md-4">
+                                    <div class="exit exit--back fuselage">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input class="seat" type="checkbox" id="seat" name="seat" value="1A"/>
+                                            <label for="seat">1A</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="1B"/>
+                                            <label for="seat">1B</label>
+                                        </div>
+                                        <div class="col">
+                                              <input type="checkbox" disabled id="seat" name="seat" value="D"/>
+                                              <label for="seat">D</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" disabled id="seat" name="seat" value="D"/>
+                                            <label for="seat">D</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="2A"/>
+                                            <label for="seat">2A</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="2B"/>
+                                            <label for="seat">2B</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="2C"/>
+                                            <label for="seat">2C</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="2D"/>
+                                            <label for="seat">2D</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="3A"/>
+                                            <label for="seat">3A</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="3B"/>
+                                            <label for="seat">3B</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="3C"/>
+                                            <label for="seat">3C</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="3D"/>
+                                            <label for="seat">3D</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="4A"/>
+                                            <label for="seat">4A</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="4B"/>
+                                            <label for="seat">4B</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="4C"/>
+                                            <label for="seat">4C</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="4D"/>
+                                            <label for="seat">4D</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="5A"/>
+                                            <label for="seat">5A</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="5B"/>
+                                            <label for="seat">5B</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="5C"/>
+                                            <label for="seat">5C</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="5D"/>
+                                            <label for="seat">5D</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="6A"/>
+                                            <label for="seat">6A</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="6B"/>
+                                            <label for="seat">6B</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="6C"/>
+                                            <label for="seat">6C</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="seat" name="seat" value="6D"/>
+                                            <label for="seat">6D</label>
+                                        </div>
+                                    </div>
+                                    <div class="exit exit--back fuselage">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" disabled value="{{$a}}">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="pickup">Pickup Location</label>
+                                    <input type="text" name="pickup" class="form-control">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="drop">Drop Location</label>
+                                    <input type="text" name="drop" class="form-control">
+                                </div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <div class="offset-md-2 col-md-10">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>

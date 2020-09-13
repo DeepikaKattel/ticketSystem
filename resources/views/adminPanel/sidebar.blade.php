@@ -72,6 +72,13 @@
                 </a>
             </li>
 
+            <li>
+                <a href="{{ route('bookTicket.index')}}">
+                    <i class="fa fa-ticket fa-lg"></i>
+                    <span class="nav-text">Booked</span>
+                </a>
+            </li>
+
 {{--            <li>--}}
 {{--                <a href="{{ url('/') }}/customerDetails">--}}
 {{--                    <i class="fa fa-users fa-lg"></i>--}}

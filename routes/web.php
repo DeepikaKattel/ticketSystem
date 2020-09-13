@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $vehicleType = DB::table('vehicle_type')->get();
+    $route = DB::table('routes')->get();
+    $bookTicket = DB::table('book_tickets')->first();
+    $price = DB::table('prices')
+        ->where('vehicleType', '=', $bookTicket->vehicleType)
+        ->first();
+    $a = ($price->price * $bookTicket->passengers) +
+        ($price->children_price * $bookTicket->children) +
+        ($price->special_price * $bookTicket->special);
+    return view('welcome', compact('vehicleType', 'route', 'bookTicket','price','a'));
+
 });
 
 Auth::routes(['verify'=>true]);
@@ -60,7 +72,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
     Route::get('statust{id}', 'TripController@status')->name('statust');
 
+    Route::get('statusb{id}', 'BookTicketController@status')->name('statusb');
+
     Route::get('status{id}', 'VehicleTypeController@status')->name('status');
+
+    Route::resource('/bookTicket', 'BookTicketController');
+    Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
+
+
 
 
 });

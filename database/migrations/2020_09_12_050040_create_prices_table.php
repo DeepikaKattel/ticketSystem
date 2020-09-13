@@ -17,9 +17,9 @@ class CreatePricesTable extends Migration
             $table->bigIncrements('id');
             $table->string('route');
             $table->string('vehicleType');
-            $table->string('price');
-            $table->string('children_price');
-            $table->string('special_price');
+            $table->integer('price');
+            $table->integer('children_price');
+            $table->integer('special_price');
             $table->timestamps();
         });
     }
