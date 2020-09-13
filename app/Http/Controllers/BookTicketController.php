@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
 use App\Model\BookTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 
 class BookTicketController extends Controller
@@ -47,11 +49,18 @@ class BookTicketController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'email' => 'required',
+            'pickup'=>'required',
+            'drop'=>'required',
+            'date' => 'required|date|after:yesterday',
+            'seat' => 'required',
+
+        ]);
         $bookTicket = new BookTicket();
         $bookTicket->date = request('date');
         $bookTicket->vehicleType = request('vehicleType');
         $bookTicket->route = request('route');
-        $bookTicket->seat = request('seat');
         $bookTicket->passengers = request('passengers');
         $bookTicket->children = request('children');
         $bookTicket->special = request('special');
@@ -66,11 +75,35 @@ class BookTicketController extends Controller
         $bookTicket->email = request('email');
         $bookTicket->pickup = request('pickup');
         $bookTicket->drop = request('drop');
-        $bookTicket->save();
+        $request->merge([
+            'seat' => implode(',', (array)$request->get('seat')),
+        ]);
 
-        $bookTicketsave = $bookTicket->save();
-        if ($bookTicketsave) {
-            return redirect('/bookTicket')->with("status", "The record has been stored");
+        $seat = DB::table('book_tickets')
+                ->where('seat', '=', $request->seat)
+                ->where('date', '=', $request->date)
+                ->where('vehicleType', '=', $request->vehicleType)
+                ->first();
+        if (!$seat) {
+            $bookTicket = BookTicket::create($request->all());
+            $bookTicket->email = request('email');
+            $price = DB::table('prices')
+                ->where('vehicleType', '=', $bookTicket->vehicleType)
+                ->first();
+            $a = ($price->price * $bookTicket->passengers) +
+                ($price->children_price * $bookTicket->children) +
+                ($price->special_price * $bookTicket->special);
+            $bookTicket->price = $a;
+            $bookMessage = [
+                'title' => 'Booking Confirmation',
+                'body' => 'Your appointment has been booked. Your total ticket price is'. + $bookTicket->price
+
+            ];
+            Mail::to($bookTicket->email)->send(new SendMail($bookMessage));
+            $bookTicket->save();
+            return redirect()->back()->with("success","Your appointment has been booked.");
+        } elseif($seat){
+            return redirect('/bookTicket')->with("error", "The selected seats are not available");
         } else {
             return redirect('/bookTicket')->with("error", "There is an error");
         }

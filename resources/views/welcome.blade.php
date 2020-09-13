@@ -128,109 +128,109 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input class="seat" type="checkbox" id="seat" name="seat" value="1A"/>
+                                            <input class="seat" type="checkbox" id="seat" name="seat[]" value="1A"/>
                                             <label for="seat">1A</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="1B"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="1B"/>
                                             <label for="seat">1B</label>
                                         </div>
                                         <div class="col">
-                                              <input type="checkbox" disabled id="seat" name="seat" value="D"/>
+                                              <input type="checkbox" disabled id="seat[]" name="seat[]" value="D"/>
                                               <label for="seat">D</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" disabled id="seat" name="seat" value="D"/>
+                                            <input type="checkbox" disabled id="seat[]" name="seat[]" value="D"/>
                                             <label for="seat">D</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="2A"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="2A"/>
                                             <label for="seat">2A</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="2B"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="2B"/>
                                             <label for="seat">2B</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="2C"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="2C"/>
                                             <label for="seat">2C</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="2D"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="2D"/>
                                             <label for="seat">2D</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="3A"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="3A"/>
                                             <label for="seat">3A</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="3B"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="3B"/>
                                             <label for="seat">3B</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="3C"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="3C"/>
                                             <label for="seat">3C</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="3D"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="3D"/>
                                             <label for="seat">3D</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="4A"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="4A"/>
                                             <label for="seat">4A</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="4B"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="4B"/>
                                             <label for="seat">4B</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="4C"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="4C"/>
                                             <label for="seat">4C</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="4D"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="4D"/>
                                             <label for="seat">4D</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="5A"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="5A"/>
                                             <label for="seat">5A</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="5B"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="5B"/>
                                             <label for="seat">5B</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="5C"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="5C"/>
                                             <label for="seat">5C</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="5D"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="5D"/>
                                             <label for="seat">5D</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="6A"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="6A"/>
                                             <label for="seat">6A</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="6B"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="6B"/>
                                             <label for="seat">6B</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="6C"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="6C"/>
                                             <label for="seat">6C</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" id="seat" name="seat" value="6D"/>
+                                            <input type="checkbox" id="seat" name="seat[]" value="6D"/>
                                             <label for="seat">6D</label>
                                         </div>
                                     </div>
@@ -240,10 +240,10 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="price">Price</label>
-                                    <input type="text" class="form-control" disabled value="{{$a}}">
-                                </div>
+{{--                                <div class="form-group col-md-6">--}}
+{{--                                    <label for="price">Price</label>--}}
+{{--                                    <input type="text" class="form-control" disabled value="{{$a}}">--}}
+{{--                                </div>--}}
 
                                 <div class="form-group col-md-6">
                                     <label for="email">Email</label>

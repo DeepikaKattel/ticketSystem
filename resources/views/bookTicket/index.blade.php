@@ -18,19 +18,19 @@
 {{--            <a href="{{route('bookTicket.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Add Facility</a>--}}
             <table class="table">
                 <thead class="thead-dark">
-                <tr style="font-size: 14px">
+                <tr style="font-size: 11px">
                     <th scope="col">S.N</th>
                     <th scope="col">Date</th>
                     <th scope="col">Vehicle Type</th>
                     <th scope="col">Route</th>
                     <th scope="col">Seat</th>
-                    <th scope="col">Adult Passengers</th>
-                    <th scope="col">Children Passengers</th>
-                    <th scope="col">Special Passengers</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Adults</th>
+                    <th scope="col">Children </th>
+                    <th scope="col">Special </th>
+{{--                    <th scope="col">Price</th>--}}
                     <th scope="col">Email</th>
-                    <th scope="col">Pickup Location</th>
-                    <th scope="col">Drop Location</th>
+                    <th scope="col">Pickup </th>
+                    <th scope="col">Drop </th>
                     <th scope="col">Status</th>
 
                     <th scope="col" id="none">Action</th>
@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                 @foreach($bookTicket as $b)
-                    <tr style="font-size: 14px">
+                    <tr style="font-size: 11px">
                         <td>{{$loop->iteration}}</td>
                         <td>{{$b->date}}</td>
                         <td>{{$b->vehicleType}}</td>
@@ -47,7 +47,7 @@
                         <td>{{$b->passengers}}</td>
                         <td>{{$b->children}}</td>
                         <td>{{$b->special}}</td>
-                        <td>{{$b->price}}</td>
+{{--                        <td>{{$b->price}}</td>--}}
                         <td>{{$b->email}}</td>
                         <td>{{$b->pickup}}</td>
                         <td>{{$b->drop}}</td>

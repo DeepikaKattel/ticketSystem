@@ -20,19 +20,18 @@ Route::get('/', function () {
     $vehicleType = DB::table('vehicle_type')->get();
     $route = DB::table('routes')->get();
     $bookTicket = DB::table('book_tickets')->first();
-    $price = DB::table('prices')
-        ->where('vehicleType', '=', $bookTicket->vehicleType)
-        ->first();
-    $a = ($price->price * $bookTicket->passengers) +
-        ($price->children_price * $bookTicket->children) +
-        ($price->special_price * $bookTicket->special);
-    return view('welcome', compact('vehicleType', 'route', 'bookTicket','price','a'));
+
+    return view('welcome', compact('vehicleType', 'route', 'bookTicket'));
 
 });
 
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/sendMail', 'BookTicketController@store');
+
+Route::get('/setLimit/{id}', 'PageController@setLimit')->name('setLimit');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
     Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
