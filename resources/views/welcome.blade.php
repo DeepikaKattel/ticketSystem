@@ -54,7 +54,7 @@
                                     <a href="{{ url('/') }}/adminOnlyPage" style="margin:5px">{{Auth::user()->firstName}}</a>
 
                                 @elseif(Auth::user()->role_id=2)
-                                    <a href="{{ url('/') }}/staffOnlyPage" style="margin:5px">{{Auth::user()->secondName}}</a>
+                                    <a href="{{ url('/') }}/customerOnlyPage" style="margin:5px">{{Auth::user()->firstName}}</a>
                                 @endif
                             @else
                                 <a href="{{ route('login') }}">Login</a>
@@ -68,13 +68,24 @@
                 </div>
             </div>
         </nav>
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {!! session('success') !!}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-error" role="alert" style="background: red">
+                {!! session('error') !!}
+            </div>
+        @endif
         <div id="bookModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-dialog modal-lg">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Book</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal">&times</button>
                     </div>
                     <div class="modal-body">
                         <form id="bookingForm" action="{{route('bookTicket.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -82,7 +93,9 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="date">Date</label>
-                                    <input type="date" class="form-control" id="date" name="date" placeholder="Date">
+                                    <input type="date" class="form-control" id="date" name="date" placeholder="Date" value="{{old('date')}}">
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('date')}}</span>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -92,6 +105,9 @@
                                                 <option value="{{$vehicle->name}}">{{$vehicle->name}}</option>
                                             @endforeach
                                     </select>
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('vehicleType')}}</span>
+
                                 </div>
                             </div>
                             <div class="form-row">
@@ -102,22 +118,31 @@
                                                 <option value="{{$r->name}}">{{$r->name}}</option>
                                             @endforeach
                                     </select>
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('route')}}</span>
+
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="passengers">Number of Adult Passengers</label>
-                                    <input type="text" name="passengers" class="form-control" required placeholder="Number of Adult Passengers">
+                                    <input type="text" name="passengers" class="form-control" required placeholder="Number of Adults" value="{{old('passengers')}}">
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('passengers')}}</span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="children">Children Passengers</label>
-                                    <input type="text" name="children" class="form-control" required placeholder="Number of children">
+                                    <input type="text" name="children" class="form-control" required placeholder="Number of Children" value="{{old('children')}}">
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('children')}}</span>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="special">Special Passengers</label>
-                                    <input type="text" name="special" class="form-control" required placeholder="Number of special passengers">
+                                    <input type="text" name="special" class="form-control" required placeholder="Number of Special Passengers" value="{{old('special')}}">
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('special')}}</span>
                                 </div>
                             </div>
 
@@ -128,7 +153,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input class="seat" type="checkbox" id="seat" name="seat[]" value="1A"/>
+                                            <input class="checkbox" type="checkbox" id="seat" name="seat[]" value="1A"/>
                                             <label for="seat">1A</label>
                                         </div>
                                         <div class="col">
@@ -136,12 +161,12 @@
                                             <label for="seat">1B</label>
                                         </div>
                                         <div class="col">
-                                              <input type="checkbox" disabled id="seat[]" name="seat[]" value="D"/>
-                                              <label for="seat">D</label>
+                                              <input type="checkbox" disabled id="seat[]" name="seat[]" value="DD"/>
+                                              <label for="seat">DD</label>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" disabled id="seat[]" name="seat[]" value="D"/>
-                                            <label for="seat">D</label>
+                                            <input type="checkbox" disabled id="seat[]" name="seat[]" value="DD"/>
+                                            <label for="seat">DD</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -234,39 +259,41 @@
                                             <label for="seat">6D</label>
                                         </div>
                                     </div>
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('seat')}}</span>
                                     <div class="exit exit--back fuselage">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-{{--                                <div class="form-group col-md-6">--}}
-{{--                                    <label for="price">Price</label>--}}
-{{--                                    <input type="text" class="form-control" disabled value="{{$a}}">--}}
-{{--                                </div>--}}
-
                                 <div class="form-group col-md-6">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control">
+                                    <input type="email" name="email" class="form-control" value="{{old('email')}}">
                                 </div>
+                                <div class="validation"></div>
+                                <span style="color: red">{{$errors->first('email')}}</span>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="pickup">Pickup Location</label>
-                                    <input type="text" name="pickup" class="form-control">
+                                    <input type="text" name="pickup" class="form-control" value="{{old('pickup')}}">
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('pickup')}}</span>
                                 </div>
+
 
                                 <div class="form-group col-md-6">
                                     <label for="drop">Drop Location</label>
-                                    <input type="text" name="drop" class="form-control">
+                                    <input type="text" name="drop" class="form-control" value="{{old('drop')}}">
+                                    <div class="validation"></div>
+                                    <span style="color: red">{{$errors->first('drop')}}</span>
                                 </div>
                             </div>
-
-
                             <div class="form-group row">
                                 <div class="offset-md-2 col-md-10">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Book</button>
                                 </div>
                             </div>
@@ -400,9 +427,6 @@
             $("#mycarousel").carousel( { interval: 2000 } );
             $("#bookButton").click(function () {
                 $('#bookModal').modal('show');
-            });
-            $("#loginButton").click(function () {
-                $('#loginModal').modal('show');
             });
         });
     </script>

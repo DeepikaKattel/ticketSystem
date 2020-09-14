@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +15,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $staffCount = DB::table('staff')->count();
-        $agentCount = DB::table('agents')->count();
-        $customerCount = DB::table('users')
-            ->where('role_id', '=', '2')
-            ->count();
-        $bookCount = DB::table('book_tickets')->count();
-        $vehicleCount = DB::table('vehicles')->count();
-        return view('home', compact('staffCount','agentCount','customerCount','bookCount','vehicleCount'));
+        $id = Auth::user()->id;
+        $bookCount = DB::table('book_tickets')
+            ->where('id','=', $id)
+            ->count('id');
+        return view('home',compact('bookCount'));
     }
 
     /**

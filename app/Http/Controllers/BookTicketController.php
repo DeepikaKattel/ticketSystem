@@ -80,11 +80,13 @@ class BookTicketController extends Controller
         ]);
 
         $seat = DB::table('book_tickets')
-                ->where('seat', '=', $request->seat)
                 ->where('date', '=', $request->date)
-                ->where('vehicleType', '=', $request->vehicleType)
-                ->first();
-        if (!$seat) {
+                ->where(function($query) use ($request) {
+                    $query->where('seat', '=', $request->seat)
+                            ->where('vehicleType', '=', $request->vehicleType);
+                })
+                ->count() < 1;
+        if ($seat) {
             $bookTicket = BookTicket::create($request->all());
             $bookTicket->email = request('email');
             $price = DB::table('prices')
@@ -102,10 +104,10 @@ class BookTicketController extends Controller
             Mail::to($bookTicket->email)->send(new SendMail($bookMessage));
             $bookTicket->save();
             return redirect()->back()->with("success","Your appointment has been booked.");
-        } elseif($seat){
-            return redirect('/bookTicket')->with("error", "The selected seats are not available");
+        }elseif(!$seat){
+            return redirect()->back()->with("error", "The selected seats are not available");
         } else {
-            return redirect('/bookTicket')->with("error", "There is an error");
+            return redirect()->back()->with("error", "There is an error");
         }
     }
 

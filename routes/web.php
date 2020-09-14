@@ -33,6 +33,9 @@ Route::get('/sendMail', 'BookTicketController@store');
 
 Route::get('/setLimit/{id}', 'PageController@setLimit')->name('setLimit');
 
+Route::resource('/bookTicket', 'BookTicketController');
+Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
     Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
 
@@ -75,10 +78,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
     Route::get('status{id}', 'VehicleTypeController@status')->name('status');
 
-    Route::resource('/bookTicket', 'BookTicketController');
-    Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
 
+});
 
-
-
+Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
+    Route::match(['get', 'post'], '/customerOnlyPage/', 'CustomerController@index');
 });
