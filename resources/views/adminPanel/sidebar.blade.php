@@ -79,69 +79,12 @@
                 </a>
             </li>
 
-{{--            <li>--}}
-{{--                <a href="{{ url('/') }}/customerDetails">--}}
-{{--                    <i class="fa fa-users fa-lg"></i>--}}
-{{--                    <span class="nav-text">Customer</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="{{ url('/') }}/staffDetails">--}}
-{{--                    <i class="fa fa-user fa-lg"></i>--}}
-{{--                    <span class="nav-text">Staff</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="{{ url('/') }}/customerVehicles">--}}
-{{--                    <i class="fa fa-user fa-lg"></i>--}}
-{{--                    <span class="nav-text">Customer Details</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
-
-{{--            <li>--}}
-{{--                <a href="{{ route('content.index') }}">--}}
-{{--                    <i class="fa fa-book fa-lg"></i>--}}
-{{--                    <span class="nav-text">Content</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="{{ route('products.index') }}">--}}
-{{--                    <i class="fa fa-shopping-cart"></i>--}}
-{{--                    <span class="nav-text">Products</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
-{{--            <li>--}}
-{{--                <a href="{{ route('working_hours.index') }}">--}}
-{{--                    <i class="fa fa-clock"></i>--}}
-{{--                    <span class="nav-text">Working Hours</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
 
         </ul>
     </div>
     @endcan
     @can('customer_access')
-{{--    <div class="scrollbar" id="style-1">--}}
-{{--        <ul>--}}
-{{--            <li>--}}
-{{--                <a href="{{ url('/') }}/customerOnlyPage">--}}
-{{--                    <i class="fa fa-home fa-lg"></i>--}}
-{{--                    <span class="nav-text">Home</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="{{route('customer.index')}}">--}}
-{{--                    <i class="fa fa-user fa-lg"></i>--}}
-{{--                    <span class="nav-text">Profile</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
 
-
-
-{{--        </ul>--}}
-{{--    </div>--}}
     @endcan
 
 </nav>

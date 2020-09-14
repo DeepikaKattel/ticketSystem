@@ -21,7 +21,8 @@ class AdminController extends Controller
             ->count();
         $bookCount = DB::table('book_tickets')->count();
         $vehicleCount = DB::table('vehicles')->count();
-        return view('home', compact('staffCount','agentCount','customerCount','bookCount','vehicleCount'));
+        $vehicleTypeCount = DB::table('vehicle_type')->count();
+        return view('home', compact('staffCount','agentCount','customerCount','bookCount','vehicleCount','vehicleTypeCount'));
     }
 
     /**

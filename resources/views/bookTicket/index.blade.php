@@ -15,10 +15,10 @@
                     </select>
                     <label>entries</label>
                 </form>
-{{--            <a href="{{route('bookTicket.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Add Facility</a>--}}
+{{--            <a href="{{route('bookTicket.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Book Ticket</a>--}}
             <table class="table">
                 <thead class="thead-dark">
-                <tr style="font-size: 11px">
+                <tr style="font-size: 10px">
                     <th scope="col">S.N</th>
                     <th scope="col">Date</th>
                     <th scope="col">Vehicle Type</th>
@@ -27,7 +27,7 @@
                     <th scope="col">Adults</th>
                     <th scope="col">Children </th>
                     <th scope="col">Special </th>
-{{--                    <th scope="col">Price</th>--}}
+                    <th scope="col">Price</th>
                     <th scope="col">Email</th>
                     <th scope="col">Pickup </th>
                     <th scope="col">Drop </th>
@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                 @foreach($bookTicket as $b)
-                    <tr style="font-size: 11px">
+                    <tr style="font-size: 10px">
                         <td>{{$loop->iteration}}</td>
                         <td>{{$b->date}}</td>
                         <td>{{$b->vehicleType}}</td>
@@ -47,15 +47,15 @@
                         <td>{{$b->passengers}}</td>
                         <td>{{$b->children}}</td>
                         <td>{{$b->special}}</td>
-{{--                        <td>{{$b->price}}</td>--}}
+                        <td>{{$b->price}}</td>
                         <td>{{$b->email}}</td>
                         <td>{{$b->pickup}}</td>
                         <td>{{$b->drop}}</td>
                         <td id="none">@if($b->status==0) <span style="color:red;font-weight: bold">Unpaid</span> @else <span style="color:green;font-weight: bold">Paid</span> @endif</td>
-                        <td id="none"><a href="{{route('statusb', ['id'=>$b->id])}}" style="font-weight: bold">@if($b->status==1)<button class="btn-sm btn-primary btn-danger"> Unpaid </button>@else<button class="btn-sm btn-primary btn-success"> Paid </button>@endif</a>
-                            <a href="{{route('bookTicket.edit',$b->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                        <td id="none"><a href="{{route('statusb', ['id'=>$b->id])}}" style="font-weight: bold">@if($b->status==1)<button class="btn-sm btn-primary btn-danger" style="font-size: 10px"> Unpaid </button>@else<button class="btn-sm btn-primary btn-success" style="font-size: 10px"> Paid </button>@endif</a>
+{{--                            <a href="{{route('bookTicket.edit',$b->id)}}"><button class="btn-sm btn-primary" style="font-size: 10px">Edit</button></a>--}}
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('b.destroy',$b->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('b.destroy',$b->id)}}"><button class="btn-sm btn-danger" style="font-size: 10px">Delete</button></a>
                         </td>
                     </tr>
                 @endforeach
