@@ -20,18 +20,7 @@
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
         <link rel="stylesheet" href="{{asset('css/seatLayout.css')}}">
     </head>
-    <style>
-        .seat{
-            font-weight: bold;
-            border-radius: 1px;
-            background-color: darkred;
-            float:left;
-        }
 
-        input:checked ~ .seat {
-            background:green;
-        }
-    </style>
     <body>
         <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
             <div class="container">
@@ -146,122 +135,154 @@
                                 </div>
                             </div>
 
+
+
+
                             <div class="form-group">
                                 <label for="date" class="col-md-2 col-form-label">Select Seat:</label>
-                                <div class="col-6 col-md-4">
-                                    <div class="exit exit--back fuselage">
+                                <div class="row">
+                                    <div class="col-8 col-md-6">
+                                        <div class="exit exit--back fuselage">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="1A"/>
+                                                <label for="seat">1A</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="1B"/>
+                                                <label for="seat">1B</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                  <input type="checkbox" disabled  name="seat[]" value="DD" />
+                                                  <label for="seat">DD</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" disabled name="seat[]" value="DD" />
+                                                <label for="seat">DD</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2A" />
+                                                <label for="seat">2A</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2B" />
+                                                <label for="seat">2B</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2C" />
+                                                <label for="seat">2C</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2D" />
+                                                <label for="seat">2D</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3A" />
+                                                <label for="seat">3A</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3B" />
+                                                <label for="seat">3B</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3C" />
+                                                <label for="seat">3C</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3D" />
+                                                <label for="seat">3D</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4A" />
+                                                <label for="seat">4A</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4B" />
+                                                <label for="seat">4B</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4C" />
+                                                <label for="seat">4C</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4D" />
+                                                <label for="seat">4D</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5A" />
+                                                <label for="seat">5A</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5B" />
+                                                <label for="seat">5B</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5C" />
+                                                <label for="seat">5C</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5D" />
+                                                <label for="seat">5D</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6A" />
+                                                <label for="seat">6A</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6B" />
+                                                <label for="seat">6B</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6C" />
+                                                <label for="seat">6C</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6D" />
+                                                <label for="seat">6D</label>
+                                                <div class="control-me"></div>
+                                            </div>
+                                        </div>
+                                        <div class="validation"></div>
+                                        <span style="color: red">{{$errors->first('seat')}}</span>
+                                        <div class="exit exit--back fuselage">
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input class="checkbox" type="checkbox" id="seat" name="seat[]" value="1A"/>
-                                            <label for="seat">1A</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="1B"/>
-                                            <label for="seat">1B</label>
-                                        </div>
-                                        <div class="col">
-                                              <input type="checkbox" disabled id="seat[]" name="seat[]" value="DD"/>
-                                              <label for="seat">DD</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" disabled id="seat[]" name="seat[]" value="DD"/>
-                                            <label for="seat">DD</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="2A"/>
-                                            <label for="seat">2A</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="2B"/>
-                                            <label for="seat">2B</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="2C"/>
-                                            <label for="seat">2C</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="2D"/>
-                                            <label for="seat">2D</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="3A"/>
-                                            <label for="seat">3A</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="3B"/>
-                                            <label for="seat">3B</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="3C"/>
-                                            <label for="seat">3C</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="3D"/>
-                                            <label for="seat">3D</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="4A"/>
-                                            <label for="seat">4A</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="4B"/>
-                                            <label for="seat">4B</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="4C"/>
-                                            <label for="seat">4C</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="4D"/>
-                                            <label for="seat">4D</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="5A"/>
-                                            <label for="seat">5A</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="5B"/>
-                                            <label for="seat">5B</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="5C"/>
-                                            <label for="seat">5C</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="5D"/>
-                                            <label for="seat">5D</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="6A"/>
-                                            <label for="seat">6A</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="6B"/>
-                                            <label for="seat">6B</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="6C"/>
-                                            <label for="seat">6C</label>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="seat" name="seat[]" value="6D"/>
-                                            <label for="seat">6D</label>
-                                        </div>
-                                    </div>
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('seat')}}</span>
-                                    <div class="exit exit--back fuselage">
+                                    <div class="col-4 col-md-4">
+                                        <p>asdas</p>
                                     </div>
                                 </div>
                             </div>
