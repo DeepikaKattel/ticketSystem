@@ -1,8 +1,7 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $vehicleType = DB::table('vehicle_type')->get();
-    $route = DB::table('routes')->get();
-    $bookTicket = DB::table('book_tickets')->first();
 
-    return view('welcome', compact('vehicleType', 'route', 'bookTicket'));
 
-});
+Route::get('/', 'BookTicketController@welcome');
 
 Auth::routes(['verify'=>true]);
 

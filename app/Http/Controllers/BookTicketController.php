@@ -15,7 +15,20 @@ class BookTicketController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     *
      */
+
+    public function welcome(Request $request)
+    {
+        $vehicleType = DB::table('vehicle_type')->get();
+        $route = DB::table('routes')->get();
+        $bookTicket = DB::table('book_tickets')->get();
+        $seat = DB::table('book_tickets')
+            ->pluck('seat');
+
+        return view('welcome', compact('vehicleType', 'route', 'bookTicket','seat'));
+    }
     public function index(Request $request)
     {
         $bookTicket = BookTicket::orderBy('id');
@@ -53,6 +66,7 @@ class BookTicketController extends Controller
             'email' => 'required',
             'pickup'=>'required',
             'drop'=>'required',
+            'vehicleType'=>'required',
             'date' => 'required|date|after:yesterday',
             'seat' => 'required',
 
@@ -82,10 +96,11 @@ class BookTicketController extends Controller
         $seat = DB::table('book_tickets')
                 ->where('date', '=', $request->date)
                 ->where(function($query) use ($request) {
-                    $query->where('seat', '=', $request->seat)
+                    $query->where('seat',$request->seat)
                             ->where('vehicleType', '=', $request->vehicleType);
                 })
                 ->count() < 1;
+
         if ($seat) {
             $bookTicket = BookTicket::create($request->all());
             $bookTicket->email = request('email');

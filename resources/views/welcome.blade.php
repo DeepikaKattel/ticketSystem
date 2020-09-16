@@ -19,6 +19,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
         <link rel="stylesheet" href="{{asset('css/seatLayout.css')}}">
+        <!-- Javascript -->
+        <script src="{{asset('js/availableSeats.js')}}"></script>
     </head>
 
     <body>
@@ -282,7 +284,10 @@
                                         </div>
                                     </div>
                                     <div class="col-4 col-md-4">
-                                        <p>asdas</p>
+                                        <input type="radio" onclick="javascript:check();" id="available">Booked Seats
+                                        <div id="yes" style="visibility:hidden">
+                                            {{$seat ?? '' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
