@@ -10,8 +10,11 @@ class Trip extends Model
 {
     protected $table = 'trips';
     protected $fillable = ([
-        'title','vehicleType_id','route_id','status','available_seats','allocated_seats' => 'array'
+        'title','vehicleType_id','route_id','status','available_seats'
     ]);
+    protected $casts = [
+        'allocated_seats' => 'array'
+    ];
 
     public function route(){
         return $this->belongsTo(Route::class,'route_id');
