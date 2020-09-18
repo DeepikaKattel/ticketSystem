@@ -11,6 +11,10 @@
                         <input type="text" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
+                        <label>Departure Date</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <label>Vehicle Type</label>
                         <select class="form-control" id="vehicleType" name="vehicleType" required >
                             @foreach($vehicleType as $v)

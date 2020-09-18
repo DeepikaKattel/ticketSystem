@@ -21,6 +21,7 @@
                 <tr style="font-size: 14px">
                     <th scope="col">S.N</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Vehicle Type</th>
                     <th scope="col">Route</th>
                     <th scope="col">Availabe seats</th>
@@ -33,14 +34,15 @@
                     <tr style="font-size: 14px">
                         <td>{{$loop->iteration}}</td>
                         <td>{{$t->title}}</td>
+                        <td>{{$t->departure_date}}</td>
                         <td>{{$t->vehicleType->name}}</td>
                         <td>{{$t->route->name}}</td>
                         <td>{{$t->available_seats}}</td>
                         <td id="none">@if($t->status==0) <span style="color:red;font-weight: bold">Inactive</span> @else <span style="color:green;font-weight: bold">Active</span> @endif</td>
                         <td id="none"><a href="{{route('statust', ['id'=>$t->id])}}" style="font-weight: bold">@if($t->status==1)<button class="btn-sm btn-primary btn-danger"> Inactive </button>@else<button class="btn-sm btn-primary btn-success"> Active </button>@endif</a>
-                            <a href="{{route('trip.edit',$t->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                            <a href="{{route('trip.edit',$t->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('t.destroy',$t->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('t.destroy',$t->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

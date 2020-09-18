@@ -14,6 +14,7 @@ class TripSeeder extends Seeder
     {
         DB::table('trips')->insert([
             'title' => 'Lumbini Visit',
+            'departure_date' => '2020-09-20',
             'vehicleType_id' => '1',
             'route_id' => '1',
             'available_seats' => '20',
@@ -22,6 +23,7 @@ class TripSeeder extends Seeder
         ]);
         DB::table('trips')->insert([
             'title' => 'Pokhara Visit',
+            'departure_date' => '2020-09-19',
             'vehicleType_id' => '2',
             'route_id' => '2',
             'available_seats' => '20',

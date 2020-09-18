@@ -30,6 +30,13 @@ Route::get('/setLimit/{id}', 'PageController@setLimit')->name('set.setLimit');
 Route::resource('/bookTicket', 'BookTicketController');
 Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
 
+Route::post('/bookTicket/check','BookTicketController@checkTicket');
+
+Route::post('/tickets/check','TicketController@checkTicket');
+Route::get('/tickets/book', 'TicketController@bookTicket');
+Route::resource('tickets','TicketController');
+
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
     Route::match(['get', 'post'], '/adminOnlyPage/', 'AdminController@index');
 

@@ -32,9 +32,9 @@
                         <td>{{$f->name}}</td>
                         <td>{{$f->services}}</td>
                         <td id="none">
-                            <a href="{{route('facility.edit',$f->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                            <a href="{{route('facility.edit',$f->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('f.destroy',$f->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('f.destroy',$f->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

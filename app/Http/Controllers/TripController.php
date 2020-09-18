@@ -48,6 +48,7 @@ class TripController extends Controller
     {
         $trip = new Trip();
         $trip->title = request('title');
+        $trip->departure_date = request('date');
         $trip->vehicleType_id = request('vehicleType');
         $trip->route_id = request('route');
         $no_of_seats = $trip->vehicleType->row * $trip->vehicleType->column;
@@ -100,6 +101,7 @@ class TripController extends Controller
     {
         $trip = Trip::find($id);
         $trip->title = request('title');
+        $trip->departure_date = request('date');
         $trip->vehicleType_id = request('vehicleType');
         $trip->route_id = request('route');
         $trip->save();

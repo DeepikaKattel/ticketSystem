@@ -46,9 +46,9 @@
                         <td>{{$ve->brand_name}}</td>
                         <td id="none">@if($ve->status==0) <span style="color:red;font-weight: bold">Inactive</span> @else <span style="color:green;font-weight: bold">Active</span> @endif</td>
                         <td id="none"><a href="{{route('statusV', ['id'=>$ve->id])}}" style="font-weight: bold">@if($ve->status==1)<button class="btn-sm btn-primary btn-danger"> Inactive </button>@else<button class="btn-sm btn-primary btn-success"> Active </button>@endif</a>
-                            <a href="{{route('vehicle.edit',$ve->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                            <a href="{{route('vehicle.edit',$ve->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('ve.destroy',$ve->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('ve.destroy',$ve->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

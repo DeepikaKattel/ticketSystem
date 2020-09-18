@@ -38,9 +38,9 @@
                         <td>{{$p->children_price}}</td>
                         <td>{{$p->special_price}}</td>
                         <td id="none">
-                            <a href="{{route('price.edit',$p->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                            <a href="{{route('price.edit',$p->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('p.destroy',$p->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('p.destroy',$p->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

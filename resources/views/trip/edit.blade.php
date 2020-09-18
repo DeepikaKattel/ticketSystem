@@ -10,6 +10,12 @@
                         <label>Title</label>
                         <input type="text" name="title" class="form-control" value="{{$trip->title}}" required>
                     </div>
+
+                    <div class="form-group">
+                        <label>Departure Date</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+
                     <div class="form-group">
                         <label>Vehicle Type</label>
                         <select class="form-control" id="vehicleType" name="vehicleType" required >

@@ -32,9 +32,9 @@
                         <td>{{$a->name}}</td>
                         <td>{{$a->phoneNumber}}</td>
                         <td id="none">
-                            <a href="{{route('agent.edit',$a->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                            <a href="{{route('agent.edit',$a->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('a.destroy',$a->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('a.destroy',$a->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

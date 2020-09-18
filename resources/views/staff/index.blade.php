@@ -36,9 +36,9 @@
                         <td>{{$s->phoneNumber}}</td>
                         <td>{{$s->address}}</td>
                         <td id="none">
-                            <a href="{{route('staff.edit',$s->id)}}"><button class="btn-sm btn-primary">Edit</button></a>
+                            <a href="{{route('staff.edit',$s->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('s.destroy',$s->id)}}"><button class="btn-sm btn-danger">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('s.destroy',$s->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

@@ -55,7 +55,7 @@
                         <td id="none"><a href="{{route('statusb', ['id'=>$b->id])}}" style="font-weight: bold">@if($b->status==1)<button class="btn-sm btn-primary btn-danger" style="font-size: 10px"> Unpaid </button>@else<button class="btn-sm btn-primary btn-success" style="font-size: 10px"> Paid </button>@endif</a>
 {{--                            <a href="{{route('bookTicket.edit',$b->id)}}"><button class="btn-sm btn-primary" style="font-size: 10px">Edit</button></a>--}}
                             @method('DELETE')
-                            <a onclick="return confirm('Do you want to delete')" href="{{route('b.destroy',$b->id)}}"><button class="btn-sm btn-danger" style="font-size: 10px">Delete</button></a>
+                            <a onclick="return confirm('Do you want to delete')" href="{{route('b.destroy',$b->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                         </td>
                     </tr>
                 @endforeach

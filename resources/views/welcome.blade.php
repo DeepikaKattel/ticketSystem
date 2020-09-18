@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang ="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
         <link rel="stylesheet" href="{{asset('css/seatLayout.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Javascript -->
         <script src="{{asset('js/availableSeats.js')}}"></script>
     </head>
@@ -92,26 +93,24 @@
                                 <div class="form-group col-md-6">
                                     <label for="destination">Vehicle Type</label>
                                     <select class="form-control" id="vehicleType" name="vehicleType" required >
-                                            @foreach($vehicleType as $vehicle)
-                                                <option value="{{$vehicle->name}}">{{$vehicle->name}}</option>
-                                            @endforeach
+                                        @foreach($vehicleType as $vehicle)
+                                            <option value="{{$vehicle->name}}">{{$vehicle->name}}</option>
+                                        @endforeach
                                     </select>
                                     <div class="validation"></div>
                                     <span style="color: red">{{$errors->first('vehicleType')}}</span>
-
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="destination">Route</label>
                                     <select class="form-control" id="route" name="route" required >
-                                            @foreach($route as $r)
-                                                <option value="{{$r->name}}">{{$r->name}}</option>
-                                            @endforeach
+                                        @foreach($route as $r)
+                                            <option value="{{$r->name}}">{{$r->name}}</option>
+                                        @endforeach
                                     </select>
                                     <div class="validation"></div>
                                     <span style="color: red">{{$errors->first('route')}}</span>
-
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -121,6 +120,7 @@
                                     <span style="color: red">{{$errors->first('passengers')}}</span>
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="children">Children Passengers</label>
@@ -136,9 +136,6 @@
                                     <span style="color: red">{{$errors->first('special')}}</span>
                                 </div>
                             </div>
-
-
-
 
                             <div class="form-group">
                                 <label for="date" class="col-md-2 col-form-label">Select Seat:</label>
@@ -323,6 +320,8 @@
                                     <button type="submit" class="btn btn-primary">Book</button>
                                 </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>
@@ -448,7 +447,7 @@
     <script src="{{asset('js/jquery.slim.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script>
+   <script>
         $(document).ready(function(){
             $("#mycarousel").carousel( { interval: 2000 } );
             $("#bookButton").click(function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SendMail;
 use App\Model\BookTicket;
+use App\Model\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -40,6 +41,31 @@ class BookTicketController extends Controller
             $bookTicket = $bookTicket->Paginate($request->session()->get('globalPageLimit')?:5);
         }
         return view('bookTicket.index', compact('bookTicket'));
+    }
+
+
+
+    public function checkTicket(Request $request)
+    {
+        $booking = $request->input('date');
+        $route = +$request->input('route');
+        $vehicleType = +$request->input('vehicleType');
+        $trips = Trip::where([
+            ['departure_date', '=', $booking],
+            ['route_id', '=', $route]
+        ])->get();
+        $listTickets = [];
+        foreach ($trips as $trip) {
+            if ($trip->vehicle->vehicleType_id == $vehicleType && $trip->available_seats>0) {
+                $trip['row'] = $trip->vehicleType->row;
+                $trip['column'] = $trip->vehicleType->column;
+                array_push($listTickets, $trip);
+            }
+        }
+        $data = [
+            'listTickets' => $listTickets
+        ];
+        return response()->json($data, 200);
     }
 
     /**

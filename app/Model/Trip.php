@@ -10,7 +10,7 @@ class Trip extends Model
 {
     protected $table = 'trips';
     protected $fillable = ([
-        'title','vehicleType_id','route_id','status','available_seats'
+        'title','departure_date','vehicleType_id','route_id','status','available_seats'
     ]);
     protected $casts = [
         'allocated_seats' => 'array'
