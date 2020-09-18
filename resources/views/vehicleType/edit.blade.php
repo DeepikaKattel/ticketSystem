@@ -15,13 +15,17 @@
                         <input type="text" name="layout" class="form-control" value="{{$vehicleType->layout}}"required>
                     </div>
                     <div class="form-group">
-                        <label>Total Seat</label>
-                        <input type="text" name="seat" class="form-control" value="{{$vehicleType->seat}}" required>
+                        <label>Number of Rows</label>
+                        <input type="number" name="Seat_Row" class="form-control" value="{{$vehicleType->Seat_Row}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Columns</label>
+                        <input type="number" name="Seat_Column" class="form-control" value="{{$vehicleType->Seat_Column}}" required>
                     </div>
 
                     <div class="form-group">
                         <label>Facility ID</label>
-                        <input type="text" name="facility_id" class="form-control" value="{{$vehicleType->seat}}" required>
+                        <input type="text" name="facility_id" class="form-control" value="{{$vehicleType->facility_id}}" required>
                     </div>
 
 

@@ -14,7 +14,7 @@
                         <label>Vehicle Type</label>
                         <select class="form-control" id="vehicleType" name="vehicleType" required >
                             @foreach($vehicleType as $vehicle)
-                                <option value="{{$vehicle->vehicleType}}">{{$vehicle->vehicleType}}</option>
+                                <option value="{{$vehicle->id}}">{{$vehicle->vehicleType}}</option>
                             @endforeach
                         </select>
                         <span class="select-arrow"></span>

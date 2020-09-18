@@ -32,25 +32,6 @@ class VehicleSeeder extends Seeder
             'owner_number' => '9800231229',
             'brand_name' => 'Maruti',
         ]);
-        DB::table('routes')->insert([
 
-            'name' => 'Lumbini - Pokhara',
-            'start_point' => 'Lumbini',
-            'end_point' => 'Pokhara',
-            'stoppage_points' => 'Pokhara',
-            'distance' => '15 Hours',
-            'child_seat' => 'Yes',
-            'special_seat' => 'Yes',
-
-        ]);
-        DB::table('routes')->insert([
-            'name' => 'Pokhara - Lumbini',
-            'start_point' => 'Pokhara',
-            'end_point' => 'Lumbini',
-            'stoppage_points' => 'Pokhara',
-            'distance' => '15 Hours',
-            'child_seat' => 'Yes',
-            'special_seat' => 'Yes',
-        ]);
     }
 }

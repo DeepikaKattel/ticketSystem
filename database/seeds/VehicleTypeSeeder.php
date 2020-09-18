@@ -15,13 +15,15 @@ class VehicleTypeSeeder extends Seeder
         DB::table('vehicle_type')->insert([
             'name' => 'Deluxe',
             'layout' => '2-2',
-            'seat' => '30',
+            'Seat_Row' => '5',
+            'Seat_Column' => '4',
             'facility_id' => '1',
         ]);
         DB::table('vehicle_type')->insert([
             'name' => 'AC Deluxe',
             'layout' => '2-2',
-            'seat' => '40',
+            'Seat_Row' => '5',
+            'Seat_Column' => '4',
             'facility_id' => '2',
         ]);
 

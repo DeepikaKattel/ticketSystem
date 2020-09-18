@@ -14,8 +14,12 @@
                         <input type="text" name="layout" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Total Seat</label>
-                        <input type="text" name="seat" class="form-control" required>
+                        <label>Number of Rows</label>
+                        <input type="number" name="Seat_Row" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Columns</label>
+                        <input type="number" name="Seat_Column" class="form-control" required>
                     </div>
 
                     <div class="form-group">

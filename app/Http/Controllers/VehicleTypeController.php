@@ -46,7 +46,8 @@ class VehicleTypeController extends Controller
         $vehicleType = new VehicleType();
         $vehicleType->name = request('name');
         $vehicleType->layout = request('layout');
-        $vehicleType->seat = request('seat');
+        $vehicleType->Seat_Row = request('Seat_Row');
+        $vehicleType->Seat_Column = request('Seat_Column');
         $vehicleType->facility_id = request('facility_id');
         $vehicleType->save();
         $vehicleTypesave = $vehicleType->save();
@@ -92,7 +93,8 @@ class VehicleTypeController extends Controller
         $vehicleType = VehicleType::find($id);
         $vehicleType->name = request('name');
         $vehicleType->layout = request('layout');
-        $vehicleType->seat = request('seat');
+        $vehicleType->Seat_Row = request('Seat_Row');
+        $vehicleType->Seat_Column = request('Seat_Column');
         $vehicleType->facility_id = request('facility_id');
         $vehicleType->save();
         $vehicleTypeave = $vehicleType->save();

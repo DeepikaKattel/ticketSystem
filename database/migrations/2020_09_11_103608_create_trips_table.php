@@ -16,9 +16,13 @@ class CreateTripsTable extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('vehicleType');
-            $table->string('route');
+            $table->unsignedBigInteger('vehicleType_id');
+            $table->unsignedBigInteger('route_id');
+            $table->integer('available_seats');
+            $table->text('allocated_seats');
             $table->boolean('status')->nullable();
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
+            $table->foreign('vehicleType_id')->references('id')->on('vehicle_type')->onDelete('cascade');
             $table->timestamps();
         });
     }
