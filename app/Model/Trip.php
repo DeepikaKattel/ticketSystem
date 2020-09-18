@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use App\Model\Route;
-use App\Model\Vehicle;
+use App\Model\VehicleType;
 use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
@@ -14,9 +14,9 @@ class Trip extends Model
     ]);
 
     public function route(){
-        return $this->belongsTo(Route::class);
+        return $this->belongsTo(Route::class,'route_id');
     }
-    public function vehicle(){
-        return $this->belongsTo(Vehicle::class);
+    public function vehicleType(){
+        return $this->belongsTo(VehicleType::class, 'vehicleType_id');
     }
 }

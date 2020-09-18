@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model;
-
+use App\Model\VehicleType;
 use Illuminate\Database\Eloquent\Model;
 
 class Vehicle extends Model
@@ -12,6 +12,6 @@ class Vehicle extends Model
     ]);
 
     public function vehicleType(){
-        return $this->belongsTo(VehicleType::class);
+        return $this->belongsTo(VehicleType::class,'vehicleType_id');
     }
 }

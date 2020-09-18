@@ -9,10 +9,10 @@ class VehicleType extends Model
 {
     protected $table = 'vehicle_type';
     protected $fillable = ([
-        'name','layout', 'Seat_Row','Seat_Column','facility_id','status'
+        'name','layout', 'row','column','facility_id','status'
     ]);
 
-    public function vehicle(){
-        return $this->hasMany(Vehicle::class);
-    }
+
+
+
 }

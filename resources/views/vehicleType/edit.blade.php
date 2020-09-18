@@ -16,11 +16,11 @@
                     </div>
                     <div class="form-group">
                         <label>Number of Rows</label>
-                        <input type="number" name="Seat_Row" class="form-control" value="{{$vehicleType->Seat_Row}}" required>
+                        <input type="number" name="row" class="form-control" value="{{$vehicleType->row}}" required>
                     </div>
                     <div class="form-group">
                         <label>Number of Columns</label>
-                        <input type="number" name="Seat_Column" class="form-control" value="{{$vehicleType->Seat_Column}}" required>
+                        <input type="number" name="column" class="form-control" value="{{$vehicleType->column}}" required>
                     </div>
 
                     <div class="form-group">

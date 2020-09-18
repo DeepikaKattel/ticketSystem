@@ -14,14 +14,18 @@ class TripSeeder extends Seeder
     {
         DB::table('trips')->insert([
             'title' => 'Lumbini Visit',
-            'vehicleType' => 'Deluxe',
-            'route' => 'Pokhara - Lumbini',
+            'vehicleType_id' => '1',
+            'route_id' => '1',
+            'available_seats' => '20',
+            'allocated_seats' => '10',
 
         ]);
         DB::table('trips')->insert([
             'title' => 'Pokhara Visit',
-            'vehicleType' => 'AC Deluxe',
-            'route' => 'Lumbini - Pokhara',
+            'vehicleType_id' => '2',
+            'route_id' => '2',
+            'available_seats' => '20',
+            'allocated_seats' => '10',
         ]);
 
 

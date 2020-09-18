@@ -13,8 +13,8 @@
                     <div class="form-group">
                         <label>Vehicle Type</label>
                         <select class="form-control" id="vehicleType" name="vehicleType" required >
-                            @foreach($vehicleType as $vehicle)
-                                <option value="{{$vehicle->id}}">{{$vehicle->name}}</option>
+                            @foreach($vehicleType as $v)
+                                <option value="{{$v->id}}">{{$v->name}}</option>
                             @endforeach
                         </select>
                         <span class="select-arrow"></span>

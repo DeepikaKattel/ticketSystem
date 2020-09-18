@@ -48,8 +48,13 @@ class TripController extends Controller
     {
         $trip = new Trip();
         $trip->title = request('title');
-        $trip->vehicleType = request('vehicleType');
-        $trip->route = request('route');
+        $trip->vehicleType_id = request('vehicleType');
+        $trip->route_id = request('route');
+        $no_of_seats = $trip->vehicleType->row * $trip->vehicleType->column;
+        $trip->available_seats = $no_of_seats;
+        $trip->allocated_seats = array_fill(0, $no_of_seats, 0);
+
+
         $trip->save();
         $tripsave = $trip->save();
         if ($tripsave) {
@@ -95,8 +100,8 @@ class TripController extends Controller
     {
         $trip = Trip::find($id);
         $trip->title = request('title');
-        $trip->vehicleType = request('vehicleType');
-        $trip->route = request('route');
+        $trip->vehicleType_id = request('vehicleType');
+        $trip->route_id = request('route');
         $trip->save();
         $tripsave = $trip->save();
         if ($tripsave) {

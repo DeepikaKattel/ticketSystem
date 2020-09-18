@@ -15,11 +15,11 @@
                     </div>
                     <div class="form-group">
                         <label>Number of Rows</label>
-                        <input type="number" name="Seat_Row" class="form-control" required>
+                        <input type="number" name="row" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Number of Columns</label>
-                        <input type="number" name="Seat_Column" class="form-control" required>
+                        <input type="number" name="column" class="form-control" required>
                     </div>
 
                     <div class="form-group">

@@ -35,8 +35,8 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$v->name}}</td>
                         <td>{{$v->layout}}</td>
-                        <td>{{$v->Seat_Row}}</td>
-                        <td>{{$v->Seat_Column}}</td>
+                        <td>{{$v->row}}</td>
+                        <td>{{$v->column}}</td>
                         <td>{{$v->facility_id}}</td>
                         <td id="none">@if($v->status==0) <span style="color:red;font-weight: bold">Inactive</span> @else <span style="color:green;font-weight: bold">Active</span> @endif</td>
                         <td id="none"><a href="{{route('status', ['id'=>$v->id])}}" style="font-weight: bold">@if($v->status==1)<button class="btn-sm btn-primary btn-danger"> Inactive </button>@else<button class="btn-sm btn-primary btn-success"> Active </button>@endif</a>

@@ -17,8 +17,8 @@ class CreateVehicleTypeTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('layout');
-            $table->integer('Seat_Row');
-            $table->integer('Seat_Column');
+            $table->integer('row');
+            $table->integer('column');
             $table->unsignedBigInteger('facility_id');
             $table->boolean('status')->nullable();
 

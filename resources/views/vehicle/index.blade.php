@@ -37,7 +37,7 @@
                     <tr style="font-size: 14px">
                         <td>{{$loop->iteration}}</td>
                         <td>{{$ve->reg_number}}</td>
-                        <td>{{$ve->vehicleType}}</td>
+                        <td>{{$ve->vehicleType->name}}</td>
                         <td>{{$ve->engine}}</td>
                         <td>{{$ve->chassis}}</td>
                         <td>{{$ve->model}}</td>
