@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<body>
-
-<h2>Booking Form</h2>
+@extends('layouts.layout')
+@section('content')
+    <h2>Booking Form</h2>
 
     <form action="/tickets" method="POST">
         @csrf
@@ -36,6 +30,11 @@
         </div>
 
         <div class="form-group">
+            <label for="email">Email </label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
             <button type="button" class="btn btn-primary" onclick="checkTicket()">Check for ticket</button>
             <span class="pl-2" id="noTickets" style="display:none;">
                 No tickets available
@@ -50,12 +49,14 @@
             <div class="form-check" id="vehicleLayout"></div>
             <div style="display: none;" id="vehicleLayoutsHidden"><div id="all"></div><div id="new"></div></div>
 
-            <div class="form-group">
+
+
+            <div class="form-group mt-2">
                 <input type="submit" value="Book" class="btn btn-primary">
             </div>
         </div>
     </form>
-</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script defer>
 function checkTicket() {
@@ -139,11 +140,12 @@ $(document).ready(function(){
     });
 });
 </script>
+@endsection
 
 
 
-</body>
-</html>
+
+
 
 
 

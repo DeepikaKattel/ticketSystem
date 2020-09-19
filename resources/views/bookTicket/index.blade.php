@@ -18,11 +18,11 @@
 {{--            <a href="{{route('bookTicket.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Book Ticket</a>--}}
             <table class="table">
                 <thead class="thead-dark">
-                <tr style="font-size: 10px">
+                <tr style="font-size: 12px">
                     <th scope="col">S.N</th>
                     <th scope="col">Vehicle Type</th>
                     <th scope="col">Route</th>
-                    <th scope="col">User</th>
+                    <th scope="col">Email</th>
                     <th scope="col">No. of Passengers</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Status</th>
@@ -32,11 +32,11 @@
                 </thead>
                 <tbody>
                 @foreach($tickets as $ticket)
-                    <tr style="font-size: 10px">
+                    <tr style="font-size: 12px">
                         <td>{{$ticket->id}}</td>
                         <td>{{$ticket->trip->vehicleType->name}}</td>
                         <td>{{$ticket->trip->route->start_point}} - {{$ticket->trip->route->end_point}}</td>
-                        <td>{{$ticket->user->name}}</td>
+                        <td>{{$ticket->email}}</td>
                         <td>{{$ticket->no_of_passenger}}</td>
                         <td>{{$ticket->amount}}</td>
                         <td id="none">@if($ticket->status==0) <span style="color:red;font-weight: bold">Unpaid</span> @else <span style="color:green;font-weight: bold">Paid</span> @endif</td>

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Mail\SendMail;
 use Illuminate\Http\Request;
 use App\Model\Route;
 use App\Model\VehicleType;
 use App\Model\Trip;
 use App\Model\Ticket;
+use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
@@ -79,16 +81,22 @@ class TicketController extends Controller
 
         $ticket = new Ticket();
         $ticket->trip_id = $request->input('trip');
-        $ticket->user_id = auth()->user()->id;
+        $ticket->email = $request->input('email');
         $ticket->no_of_passenger = $new_allocated_seat;
         $ticket->amount = $trip->price * $new_allocated_seat;
         $ticket->allocated_seats = $request->input('new_allocated_seats');
 
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
-        $ticket->save();
         $trip->save();
-        return redirect('/tickets');
+        $ticket->save();
+        $bookMessage = [
+            'title' => 'Booking Confirmation',
+            'body' => 'Your appointment has been booked. Your total ticket price is'. + $ticket->amount
+
+        ];
+        Mail::to($ticket->email)->send(new SendMail($bookMessage));
+        return redirect()->back()->with("success","Your appointment has been booked.");
     }
 
     /**

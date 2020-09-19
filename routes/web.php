@@ -23,14 +23,14 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/sendMail', 'BookTicketController@store');
+Route::get('/sendMail', 'TicketController@store');
 
 Route::get('/setLimit/{id}', 'PageController@setLimit')->name('set.setLimit');
 
 Route::resource('/bookTicket', 'BookTicketController');
 Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
 
-Route::post('/bookTicket/check','BookTicketController@checkTicket');
+
 
 Route::post('/tickets/check','TicketController@checkTicket');
 Route::get('/tickets/book', 'TicketController@bookTicket')->name('book');
