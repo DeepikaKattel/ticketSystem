@@ -51,6 +51,7 @@ class TripController extends Controller
         $trip->departure_date = request('date');
         $trip->vehicleType_id = request('vehicleType');
         $trip->route_id = request('route');
+        $trip->price = request('price');
         $no_of_seats = $trip->vehicleType->row * $trip->vehicleType->column;
         $trip->available_seats = $no_of_seats;
         $trip->allocated_seats = array_fill(0, $no_of_seats, 0);

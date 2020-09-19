@@ -22,6 +22,7 @@ class CreateTicketsTable extends Migration
             $table->text('allocated_seats');
             $table->foreign('trip_id')->references('id')->on('trips');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

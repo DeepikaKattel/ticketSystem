@@ -1,10 +1,25 @@
-@extends('layouts.app')
-@section('content')
-    <h1 class="my-4">Tickets</h1>
-    @if(count($tickets) > 0)
+@extends('adminPanel.master')
+@section('rightContent')
+    <link rel="stylesheet" href="{{asset('css/table.css')}}">
+    <div class="container-fluid">
+        <div class="row justify-content-center ml-5">
+            <div class="col-xs-20 col-md-15 col-lg-12 mx-5">
+                <h1>Booked</h1>
+                <form>
+                    <label>Show</label>
+                    <select id="pagination">
+                        <option selected>---</option>
+                        <option value="http://127.0.0.1:8000/setLimit/5" >5</option>
+                        <option value="http://127.0.0.1:8000/setLimit/10" >10</option>
+                        <option value="http://127.0.0.1:8000/setLimit/all" >All</option>
+                    </select>
+                    <label>entries</label>
+                </form>
+
+
         <table class="table">
-            <thead>
-                <tr>
+            <thead class="thead-dark">
+                <tr style="font-size: 10px">
                     <th>Id</th>
                     <th>Vehicle</th>
                     <th>Route</th>
@@ -26,11 +41,22 @@
                 @endforeach
             </tbody>
         </table>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script defer>
+                {!!$tickets->links()!!}
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            // bind change event to select
+            $('#pagination').on('change', function () {
+                var url = $(this).val(); // get selected value
+                if (url) { // require a URL
+                    window.location = url; // redirect
+                }
+                return false;
+            });
+        });
+    </script>
 
-        </script>
-    @else
-        <div class="jumbotron"><h1>Tickets not found.</h1></div>
-    @endif
+
 @endsection

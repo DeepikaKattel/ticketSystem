@@ -73,7 +73,7 @@
             </li>
 
             <li>
-                <a href="{{ route('bookTicket.index')}}">
+                <a href="/tickets">
                     <i class="fa fa-ticket fa-lg"></i>
                     <span class="nav-text">Booked</span>
                 </a>

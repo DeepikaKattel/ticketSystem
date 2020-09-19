@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Price;
+
 use Illuminate\Http\Request;
 use App\Model\Route;
 use App\Model\VehicleType;
@@ -19,7 +19,7 @@ class TicketController extends Controller
     public function index()
     {
         $tickets = Ticket::all();
-        return view('bookTicket.ticket', compact('tickets'));
+        return view('bookTicket.index', compact('tickets'));
     }
 
     /**
@@ -72,7 +72,6 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $trip = Trip::find($request->input('trip'));
-        $price = Price::all();
         $new_allocated_seat = array_sum($request->input('new_allocated_seats'));
         $this->validate($request, [
             'trip' => 'required',
@@ -82,7 +81,7 @@ class TicketController extends Controller
         $ticket->trip_id = $request->input('trip');
         $ticket->user_id = auth()->user()->id;
         $ticket->no_of_passenger = $new_allocated_seat;
-        $ticket->amount = $price->price * $new_allocated_seat;
+        $ticket->amount = $trip->price * $new_allocated_seat;
         $ticket->allocated_seats = $request->input('new_allocated_seats');
 
         $trip->allocated_seats = $request->input('all_allocated_seats');
@@ -100,6 +99,20 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
+
+    }
+
+    public function status($id){
+        $data=Ticket::find($id);
+
+        if($data->status==0){
+            $data->status=1;
+        }else{
+            $data->status=0;
+        }
+
+        $data->save();
+        return redirect()->back()->with('message', 'Status of'.' '.$data->id.' '.'has been changed successfully');
 
     }
 }

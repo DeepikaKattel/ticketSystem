@@ -33,7 +33,7 @@ Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.
 Route::post('/bookTicket/check','BookTicketController@checkTicket');
 
 Route::post('/tickets/check','TicketController@checkTicket');
-Route::get('/tickets/book', 'TicketController@bookTicket');
+Route::get('/tickets/book', 'TicketController@bookTicket')->name('book');
 Route::resource('tickets','TicketController');
 
 
@@ -75,7 +75,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
     Route::get('statust{id}', 'TripController@status')->name('statust');
 
-    Route::get('statusb{id}', 'BookTicketController@status')->name('statusb');
+    Route::get('statusb{id}', 'TicketController@status')->name('statusb');
 
     Route::get('status{id}', 'VehicleTypeController@status')->name('status');
 

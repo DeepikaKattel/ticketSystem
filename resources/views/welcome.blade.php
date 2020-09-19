@@ -71,263 +71,6 @@
                 {!! session('error') !!}
             </div>
         @endif
-        <div id="bookModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Book</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times</button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="bookingForm" action="{{route('bookTicket.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
-                            @csrf
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="date">Date</label>
-                                    <input type="date" class="form-control" id="date" name="date" placeholder="Date" value="{{old('date')}}">
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('date')}}</span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="destination">Vehicle Type</label>
-                                    <select class="form-control" id="vehicleType" name="vehicleType" required >
-                                        @foreach($vehicleType as $vehicle)
-                                            <option value="{{$vehicle->name}}">{{$vehicle->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('vehicleType')}}</span>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="destination">Route</label>
-                                    <select class="form-control" id="route" name="route" required >
-                                        @foreach($route as $r)
-                                            <option value="{{$r->name}}">{{$r->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('route')}}</span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="passengers">Number of Adult Passengers</label>
-                                    <input type="text" name="passengers" class="form-control" required placeholder="Number of Adults" value="{{old('passengers')}}">
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('passengers')}}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="children">Children Passengers</label>
-                                    <input type="text" name="children" class="form-control" required placeholder="Number of Children" value="{{old('children')}}">
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('children')}}</span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="special">Special Passengers</label>
-                                    <input type="text" name="special" class="form-control" required placeholder="Number of Special Passengers" value="{{old('special')}}">
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('special')}}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="date" class="col-md-2 col-form-label">Select Seat:</label>
-                                <div class="row">
-                                    <div class="col-8 col-md-6">
-                                        <div class="exit exit--back fuselage">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="1A"/>
-                                                <label for="seat">1A</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="1B"/>
-                                                <label for="seat">1B</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                  <input type="checkbox" disabled  name="seat[]" value="DD" />
-                                                  <label for="seat">DD</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" disabled name="seat[]" value="DD" />
-                                                <label for="seat">DD</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2A" />
-                                                <label for="seat">2A</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2B" />
-                                                <label for="seat">2B</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2C" />
-                                                <label for="seat">2C</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="2D" />
-                                                <label for="seat">2D</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3A" />
-                                                <label for="seat">3A</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3B" />
-                                                <label for="seat">3B</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3C" />
-                                                <label for="seat">3C</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="3D" />
-                                                <label for="seat">3D</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4A" />
-                                                <label for="seat">4A</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4B" />
-                                                <label for="seat">4B</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4C" />
-                                                <label for="seat">4C</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="4D" />
-                                                <label for="seat">4D</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5A" />
-                                                <label for="seat">5A</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5B" />
-                                                <label for="seat">5B</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5C" />
-                                                <label for="seat">5C</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="5D" />
-                                                <label for="seat">5D</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6A" />
-                                                <label for="seat">6A</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6B" />
-                                                <label for="seat">6B</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6C" />
-                                                <label for="seat">6C</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" id="expand-toggle" name="seat[]" value="6D" />
-                                                <label for="seat">6D</label>
-                                                <div class="control-me"></div>
-                                            </div>
-                                        </div>
-                                        <div class="validation"></div>
-                                        <span style="color: red">{{$errors->first('seat')}}</span>
-                                        <div class="exit exit--back fuselage">
-                                        </div>
-                                    </div>
-                                    <div class="col-4 col-md-4">
-                                        <input type="radio" onclick="javascript:check();" id="available">Booked Seats
-                                        <div id="yes" style="visibility:hidden">
-                                            {{$seat ?? '' }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" value="{{old('email')}}">
-                                </div>
-                                <div class="validation"></div>
-                                <span style="color: red">{{$errors->first('email')}}</span>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="pickup">Pickup Location</label>
-                                    <input type="text" name="pickup" class="form-control" value="{{old('pickup')}}">
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('pickup')}}</span>
-                                </div>
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="drop">Drop Location</label>
-                                    <input type="text" name="drop" class="form-control" value="{{old('drop')}}">
-                                    <div class="validation"></div>
-                                    <span style="color: red">{{$errors->first('drop')}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="offset-md-2 col-md-10">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Book</button>
-                                </div>
-                            </div>
-
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <header class="jumbotron">
             <div class="container">
                 <div class="row row-header">
@@ -338,8 +81,9 @@
                     <div class="col-12 col-sm-3 align-self-center">
                         <img src="{{asset('images/jhunLogo.png')}}" class="img-fluid">
                     </div>
+
                     <div class="col-12 col-sm-3 align-self-center">
-                        <a id="bookButton" role="button" class="btn btn-block nav-link btn-warning">Book Ticket</a>
+                        <a id="bookButton" role="button" class="btn btn-block nav-link btn-warning" href="{{route('book')}}">Book Ticket</a>
                     </div>
                 </div>
             </div>
@@ -447,7 +191,7 @@
     <script src="{{asset('js/jquery.slim.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-   <script>
+    <script>
         $(document).ready(function(){
             $("#mycarousel").carousel( { interval: 2000 } );
             $("#bookButton").click(function () {
@@ -455,4 +199,5 @@
             });
         });
     </script>
+
 </html>

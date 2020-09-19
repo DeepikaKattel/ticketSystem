@@ -34,6 +34,10 @@
                         </select>
                         <span class="select-arrow"></span>
                     </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" step=".01" name="price" class="form-control" value="{{$trip->price}}" required>
+                    </div>
 
                     <div class="form-group float-right">
                         <button class="btn btn-primary float-left">Submit</button>

@@ -24,6 +24,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Vehicle Type</th>
                     <th scope="col">Route</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Availabe seats</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="none">Action</th>
@@ -37,6 +38,7 @@
                         <td>{{$t->departure_date}}</td>
                         <td>{{$t->vehicleType->name}}</td>
                         <td>{{$t->route->name}}</td>
+                        <td>{{$t->price}}</td>
                         <td>{{$t->available_seats}}</td>
                         <td id="none">@if($t->status==0) <span style="color:red;font-weight: bold">Inactive</span> @else <span style="color:green;font-weight: bold">Active</span> @endif</td>
                         <td id="none"><a href="{{route('statust', ['id'=>$t->id])}}" style="font-weight: bold">@if($t->status==1)<button class="btn-sm btn-primary btn-danger"> Inactive </button>@else<button class="btn-sm btn-primary btn-success"> Active </button>@endif</a>

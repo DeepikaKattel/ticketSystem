@@ -19,6 +19,7 @@ class CreateTripsTable extends Migration
             $table->date('departure_date');
             $table->unsignedBigInteger('vehicleType_id');
             $table->unsignedBigInteger('route_id');
+            $table->float('price', 10, 2);
             $table->integer('available_seats');
             $table->text('allocated_seats');
             $table->boolean('status')->nullable();

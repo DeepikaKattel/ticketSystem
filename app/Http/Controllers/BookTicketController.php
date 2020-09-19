@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SendMail;
 use App\Model\BookTicket;
+use App\Model\Ticket;
 use App\Model\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,15 +25,16 @@ class BookTicketController extends Controller
     {
         $vehicleType = DB::table('vehicle_type')->get();
         $route = DB::table('routes')->get();
-        $bookTicket = DB::table('book_tickets')->get();
+        $ticket = DB::table('tickets')->get();
         $seat = DB::table('book_tickets')
             ->pluck('seat');
 
-        return view('welcome', compact('vehicleType', 'route', 'bookTicket','seat'));
+        return view('welcome', compact('vehicleType', 'route', 'ticket','seat'));
     }
     public function index(Request $request)
     {
         $bookTicket = BookTicket::orderBy('id');
+        $ticket = Ticket::orderBy('id');
         if($request->session()->has('globalPageLimit') &&
             strtolower($request->session()->get('globalPageLimit')) === "all"){
             $bookTicket = $bookTicket->Paginate($bookTicket->count());
@@ -40,7 +42,7 @@ class BookTicketController extends Controller
         else{
             $bookTicket = $bookTicket->Paginate($request->session()->get('globalPageLimit')?:5);
         }
-        return view('bookTicket.index', compact('bookTicket'));
+        return view('bookTicket.index', compact('bookTicket','ticket'));
     }
 
 

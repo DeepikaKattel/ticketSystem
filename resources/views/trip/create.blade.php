@@ -33,6 +33,12 @@
                         <span class="select-arrow"></span>
                     </div>
 
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" step=".01" name="price" class="form-control" required>
+                    </div>
+
+
                     <div class="form-group float-right" style="margin-left: 20px">
                         <input type="button" class="btn btn-primary float-left" value="Back" onclick="history.back()">
                     </div>
