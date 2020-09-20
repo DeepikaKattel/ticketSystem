@@ -18,13 +18,12 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-        <link rel="stylesheet" href="{{asset('css/seatLayout.css')}}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Javascript -->
         <script src="{{asset('js/availableSeats.js')}}"></script>
     </head>
 
-    <body>
+    <body style="border:solid 5px ">
         <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
             <div class="container">
                 <!--data-toggle, data-target, collapse are javascript components-->
@@ -71,7 +70,50 @@
                 {!! session('error') !!}
             </div>
         @endif
-        <header class="jumbotron">
+        <div class="row row-content" id="popular">
+            <div class="col">
+                <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid"
+                                 src="{{asset('images/pokhara.jpg')}}" alt="Pokhara">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Pokhara<span class="badge badge-danger">Popular Destination</span></h2>
+                                <p class="d-none d-sm-block">A place full of diversity and natural beauty.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid"
+                                 src="{{asset('images/lumbini.jpg')}}" alt="Lumbini">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Lumbini<span class="badge badge-danger">Popular Destination</span></h2>
+                                <p class="d-none d-sm-block">A place with history and peace.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid"
+                                 src="{{asset('images/janakpur.jpg')}}" alt="Janakpur">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Janakpur<span class="badge badge-danger">Popular Destination</span></h2>
+                                <p class="d-none d-sm-block">A place of belief and cultural diversity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>
+                    </ol>
+                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <header class="jumbotron" >
             <div class="container">
                 <div class="row row-header">
                     <div class="col-12 col-sm-6">
@@ -84,57 +126,10 @@
                     <div class="col-12 col-sm-3 align-self-center">
                         <a id="bookButton" role="button" class="btn btn-block nav-link btn-warning" style="background: #f2a407;" href="{{route('book')}}">Book Ticket</a>
                     </div>
-
-
-
-                    </div>
                 </div>
+            </div>
             </div>
         </header>
-        <div class="container">
-            <div class="row row-content" id="popular">
-                <div class="col">
-                    <div id="mycarousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                                <img class="d-block img-fluid"
-                                     src="{{asset('images/pokhara.jpg')}}" alt="Pokhara">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h2>Pokhara<span class="badge badge-danger">Popular</span></h2>
-                                    <p class="d-none d-sm-block">A place full of diversity and natural beauty.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid"
-                                     src="{{asset('images/lumbini.jpg')}}" alt="Lumbini">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h2>Lumbini<span class="badge badge-danger">Popular</span></h2>
-                                    <p class="d-none d-sm-block">A place with history and peace.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid"
-                                     src="{{asset('images/janakpur.jpg')}}" alt="Janakpur">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h2>Janakpur<span class="badge badge-danger">Popular</span></h2>
-                                    <p class="d-none d-sm-block">A place of belief and cultural diversity.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <ol class="carousel-indicators">
-                            <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#mycarousel" data-slide-to="1"></li>
-                            <li data-target="#mycarousel" data-slide-to="2"></li>
-                        </ol>
-                        <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
             <div class="row row-content align-items-center" id="about">
                 <div class="col-12 col-sm-4 order-sm-last col-md-3">
                     <h3>Founder</h3>

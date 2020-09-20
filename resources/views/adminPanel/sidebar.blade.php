@@ -65,12 +65,12 @@
                     <span class="nav-text">Trip</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('price.index')}}">
-                    <i class="fa fa-money fa-lg"></i>
-                    <span class="nav-text">Price</span>
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="{{ route('price.index')}}">--}}
+{{--                    <i class="fa fa-money fa-lg"></i>--}}
+{{--                    <span class="nav-text">Price</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
             <li>
                 <a href="/tickets">

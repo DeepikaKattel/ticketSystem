@@ -100,13 +100,15 @@ body{
 .modal-body {
   background-color: lightgrey;
 }
+.row-content{
+    min-height: 300px;
+    padding:0px;
+}
+#about{
+    padding:40px;
+}
 
-.control-me::after {
-    content: url("https://img.icons8.com/ultraviolet/40/000000/flight-seat.png");
-}
-#expand-toggle:checked ~ .control-me::after {
-    content: url("https://img.icons8.com/office/40/000000/flight-seat.png");
-}
+
 /*input:checked + label {*/
 /*    color: red;*/
 /*}*/
