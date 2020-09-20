@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('content')
+
     <h2>Booking Form</h2>
 
     <form action="/tickets" method="POST">
@@ -46,12 +47,13 @@
             <div class="form-check mb-2" id="radioOption"></div>
 
             <label for="radioOption">Choose YourSeat:</label>
+            <div class="exit exit--back fuselage"></div>
+            <div class="window window--back"></div>
             <div class="form-check" id="vehicleLayout"></div>
-            <div style="display: none;" id="vehicleLayoutsHidden"><div id="all"></div><div id="new"></div></div>
+            <div class="exit exit--back fuselage"></div>
+            <div style="display: none;" id="vehicleLayoutsHidden">  <div id="all"></div><div id="new"></div></div>
 
-
-
-            <div class="form-group mt-2">
+            <div class="form-group mt-5">
                 <input type="submit" value="Book" class="btn btn-primary">
             </div>
         </div>
@@ -97,6 +99,7 @@ function checkTicket() {
 function displayAllocatedSeats(row, col, list){
     emptyLayout();
     index = 0
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
             if (list[index] == 0) {
@@ -104,7 +107,7 @@ function displayAllocatedSeats(row, col, list){
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='0' checked>");
             } else {
                 $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' disabled>");
-                $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='1' checked>");
+                $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='1' checked>")
             }
             $('#new').append("<input type='checkbox' name='new_allocated_seats[]' value='0' checked>");
 
