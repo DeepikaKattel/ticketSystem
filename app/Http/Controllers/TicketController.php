@@ -104,7 +104,6 @@ class TicketController extends Controller
         $userDetails = DB::table('users')
             ->select('email','firstName','lastName')
             ->where('id','=', $id)->first();
-
         $bookMessage = [
             'title' => 'Booking Confirmation',
             'body' => 'Your appointment has been booked.'

@@ -1,6 +1,76 @@
 @extends('layouts.app')
-
 @section('content')
+<div class="modal fade" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="guestModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModal">{{ __('Sign Up') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="signUpForm" action="/guest">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="firstName" value="{{ old('firstName') }}"   autofocus>
+
+                            <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="lastName" value="{{ old('lastName') }}"   autofocus>
+
+                            <span class="invalid-feedback" role="alert" >
+                            <strong></strong>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="emailInput" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="emailInput" type="email" class="form-control" name="email" value="{{ old('email') }}" required >
+
+                            <span class="invalid-feedback" role="alert" id="emailError">
+                            <strong></strong>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="phone" type="number" class="form-control" name="phoneNumber" value="{{ old('phoneNumber') }}" >
+
+                            <span class="invalid-feedback" role="alert" id="phoneError">
+                            <strong></strong>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Sign Up') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 ">
@@ -56,7 +126,8 @@
                                 <button type="submit" class="btn btn-primary" style="background:#f2a407">
                                     {{ __('Login') }}
                                 </button>
-                                <a class="btn-link" style="color:#f2a407" href="{{ route('signUp') }}">
+                                <a class="btn-link" style="color:#f2a407" href="/guest" data-toggle="modal"
+                                   data-target="#guestModal">
                                     {{ __('Sign Up As Guest') }}
                                 </a>
                             </div>
@@ -82,4 +153,11 @@
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        $('#guestModal').modal({
+            show: true
+        });
+    });
+</script>
 @endsection
