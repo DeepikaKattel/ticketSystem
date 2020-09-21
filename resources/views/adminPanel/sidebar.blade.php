@@ -50,7 +50,7 @@
             <li>
                 <a href="{{ route('destination.index')}}">
                     <i class="fa fa-building fa-lg"></i>
-                    <span class="nav-text">Destination</span>
+                    <span class="nav-text">Place</span>
                 </a>
             </li>
             <li>
@@ -119,7 +119,7 @@
                 <li>
                     <a href="{{ route('destination.index')}}">
                         <i class="fa fa-building fa-lg"></i>
-                        <span class="nav-text">Destination</span>
+                        <span class="nav-text">Place</span>
                     </a>
                 </li>
                 <li>

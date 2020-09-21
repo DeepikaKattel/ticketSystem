@@ -20,7 +20,7 @@
                 <thead class="thead-dark">
                 <tr style="font-size: 14px">
                     <th scope="col">S.N</th>
-                    <th scope="col">Destination Name</th>
+                    <th scope="col">Place Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Image</th>
                     <th scope="col">Status</th>

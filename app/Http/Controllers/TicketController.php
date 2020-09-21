@@ -10,7 +10,10 @@ use App\Model\VehicleType;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Trip;
 use App\Model\Ticket;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class TicketController extends Controller
 {
@@ -37,7 +40,7 @@ class TicketController extends Controller
      */
     public function bookTicket()
     {
-        $user_id = Auth::user()->id;
+
         $route = Route::all();
         $vehicleType = VehicleType::all();
         return view('bookTicket.bookTicket', compact('route', 'vehicleType'));
@@ -97,12 +100,21 @@ class TicketController extends Controller
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
         $trip->save();
         $ticket->save();
+        $id = Auth::user()->id;
+        $userDetails = DB::table('users')
+            ->select('email','firstName','lastName')
+            ->where('id','=', $id)->first();
+
         $bookMessage = [
             'title' => 'Booking Confirmation',
-            'body' => 'Your appointment has been booked. Your total ticket price is'. + $ticket->amount
-
+            'body' => 'Your appointment has been booked.'
         ];
-        Mail::to($ticket->email)->send(new SendMail($bookMessage));
+
+        $pdf = PDF::loadView('ticket',['userDetails'=>$userDetails,'ticket'=>$ticket]);
+
+        $message = new SendMail($bookMessage);
+        $message->attachData($pdf->output(), "ticket.pdf");
+        Mail::to($ticket->email)->send($message);
         return redirect()->back()->with("success","Your appointment has been booked.");
     }
 
