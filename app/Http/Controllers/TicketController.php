@@ -7,12 +7,18 @@ use App\Mail\SendMail;
 use Illuminate\Http\Request;
 use App\Model\Route;
 use App\Model\VehicleType;
+use Illuminate\Support\Facades\Auth;
 use App\Model\Trip;
 use App\Model\Ticket;
 use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,6 +37,7 @@ class TicketController extends Controller
      */
     public function bookTicket()
     {
+        $user_id = Auth::user()->id;
         $route = Route::all();
         $vehicleType = VehicleType::all();
         return view('bookTicket.bookTicket', compact('route', 'vehicleType'));
@@ -49,7 +56,7 @@ class TicketController extends Controller
         $vehicleType = +$request->input('vehicleType');
         $trips = Trip::where([
             ['departure_date', '=', $booking],
-            ['route_id', '=', $route]
+            ['route_id', '=', $route],
         ])->get();
         $listTickets = [];
         foreach ($trips as $trip) {

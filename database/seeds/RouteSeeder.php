@@ -14,9 +14,9 @@ class RouteSeeder extends Seeder
     {
         DB::table('routes')->insert([
 
-            'name' => 'Lumbini - Pokhara',
             'start_point' => 'Lumbini',
             'end_point' => 'Pokhara',
+            'name' => 'Lumbini - Pokhara',
             'stoppage_points' => 'Pokhara',
             'distance' => '15 Hours',
             'child_seat' => 'Yes',
@@ -24,9 +24,9 @@ class RouteSeeder extends Seeder
 
         ]);
         DB::table('routes')->insert([
-            'name' => 'Pokhara - Lumbini',
             'start_point' => 'Pokhara',
             'end_point' => 'Lumbini',
+            'name' => 'Pokhara - Lumbini',
             'stoppage_points' => 'Pokhara',
             'distance' => '15 Hours',
             'child_seat' => 'Yes',

@@ -20,6 +20,10 @@ class RoleSeeder extends Seeder
 
                 'name' => 'Customer',
             ),
+            array(
+
+                'name' => 'TravelAgent',
+            ),
         ));
     }
 }

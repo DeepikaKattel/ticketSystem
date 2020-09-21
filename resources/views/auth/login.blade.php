@@ -56,6 +56,14 @@
                                 <button type="submit" class="btn btn-primary" style="background:#f2a407">
                                     {{ __('Login') }}
                                 </button>
+                                <a class="btn-link" style="color:#f2a407" href="{{ route('signUp') }}">
+                                    {{ __('Sign Up As Guest') }}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
                                 <a class="btn-link" style="color:#f2a407" href="{{ route('register') }}">
                                     {{ __('Not Registered?') }}
                                 </a>
@@ -65,9 +73,9 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

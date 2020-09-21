@@ -33,6 +33,9 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('customer_access', function ($user) {
             return $user->role_id == 2;
         });
+        $gate->define('agent_access', function ($user) {
+            return $user->role_id == 3;
+        });
 
     }
 }

@@ -5,17 +5,22 @@
 
     <form action="/tickets" method="POST">
         @csrf
-        <div class="form-group">
-            <label for="booking_date">Booking Date: </label><br>
-            <input type="date" id="bookingDate" name="booking_date" required>
-        </div>
 
         <div class="form-group">
-            <label for="route">Routes:</label>
+            <label for="route">From:</label>
             <select class="form-control mr-sm-2" id="route" name="route">
                 <option>------</option>
                 @foreach($route as $r)
-                    <option value="{{$r->id}}">{{$r->start_point}} - {{$r->end_point}}</option>
+                    <option value="{{$r->id}}">{{$r->start_point}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="route">To:</label>
+            <select class="form-control mr-sm-2" id="route" name="route">
+                <option>------</option>
+                @foreach($route as $r)
+                    <option value="{{$r->id}}">{{$r->end_point}}</option>
                 @endforeach
             </select>
         </div>
@@ -28,6 +33,11 @@
                     <option value="{{$v->id}}">{{$v->name}}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="booking_date">Booking Date: </label><br>
+            <input type="date" id="bookingDate" name="booking_date" required>
         </div>
 
         <div class="form-group">

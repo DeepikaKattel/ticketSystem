@@ -22,6 +22,9 @@ class CustomerMiddleware
         elseif (Auth::check() && Auth::user()->role_id == '1') {
             return redirect('/AdminOnlyPage');
         }
+        elseif (Auth::check() && Auth::user()->role_id == '3') {
+            return redirect('/travelAgentOnlyPage');
+        }
         else {
             return redirect('/home');
         }

@@ -8,6 +8,6 @@ class Route extends Model
 {
     protected $table = 'routes';
     protected $fillable = ([
-        'name', 'start_point', 'end_point', 'stoppage_points', 'distance', 'child_seat','special_seat', 'status'
+        'start_point', 'end_point', 'name', 'stoppage_points', 'distance', 'child_seat','special_seat', 'status'
     ]);
 }

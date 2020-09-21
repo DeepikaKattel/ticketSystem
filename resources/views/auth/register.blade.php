@@ -53,6 +53,23 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                <div class="form-check" id="radioOption">
+                                    <input class='form-check-input' type='radio' name='role_id' value='2'>Customer<br>
+                                    <input class='form-check-input' type='radio' name='role_id' value='3'>Travel Agent
+                                </div>
+
+                                @error('role')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

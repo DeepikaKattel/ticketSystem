@@ -36,12 +36,12 @@
         .exit{
             position:relative;
             height:20px;
-            width:160px
+            width:180px
         }
         .window{
             position:relative;
             height:20px;
-            width:240px
+            width:280px
         }
         .window:after,.window:before{
             content:"WINDOW";

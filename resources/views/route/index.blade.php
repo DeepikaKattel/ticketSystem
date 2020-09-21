@@ -20,9 +20,7 @@
                 <thead class="thead-dark">
                 <tr style="font-size: 14px">
                     <th scope="col">S.N</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Start Point</th>
-                    <th scope="col">End Point</th>
+                    <th scope="col">Route Name</th>
                     <th scope="col">Stoppage Points</th>
                     <th scope="col">Distance Travel Time</th>
                     <th scope="col">Children Seat</th>
@@ -35,9 +33,7 @@
                 @foreach($route as $r)
                     <tr style="font-size: 14px">
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$r->name}}</td>
-                        <td>{{$r->start_point}}</td>
-                        <td>{{$r->end_point}}</td>
+                        <td>{{$r->start_point}} - {{$r->end_point}}</td>
                         <td>{{$r->stoppage_points}}</td>
                         <td>{{$r->distance}}</td>
                         <td>{{$r->child_seat}}</td>

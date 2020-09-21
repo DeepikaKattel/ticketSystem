@@ -47,9 +47,9 @@ class RouteController extends Controller
     public function store(Request $request)
     {
         $route = new Route();
-        $route->name = request('name');
         $route->start_point = request('start_point');
         $route->end_point = request('end_point');
+        $route->name = $route->start_point - $route->end_point;
         $route->stoppage_points = request('stoppage_points');
         $route->distance = request('distance');
         $route->child_seat = request('child_seat');
@@ -97,7 +97,6 @@ class RouteController extends Controller
     public function update( $id)
     {
         $route = Route::find($id);
-        $route->name = request('name');
         $route->start_point = request('start_point');
         $route->end_point = request('end_point');
         $route->stoppage_points = request('stoppage_points');

@@ -7,10 +7,6 @@
                     @csrf
                     @method('PATCH')
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="{{$route->name}}" required>
-                    </div>
-                    <div class="form-group">
                         <label>Start Point</label>
                         <select class="form-control" id="start_point" name="start_point" required >
                             @foreach($destination as $dest)
@@ -28,6 +24,9 @@
                         </select>
                         <span class="select-arrow"></span>
                     </div>
+
+
+
                     <div class="form-group">
                         <label>Stoppage Points</label>
                         <select class="form-control" id="stoppage_points" name="stoppage_points" required >
