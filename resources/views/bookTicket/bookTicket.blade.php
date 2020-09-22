@@ -7,20 +7,11 @@
         @csrf
 
         <div class="form-group">
-            <label for="route">From:</label>
+            <label for="route">Select Route:</label>
             <select class="form-control mr-sm-2" id="route" name="route">
                 <option>------</option>
                 @foreach($route as $r)
-                    <option value="{{$r->id}}">{{$r->start_point}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="route">To:</label>
-            <select class="form-control mr-sm-2" id="route" name="route">
-                <option>------</option>
-                @foreach($route as $r)
-                    <option value="{{$r->id}}">{{$r->end_point}}</option>
+                    <option value="{{$r->id}}">{{$r->start_point}} - {{$r->end_point}}</option>
                 @endforeach
             </select>
         </div>

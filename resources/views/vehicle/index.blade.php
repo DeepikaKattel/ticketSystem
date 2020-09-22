@@ -18,9 +18,10 @@
             <a href="{{route('vehicle.create')}}" class="btn btn-info float-right" style="margin-bottom: 10px">Add Vehicle</a>
             <table class="table">
                 <thead class="thead-dark">
-                <tr style="font-size: 14px">
+                <tr style="font-size: 12px">
                     <th scope="col">S.N</th>
                     <th scope="col">Reg. No.</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Vehicle Type</th>
                     <th scope="col">Engine</th>
                     <th scope="col">Chassis</th>
@@ -34,9 +35,10 @@
                 </thead>
                 <tbody>
                 @foreach($vehicle as $ve)
-                    <tr style="font-size: 14px">
+                    <tr style="font-size: 12px">
                         <td>{{$loop->iteration}}</td>
                         <td>{{$ve->reg_number}}</td>
+                        <td>{{$ve->name}}</td>
                         <td>{{$ve->vehicleType->name}}</td>
                         <td>{{$ve->engine}}</td>
                         <td>{{$ve->chassis}}</td>

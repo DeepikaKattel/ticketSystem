@@ -33,9 +33,9 @@ class TripController extends Controller
      */
     public function create()
     {
-        $vehicleType = DB::table('vehicle_type')->get();
+        $vehicle = DB::table('vehicles')->get();
         $route = DB::table('routes')->get();
-        return view('trip.create', compact('vehicleType','route'));
+        return view('trip.create', compact('vehicle','route'));
     }
 
     /**
@@ -49,10 +49,10 @@ class TripController extends Controller
         $trip = new Trip();
         $trip->title = request('title');
         $trip->departure_date = request('date');
-        $trip->vehicleType_id = request('vehicleType');
+        $trip->vehicle_id = request('vehicle');
         $trip->route_id = request('route');
         $trip->price = request('price');
-        $no_of_seats = $trip->vehicleType->row * $trip->vehicleType->column;
+        $no_of_seats = $trip->vehicle->vehicleType->row * $trip->vehicle->vehicleType->column;
         $trip->available_seats = $no_of_seats;
         $trip->allocated_seats = array_fill(0, $no_of_seats, 0);
 
@@ -86,9 +86,9 @@ class TripController extends Controller
     public function edit($id)
     {
         $trip = Trip::find($id);
-        $vehicleType = DB::table('vehicle_type')->get();
+        $vehicle = DB::table('vehicle')->get();
         $route = DB::table('route')->get();
-        return view('trip.edit', compact('trip','vehicleType','route'));
+        return view('trip.edit', compact('trip','vehicle','route'));
     }
 
     /**
@@ -103,7 +103,7 @@ class TripController extends Controller
         $trip = Trip::find($id);
         $trip->title = request('title');
         $trip->departure_date = request('date');
-        $trip->vehicleType_id = request('vehicleType');
+        $trip->vehicle_id = request('vehicle');
         $trip->route_id = request('route');
         $trip->save();
         $tripsave = $trip->save();

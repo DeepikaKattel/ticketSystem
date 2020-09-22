@@ -10,7 +10,7 @@ class Trip extends Model
 {
     protected $table = 'trips';
     protected $fillable = ([
-        'title','departure_date','vehicleType_id','route_id','price','status','available_seats'
+        'title','departure_date','vehicle_id','route_id','price','status','available_seats'
     ]);
     protected $casts = [
         'allocated_seats' => 'array'
@@ -19,7 +19,7 @@ class Trip extends Model
     public function route(){
         return $this->belongsTo(Route::class,'route_id');
     }
-    public function vehicleType(){
-        return $this->belongsTo(VehicleType::class, 'vehicleType_id');
+    public function vehicle(){
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 }

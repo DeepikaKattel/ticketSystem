@@ -15,10 +15,10 @@
                         <input type="date" name="date" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Vehicle Type</label>
-                        <select class="form-control" id="vehicleType" name="vehicleType" required >
-                            @foreach($vehicleType as $v)
-                                <option value="{{$v->id}}">{{$v->name}}</option>
+                        <label>Vehicle</label>
+                        <select class="form-control" id="vehicle" name="vehicle" required >
+                            @foreach($vehicle as $v)
+                                <option value="{{$v->id}}">{{$v->reg_number}}-{{$v->name}}</option>
                             @endforeach
                         </select>
                         <span class="select-arrow"></span>

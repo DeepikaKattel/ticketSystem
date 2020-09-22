@@ -47,6 +47,7 @@ class VehicleController extends Controller
     {
         $vehicle = new Vehicle();
         $vehicle->reg_number = request('reg_number');
+        $vehicle->name = request('name');
         $vehicle->vehicleType_id = request('vehicleType');
         $vehicle->engine = request('engine');
         $vehicle->chassis = request('chassis');
@@ -98,6 +99,7 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::find($id);
         $vehicle->reg_number = request('reg_number');
+        $vehicle->name = request('name');
         $vehicle->vehicleType_id = request('vehicleType');
         $vehicle->engine = request('engine');
         $vehicle->chassis = request('chassis');

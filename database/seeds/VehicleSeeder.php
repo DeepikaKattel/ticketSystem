@@ -14,6 +14,7 @@ class VehicleSeeder extends Seeder
     {
         DB::table('vehicles')->insert([
             'reg_number' => '00234',
+            'name' => 'Shakira Travels',
             'vehicleType_id' => '1',
             'engine' => '202',
             'chassis' => '032',
@@ -24,6 +25,7 @@ class VehicleSeeder extends Seeder
         ]);
         DB::table('vehicles')->insert([
             'reg_number' => '00233',
+            'name' => 'Koshi Travels',
             'vehicleType_id' => '2',
             'engine' => '204',
             'chassis' => '035',

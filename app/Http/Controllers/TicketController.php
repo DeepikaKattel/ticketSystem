@@ -65,9 +65,9 @@ class TicketController extends Controller
         ])->get();
         $listTickets = [];
         foreach ($trips as $trip) {
-            if ($trip->vehicleType_id == $vehicleType && $trip->available_seats>0) {
-                $trip['row'] = $trip->vehicleType->row;
-                $trip['column'] = $trip->vehicleType->column;
+            if ($trip->vehicle->vehicleType_id == $vehicleType && $trip->available_seats>0) {
+                $trip['row'] = $trip->vehicle->vehicleType->row;
+                $trip['column'] = $trip->vehicle->vehicleType->column;
                 array_push($listTickets, $trip);
             }
         }

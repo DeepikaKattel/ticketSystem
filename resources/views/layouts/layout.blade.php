@@ -36,7 +36,7 @@
         .exit{
             position:relative;
             height:20px;
-            width:180px
+            width:190px
         }
         .window{
             position:relative;

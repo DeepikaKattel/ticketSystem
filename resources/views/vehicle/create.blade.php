@@ -10,6 +10,12 @@
                         <label>Reg. No</label>
                         <input type="text" name="reg_number" class="form-control" required>
                     </div>
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
                     <div class="form-group">
                         <label>Vehicle Type</label>
                         <select class="form-control" id="vehicleType" name="vehicleType" required >

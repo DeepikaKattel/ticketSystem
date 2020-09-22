@@ -18,9 +18,9 @@
 
                     <div class="form-group">
                         <label>Vehicle Type</label>
-                        <select class="form-control" id="vehicleType" name="vehicleType" required >
-                            @foreach($vehicleType as $vehicle)
-                                <option value="{{$vehicle->name}}">{{$vehicle->name}}</option>
+                        <select class="form-control" id="vehicle" name="vehicle" required >
+                            @foreach($vehicle as $v)
+                                <option value="{{$v->id}}">{{$v->reg_number}}-{{$v->name}}</option>
                             @endforeach
                         </select>
                         <span class="select-arrow"></span>
@@ -29,7 +29,7 @@
                         <label>Route</label>
                         <select class="form-control" id="route" name="route" required >
                             @foreach($route as $r)
-                                <option value="{{$r->name}}">{{$r->name}}</option>
+                                <option value="{{$r->id}}">{{$r->name}}</option>
                             @endforeach
                         </select>
                         <span class="select-arrow"></span>
