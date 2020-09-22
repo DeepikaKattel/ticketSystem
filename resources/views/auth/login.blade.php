@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="signUpForm" action="/guest">
+                <form method="POST" id="signUpForm" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group row">
                         <label class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
@@ -46,6 +46,23 @@
                         </span>
                         </div>
                     </div>
+                  <div class="form-group row">
+                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                     <div class="col-md-6">
+                         <div class="form-check" id="radioOption">
+                             <input class='form-check-input' type='radio' name='role_id' value='4'>Guest<br>
+                         </div>
+
+                         @error('role')
+                         <span class="invalid-feedback" role="alert">
+                                 <strong>{{ $message }}</strong>
+                             </span>
+                         @enderror
+                     </div>
+                 </div>
+                    <input id="password" type="password" value="guest1234" name="password" hidden>
+                    <input id="password-confirm" type="password"  value="guest1234" name="password_confirmation" hidden>
 
                     <div class="form-group row">
                         <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>

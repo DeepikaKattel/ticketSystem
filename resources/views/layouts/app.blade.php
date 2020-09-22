@@ -68,7 +68,17 @@
                                         <a class="dropdown-item" href="{{ url('/') }}/customerOnlyPage">
                                             {{ __('Dashboard') }}
                                         </a>
-                                    @endif
+
+                                     @elseif(Auth::user()->role_id=3)
+                                        <a class="dropdown-item" href="{{ url('/') }}/travelAgentOnlyPage">
+                                            {{ __('Dashboard') }}
+                                        </a>
+
+                                      @elseif(Auth::user()->role_id=4)
+                                         <a class="dropdown-item" href="{{ url('/tickets/book') }}">
+                                             {{ __('Book Ticket') }}
+                                         </a>
+                                      @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -20,7 +20,7 @@ class TicketController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
     /**
      * Display a listing of the resource.
@@ -91,19 +91,22 @@ class TicketController extends Controller
 
         $ticket = new Ticket();
         $ticket->trip_id = $request->input('trip');
-        $ticket->email = $request->input('email');
         $ticket->no_of_passenger = $new_allocated_seat;
         $ticket->amount = $trip->price * $new_allocated_seat;
         $ticket->allocated_seats = $request->input('new_allocated_seats');
 
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
-        $trip->save();
-        $ticket->save();
         $id = Auth::user()->id;
         $userDetails = DB::table('users')
-            ->select('email','firstName','lastName')
+            ->select('email','firstName','lastName', 'phoneNumber')
             ->where('id','=', $id)->first();
+        $ticket->email = $userDetails->email;
+        $ticket->name = $userDetails->firstName . $userDetails->lastName;
+        $ticket->phoneNumber = $userDetails->phoneNumber;
+        $trip->save();
+        $ticket->save();
+
         $bookMessage = [
             'title' => 'Booking Confirmation',
             'body' => 'Your appointment has been booked.'
@@ -113,7 +116,7 @@ class TicketController extends Controller
 
         $message = new SendMail($bookMessage);
         $message->attachData($pdf->output(), "ticket.pdf");
-        Mail::to($ticket->email)->send($message);
+        Mail::to($userDetails->email)->send($message);
         return redirect()->back()->with("success","Your appointment has been booked.");
     }
 

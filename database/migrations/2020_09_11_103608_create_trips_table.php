@@ -17,14 +17,14 @@ class CreateTripsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->date('departure_date');
-            $table->unsignedBigInteger('vehicleType_id');
+            $table->unsignedBigInteger('vehicle_id');
             $table->unsignedBigInteger('route_id');
             $table->float('price', 10, 2);
             $table->integer('available_seats');
             $table->text('allocated_seats');
             $table->boolean('status')->nullable();
             $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
-            $table->foreign('vehicleType_id')->references('id')->on('vehicle_type')->onDelete('cascade');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CustomerSeeder extends Seeder
             'lastName' => 'Kattel',
             'email' => 'deepika@gmail.com',
             'password' => bcrypt('1234'),
+            'phoneNumber' => '98812312',
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
 

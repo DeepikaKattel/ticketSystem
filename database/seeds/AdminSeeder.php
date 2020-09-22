@@ -21,6 +21,7 @@ class AdminSeeder extends Seeder
             'lastName' => 'Admin',
             'email' => 'admin@jhunTravels.com',
             'password' => bcrypt('1234'),
+            'phoneNumber' => '98234567',
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
 

@@ -40,10 +40,6 @@
             <input type="date" id="bookingDate" name="booking_date" required>
         </div>
 
-        <div class="form-group">
-            <label for="email">Email </label><br>
-            <input type="email" id="email" name="email" required>
-        </div>
 
         <div class="form-group">
             <button type="button" class="btn btn-primary" onclick="checkTicket()">Check for ticket</button>

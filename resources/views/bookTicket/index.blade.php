@@ -22,7 +22,9 @@
                     <th scope="col">S.N</th>
                     <th scope="col">Vehicle Type</th>
                     <th scope="col">Route</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
                     <th scope="col">No. of Passengers</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Status</th>
@@ -36,7 +38,9 @@
                         <td>{{$ticket->id}}</td>
                         <td>{{$ticket->trip->vehicleType->name}}</td>
                         <td>{{$ticket->trip->route->start_point}} - {{$ticket->trip->route->end_point}}</td>
+                        <td>{{$ticket->name}}</td>
                         <td>{{$ticket->email}}</td>
+                        <td>{{$ticket->phoneNumber}}</td>
                         <td>{{$ticket->no_of_passenger}}</td>
                         <td>{{$ticket->amount}}</td>
                         <td id="none">@if($ticket->status==0) <span style="color:red;font-weight: bold">Unpaid</span> @else <span style="color:green;font-weight: bold">Paid</span> @endif</td>

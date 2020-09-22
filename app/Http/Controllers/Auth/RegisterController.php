@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,6 +31,21 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function redirectTo() {
+        if (Auth::check() && Auth::user()->role_id == '1') {
+            return('/adminOnlyPage');
+        }
+        elseif (Auth::check() && Auth::user()->role_id == '2') {
+            return('/customerOnlyPage');
+        }
+        elseif (Auth::check() && Auth::user()->role_id == '3') {
+            return('/travelAgentOnlyPage');
+        }
+        else{
+            return('/');
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -71,6 +87,7 @@ class RegisterController extends Controller
             'lastName' => $data['lastName'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phoneNumber' => $data['phoneNumber'],
         ]);
     }
 }

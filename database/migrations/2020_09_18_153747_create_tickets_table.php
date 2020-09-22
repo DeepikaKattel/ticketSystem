@@ -16,7 +16,9 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('trip_id');
+            $table->string('name');
             $table->string('email');
+            $table->string('phoneNumber');
             $table->integer('no_of_passenger');
             $table->float('amount', 8,2);
             $table->text('allocated_seats');

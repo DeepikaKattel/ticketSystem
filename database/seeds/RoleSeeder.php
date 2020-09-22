@@ -24,6 +24,10 @@ class RoleSeeder extends Seeder
 
                 'name' => 'TravelAgent',
             ),
+            array(
+
+                'name' => 'Guest',
+            ),
         ));
     }
 }

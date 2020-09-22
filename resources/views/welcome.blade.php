@@ -46,6 +46,10 @@
 
                                 @elseif(Auth::user()->role_id=2)
                                     <a href="{{ url('/') }}/customerOnlyPage" style="margin:5px">{{Auth::user()->firstName}}</a>
+                                 @elseif(Auth::user()->role_id=3)
+                                    <a href="{{ url('/') }}/travelAgentOnlyPage" style="margin:5px">{{Auth::user()->firstName}}</a>
+                                  @elseif(Auth::user()->role_id=4)
+                                    <a href="{{route('/')}}" style="margin:5px">{{Auth::user()->firstName}}</a>
                                 @endif
                             @else
                                 <a href="{{ route('login') }}">Login</a>

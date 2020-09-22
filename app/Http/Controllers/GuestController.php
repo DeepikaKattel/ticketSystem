@@ -31,6 +31,7 @@ class GuestController extends Controller
         return Validator::make($data, [
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phoneNumber' => ['required', 'number', 'max:10','min:10'],
         ]);
     }
@@ -44,6 +45,7 @@ class GuestController extends Controller
     protected function create(array $data)
     {
         return Guest::create([
+            'role_id' => '4',
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
             'email' => $data['email'],
