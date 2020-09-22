@@ -120,17 +120,40 @@
         <header class="jumbotron" >
             <div class="container">
                 <div class="row row-header">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-7 col-sm-4">
                         <h1>JhunJhun Travels</h1>
                         <p>We prioritize convenience for customers by providing the best service!</p>
                     </div>
-                    <div class="col-12 col-sm-3 align-self-center">
-                        <img src="{{asset('images/jhunLogo.png')}}" class="img-fluid">
-                    </div>
-                    <div class="col-12 col-sm-3 align-self-center">
-                        <a id="bookButton" role="button" class="btn btn-block nav-link btn-warning" style="background: #f2a407;" href="{{route('book')}}">Book Ticket</a>
-                    </div>
-                </div>
+
+                    <div class="col-11 col-md-8 col-sm-7 align-self-center">
+                        <div class="card" style="background:none;border:2px solid black">
+                             <div class="card-body">
+                                <form id="checkDestination" action="/tickets" method="POST">
+                                @csrf
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="destination">From:</label>
+                                        <input  class="form-control mr-sm-4" type="text" id="destination1"name="destination1" required>
+                                    </div>
+                                    <div class="form-group ml-2">
+                                        <label for="destination">To:</label>
+                                        <input  class="form-control mr-sm-4" type="text" id="destination2" name="destination2" required>
+                                    </div>
+
+                                    <div class="form-group m-4">
+                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Destination</button>
+                                        <span class="pl-2" id="notAvailable" style="display:none;">
+                                            Sorry, not available. Try again.
+                                        </span>
+                                    </div>
+                                     <div class="col-12 col-sm-3 align-self-center" id="available" style="display:none;">
+                                        <a id="bookButton" role="button" class="btn btn-block nav-link btn-warning" style="background: #f2a407;" href="{{route('book')}}">Book Ticket</a>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                    </form>
+                 </div>
             </div>
             </div>
         </header>
@@ -202,86 +225,34 @@
 {{--        });--}}
 {{--    </script>--}}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script defer>
-        function checkTicket() {
-            $.ajaxSetup({
-                headers: {'X-CSRF-TOKEN': '<?php echo csrf_token() ?>'}
-            });
-            var formData = {
-                'bookingDate' : $('#bookingDate').val(),
-                'route' : $('#route').val(),
-                'vehicleType' : $('#vehicleType').val()
-            };
-            $.ajax({
-                type: 'POST',
-                url: '/tickets/check',
-                data: formData,
-                dataType: 'json',
-                success: function(data){
-                    $('#radioOption').html("");
-                    $('#noTickets').hide();
-                    $('#availableTickets').hide();
-                    emptyLayout();
-                    if (data.listTickets.length == 0) {
-                        $('#noTickets').show();
-                    }else{
-                        data.listTickets.forEach(function(message){
-                            $('#radioOption').append("<input class='form-check-input' id='' type='radio' name='trip' value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> " + message.available_seats + " seats available" + "<br>");
-                        });
-                        $('#availableTickets').show();
-                    }
-                },
-                error: function (data) {
-                    console.log("Error from the server");
-                    $('#noTickets').show();
-                }
-            });
-        }
+    <<script defer>
+     function checkRoute() {
+         $.ajaxSetup({
+             headers: {'X-CSRF-TOKEN': '<?php echo csrf_token() ?>'}
+         });
 
-        function displayAllocatedSeats(row, col, list){
-            emptyLayout();
-            index = 0
-            for (let i = 0; i < row; i++) {
-                for (let j = 0; j < col; j++) {
-                    if (list[index] == 0) {
-                        $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"'>");
-                        $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='0' checked>");
-                    } else {
-                        $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' disabled>");
-                        $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='1' checked>");
-                    }
-                    $('#new').append("<input type='checkbox' name='new_allocated_seats[]' value='0' checked>");
-
-                    index++;
-                }
-                $('#vehicleLayout').append('<br>');
-            }
-        }
-
-        function emptyLayout() {
-            $("#all").empty();
-            $("#new").empty();
-            $('#vehicleLayout').empty();
-        }
-
-        $(document).ready(function(){
-            $(document).on('click', '.seat', function(){
-                place = $(this).val();
-                newAllocatedSeats = $('#new').children()[place];
-                allAllocatedSeats = $('#all').children()[place];
-                if ($(this).is(":checked")){
-                    $(newAllocatedSeats).attr('value', 1);
-                    $(allAllocatedSeats).attr('value', 1);
-                    console.log(allAllocatedSeats);
-                    console.log(newAllocatedSeats);
-                }
-                else {
-                    $(newAllocatedSeats).attr('value', 0);
-                    $(allAllocatedSeats).attr('value', 1);
-                    console.log(allAllocatedSeats);
-                    console.log(newAllocatedSeats);
-                }
-            });
-        });
-    </script>
+              var destination1 = $('#destination1').val();
+              var destination2 = $('#destination2').val();
+         };
+         $.ajax({
+            type: 'POST',
+            url: '/tickets/checkRoute',
+            data: {destination1: destination1, destination2: destination2},
+             success: function(data){
+                 $('#availableTickets').hide();
+                 emptyLayout();
+                 if (data == 0) {
+                     $('#notAvailable').show();
+                 }else{
+                     $('#available').show();
+                 }
+             },
+             error: function (data) {
+                 console.log("Error from the server");
+                 $('#notAvailable').show();
+             }
+         });
+     }
+     </script>
 </html>
+

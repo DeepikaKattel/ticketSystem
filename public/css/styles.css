@@ -90,16 +90,6 @@ body{
     background: lightgrey;
 }
 
-
-.modal-header {
-  background-color: black;
-  color: floralwhite; }
-  .modal-header .close {
-    color: floralwhite; }
-
-.modal-body {
-  background-color: lightgrey;
-}
 .row-content{
     min-height: 300px;
     padding:0px;
