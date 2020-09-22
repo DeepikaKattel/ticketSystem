@@ -26,7 +26,7 @@ class AdminMiddleware
             return redirect('/travelAgentOnlyPage');
         }
         else {
-            return redirect('/home');
+            return redirect('/');
         }
 
     }

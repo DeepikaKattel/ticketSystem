@@ -26,7 +26,7 @@ class CustomerMiddleware
             return redirect('/travelAgentOnlyPage');
         }
         else {
-            return redirect('/home');
+            return redirect('/');
         }
     }
 }

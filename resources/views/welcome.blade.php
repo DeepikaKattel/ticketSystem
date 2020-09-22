@@ -51,6 +51,12 @@
                                   @elseif(Auth::user()->role_id=4)
                                     <a href="{{route('/')}}" style="margin:5px">{{Auth::user()->firstName}}</a>
                                 @endif
+                                <a href="{{ route('logout') }}" style="margin:5px" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             @else
                                 <a href="{{ route('login') }}">Login</a>
 

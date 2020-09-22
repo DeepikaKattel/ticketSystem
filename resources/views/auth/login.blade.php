@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="modal fade" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="guestModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -46,21 +47,18 @@
                         </span>
                         </div>
                     </div>
-                  <div class="form-group row">
-                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
-                     <div class="col-md-6">
-                         <div class="form-check" id="radioOption">
-                             <input class='form-check-input' type='radio' name='role_id' value='4'>Guest<br>
+                      <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                            <div class="col-md-6 mt-2">
+                                 <input class='form-check-input' style="visibility:hidden" type="radio" name='role_id' value='4'>Guest<br>
+                             </div>
+                             @error('role')
+                             <span class="invalid-feedback" role="alert">
+                                     <strong>{{ $message }}</strong>
+                                 </span>
+                             @enderror
                          </div>
-
-                         @error('role')
-                         <span class="invalid-feedback" role="alert">
-                                 <strong>{{ $message }}</strong>
-                             </span>
-                         @enderror
                      </div>
-                 </div>
                     <input id="password" type="password" value="guest1234" name="password" hidden>
                     <input id="password-confirm" type="password"  value="guest1234" name="password_confirmation" hidden>
 
@@ -77,8 +75,8 @@
                     </div>
 
                     <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="col-md-6 offset-md-4 mb-3">
+                            <button type="submit" class="btn btn-primary" style="background:#f2a407">
                                 {{ __('Sign Up') }}
                             </button>
                         </div>
