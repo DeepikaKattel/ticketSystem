@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SendMail;
 use App\Model\Destination;
+use App\Model\Vehicle;
 use Illuminate\Http\Request;
 use App\Model\Route;
 use App\Model\VehicleType;
@@ -42,10 +43,10 @@ class TicketController extends Controller
      */
     public function bookTicket()
     {
-
         $route = Route::all();
         $vehicleType = VehicleType::all();
-        return view('bookTicket.bookTicket', compact('route', 'vehicleType'));
+        $vehicle = Vehicle::all();
+        return view('bookTicket.bookTicket', compact('route', 'vehicleType','vehicle'));
     }
 
     /**
@@ -74,17 +75,22 @@ class TicketController extends Controller
         $data = [
             'listTickets' => $listTickets
         ];
+
         return response()->json($data, 200);
     }
+    /**
+     * Checks for the available destination.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return int
+     */
 
     public function checkRoute(Request $request){
-        $destination1 = $request->input('destination1');
-        $destination2 = +$request->input('destination2');
-        $data= Destination::where([
-            ['name', '=', $destination1],
-            ['name', '=', $destination2],
-        ])->get();
-        return count($data);
+        $destination = $request->input('destination');
+        $destination1= DB::table('destinations')->where('name', '=', $destination)->get();
+        $data = $destination1->count();
+        return $data;
+
     }
 
     /**

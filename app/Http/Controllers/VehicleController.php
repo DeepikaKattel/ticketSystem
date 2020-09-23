@@ -83,9 +83,9 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-
+        $vehicleType = DB::table('vehicle_type')->get();
         $vehicle = Vehicle::find($id);
-        return view('vehicle.edit', compact('vehicle'));
+        return view('vehicle.edit', compact('vehicle','vehicleType'));
     }
 
     /**

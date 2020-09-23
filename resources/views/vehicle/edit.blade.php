@@ -20,35 +20,35 @@
                         <label>Vehicle Type</label>
                         <select class="form-control" id="vehicleType" name="vehicleType" required >
                             @foreach($vehicleType as $vehicle)
-                                <option value="{{$vehicle->id}}">{{$vehicle->vehicleType}}</option>
+                                <option value="{{$vehicle->id}}">{{$vehicle->name}}</option>
                             @endforeach
                         </select>
                         <span class="select-arrow"></span>
                     </div>
                     <div class="form-group">
                         <label>Engine No.</label>
-                        <input type="text" name="engine" class="form-control" value="{{$vehicle->engine}}" required>
+                        <input type="text" name="engine" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Chassis</label>
-                        <input type="text" name="chassis" class="form-control" value="{{$vehicle->chassis}}" required>
+                        <input type="text" name="chassis" class="form-control"  required>
                     </div>
 
                     <div class="form-group">
                         <label>Model</label>
-                        <input type="text" name="model" class="form-control" value="{{$vehicle->model}}" required>
+                        <input type="text" name="model" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Owner Name</label>
-                        <input type="text" name="owner_name" class="form-control" value="{{$vehicle->owner_name}}" required>
+                        <input type="text" name="owner_name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Owner Number</label>
-                        <input type="text" name="owner_number" class="form-control" value="{{$vehicle->owner_number}}"required>
+                        <input type="text" name="owner_number" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Brand Name</label>
-                        <input type="text" name="brand_name" class="form-control" value="{{$vehicle->brand_name}}" required>
+                        <input type="text" name="brand_name" class="form-control" required>
                     </div>
 
                     <div class="form-group float-right">

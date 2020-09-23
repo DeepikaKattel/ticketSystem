@@ -36,7 +36,7 @@
                 @foreach($tickets as $ticket)
                     <tr style="font-size: 12px">
                         <td>{{$ticket->id}}</td>
-                        <td>{{$ticket->trip->vehicleType->name}}</td>
+                        <td>{{$ticket->trip->vehicle->reg_number}}-{{$ticket->trip->vehicle->name}}-{{$ticket->trip->vehicle->vehicleType->name}}</td>
                         <td>{{$ticket->trip->route->start_point}} - {{$ticket->trip->route->end_point}}</td>
                         <td>{{$ticket->name}}</td>
                         <td>{{$ticket->email}}</td>

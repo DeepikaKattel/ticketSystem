@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Javascript -->
         <script src="{{asset('js/availableSeats.js')}}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
     <body style="border:solid 5px ">
@@ -131,29 +132,25 @@
                         <p>We prioritize convenience for customers by providing the best service!</p>
                     </div>
 
-                    <div class="col-11 col-md-8 col-sm-7 align-self-center">
+                    <div class="col-9 col-md-6 col-sm-5 align-self-center">
                         <div class="card" style="background:none;border:2px solid black">
                              <div class="card-body">
                                 <form id="checkDestination" action="/tickets" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="destination">From:</label>
-                                        <input  class="form-control mr-sm-4" type="text" id="destination1"name="destination1" required>
-                                    </div>
-                                    <div class="form-group ml-2">
-                                        <label for="destination">To:</label>
-                                        <input  class="form-control mr-sm-4" type="text" id="destination2" name="destination2" required>
+                                        <label for="destination">Find Destination:</label>
+                                        <input  class="form-control mr-sm-4" type="text" id="destination"name="destination" required>
                                     </div>
 
                                     <div class="form-group m-4">
-                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Destination</button>
+                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Availability</button>
                                         <span class="pl-2" id="notAvailable" style="display:none;">
                                             Sorry, not available. Try again.
                                         </span>
                                     </div>
                                      <div class="col-12 col-sm-3 align-self-center" id="available" style="display:none;">
-                                        <a id="bookButton" role="button" class="btn btn-block nav-link btn-warning" style="background: #f2a407;" href="{{route('book')}}">Book Ticket</a>
+                                        <a role="button" class="btn btn-block nav-link btn-warning" style="background: #f2a407;" href="{{route('book')}}">Book Ticket</a>
                                     </div>
                                 </div>
                               </div>
@@ -231,23 +228,21 @@
 {{--        });--}}
 {{--    </script>--}}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <<script defer>
+    <script defer>
      function checkRoute() {
          $.ajaxSetup({
              headers: {'X-CSRF-TOKEN': '<?php echo csrf_token() ?>'}
          });
-
-              var destination1 = $('#destination1').val();
-              var destination2 = $('#destination2').val();
-         };
+              var destination = $('#destination').val();
          $.ajax({
             type: 'POST',
             url: '/tickets/checkRoute',
-            data: {destination1: destination1, destination2: destination2},
+            data: destination,
+            dataType: 'json',
              success: function(data){
-                 $('#availableTickets').hide();
-                 emptyLayout();
-                 if (data == 0) {
+                 $('#available').hide();
+                 $('#notAvailable').hide();
+                 if (data.destinations.length == 0) {
                      $('#notAvailable').show();
                  }else{
                      $('#available').show();

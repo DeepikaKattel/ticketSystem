@@ -81,7 +81,7 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<input class='form-check-input' id='' type='radio' name='trip' value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> " + message.available_seats + " seats available" + "<br>");
+                    $('#radioOption').append("<input class='form-check-input' id='' type='radio' name='trip' value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> " + message.available_seats + " seats available for " +  message.vehicle.name + message.vehicle.reg_number + "<br>");
                 });
                 $('#availableTickets').show();
             }
