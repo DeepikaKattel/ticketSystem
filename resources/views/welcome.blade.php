@@ -144,7 +144,7 @@
                                     </div>
 
                                     <div class="form-group m-4">
-                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Availability</button>
+                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Route Availability</button>
                                         <span class="pl-2" id="notAvailable" style="display:none;">
                                             Sorry, not available. Try again.
                                         </span>

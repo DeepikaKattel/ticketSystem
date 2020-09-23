@@ -31,7 +31,6 @@ Route::get('/setLimit/{id}', 'PageController@setLimit')->name('set.setLimit');
 
 Route::resource('/bookTicket', 'BookTicketController');
 Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
-Route::get('/bookLog', 'HomeController@bookLogin')->name('bookLog');
 
 Route::post('/tickets/checkRoute','TicketController@checkRoute');
 Route::post('/tickets/check','TicketController@checkTicket');

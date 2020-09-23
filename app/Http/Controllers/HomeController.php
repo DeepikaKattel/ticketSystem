@@ -27,10 +27,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function bookLogin()
-    {
-        return view('login1');
-    }
+
 
 
 

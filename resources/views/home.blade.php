@@ -59,6 +59,7 @@
                 <div class="card">
                     <div class="card-body">
                         <i class="fa fa-users fa-lg" style="color: red"></i><h4>Total Tickets Booked {{$bookCount?? ''}}</h4>
+                        <button class="btn btn-primary"><a  style="color:white" href="/tickets/book">{{ __('Book Ticket') }}</a></button>
                     </div>
                 </div>
             </div>

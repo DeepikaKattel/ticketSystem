@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
- <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{asset('css/login.css')}}">
-
 
 <div class="container">
     <div class="card login-card">
@@ -60,15 +55,13 @@
                                 {{ __('Login') }}
                             </button>
                             @if (Route::has('password.request'))
-                                <a class="btn btn-link" style="color:#f2a407" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                             <a href="{{ route('password.request')}}" style="color:#f2a407" class="forgot-password-link">Forgot password?</a>
                             @endif
-                             <a class="btn btn-link" style="color:#f2a407" href="{{ route('register') }}">
-                                {{ __('Not Registered?') }}
-                            </a>
+                             <p class="login-card-footer-text">Don't have an account? <a href="{{ route('register') }}" style="color:#f2a407">Register here</a></p>
                         </div>
                     </form>
+
+
                 </div>
             </div>
         </div>
