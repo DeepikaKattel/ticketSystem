@@ -11,6 +11,9 @@ a:hover{
     position: relative;
     margin: 5px;
 }
+::placeholder {
+    color: black;
+}
 .seatStyle label{
     display: block;
     position: relative;

@@ -124,27 +124,25 @@
                 </div>
             </div>
         </div>
-        <header class="jumbotron" >
-            <div class="container">
-                <div class="row row-header">
-                    <div class="col-7 col-sm-4">
-                        <h1>JhunJhun Travels</h1>
-                        <p>We prioritize convenience for customers by providing the best service!</p>
-                    </div>
+        <header class="jumbotron justify-content-center">
+                <div class="row inline" style="justify-content:center">
+                    <h1>JhunJhun Travels</h1>
+                    <p class="m-2">We prioritize convenience for customers by providing the best service!</p>
 
-                    <div class="col-9 col-md-6 col-sm-5 align-self-center">
-                        <div class="card" style="background:none;border:2px solid black">
-                             <div class="card-body">
-                                <form id="checkDestination" action="/tickets" method="POST">
+                        <div class="card mt-2" style="background:black;border:2px solid #f2a407; border-radius: 25px">
+                             <div class="card-body" style="color:white">
+                                <form class="form-inline"  id="checkDestination" action="/tickets" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="destination">Find Destination:</label>
-                                        <input  class="form-control mr-sm-4" type="text" id="destination"name="destination" required>
+                                        <input  class="form-control mr-sm-4" type="text" id="destination1"name="destination1" required placeholder="First Destination"><i class="fa fa-long-arrow-right mr-2"></i>
                                     </div>
+                                     <div class="form-group">
+                                        <i class="fa fa-long-arrow-left mr-4"></i><input  class="form-control mr-sm-4 " type="text" id="destination2"name="destination2" required required placeholder="Second Destination">
+                                     </div>
 
                                     <div class="form-group m-4">
-                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Route Availability</button>
+                                        <button type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Availability</button>
                                         <span class="pl-2" id="notAvailable" style="display:none;">
                                             Sorry, not available. Try again.
                                         </span>

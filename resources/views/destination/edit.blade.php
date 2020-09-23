@@ -21,6 +21,10 @@
                         <input type="file" name="image" id="image" class="form-control" value="{{$destination->image}}" required>
                     </div>
 
+                    <div class="form-group float-right" style="margin-left: 20px">
+                        <input type="button" class="btn btn-primary float-left" value="Back" onclick="history.back()">
+                    </div>
+
 
                     <div class="form-group float-right">
                         <button class="btn btn-primary float-left">Submit</button>

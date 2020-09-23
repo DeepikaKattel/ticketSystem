@@ -9,10 +9,9 @@
           </div>
           <div class="col-md-7">
             <div class="card-body">
-              <p class="login-card-description">Sign into your account</p>
+              <p class="login-card-description">Sign In</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group">
                             <label for="email" class="sr-only">{{ __('E-Mail Address') }}</label>
                              <div class="col-md-14">
