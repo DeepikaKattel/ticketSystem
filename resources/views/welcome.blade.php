@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Unbenanntes Dokument</title>
+<title>Jhun Jhun Travels</title>
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <link rel="stylesheet" href="{{asset('css/frontEnd.css')}}">
@@ -94,10 +94,11 @@
                     @csrf
                     <div class="form-row">
                         <div class="form-group">
-                            <input  class="form-control mr-sm-4" type="text" id="destination1"name="destination1" required placeholder="First Destination"><i class="fa fa-long-arrow-right mr-2"></i>
+                         <i class="fa fa-lg fa-bus"></i>
+                            <input  class="form-control mr-sm-4" type="text" id="destination1"name="destination1" required placeholder="First Destination"><i class="fa fa-exchange"></i>
                         </div>
                          <div class="form-group">
-                            <i class="fa fa-long-arrow-left mr-4"></i><input  class="form-control mr-sm-4 " type="text" id="destination2"name="destination2" required required placeholder="Second Destination">
+                            <i class="fa fa-exchange"></i><input  class="form-control mr-sm-4 " type="text" id="destination2"name="destination2" required required placeholder="Second Destination">
                          </div>
 
                         <div class="form-group m-4">
@@ -244,7 +245,7 @@
                       $('#notAvailable').show();
                   }else{
                       $('#available').show();
-                       $('#check').hide $('#available').show();
+                       $('#check').hide();
                   }
               },
               error: function (data) {

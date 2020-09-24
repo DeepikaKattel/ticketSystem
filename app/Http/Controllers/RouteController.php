@@ -49,7 +49,7 @@ class RouteController extends Controller
         $route = new Route();
         $route->start_point = request('start_point');
         $route->end_point = request('end_point');
-        $route->name = $route->start_point - $route->end_point;
+        $route->name = $route->start_point. '' .$route->end_point;
         $route->stoppage_points = request('stoppage_points');
         $route->distance = request('distance');
         $route->child_seat = request('child_seat');
@@ -144,7 +144,7 @@ class RouteController extends Controller
         $routes = Route::where([
             ['start_point', '=', $destination1],
             ['end_point', '=', $destination2],
-        ])->get();
+        ])->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)->get();
         $routesList = [];
         foreach ($routes as $route) {
             array_push($routesList, $route);

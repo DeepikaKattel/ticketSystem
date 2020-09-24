@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <label for="email" class="sr-only">{{ __('E-Mail Address') }}</label>
                              <div class="col-md-14">
-                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="Email address" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="Email address" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label for="password" class="sr-only">{{ __('Password') }}</label>
                             <div class="col-md-14">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="***********">
+                                 <input id="password" type="password" class=" form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="***********">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

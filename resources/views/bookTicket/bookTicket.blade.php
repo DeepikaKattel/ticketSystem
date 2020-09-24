@@ -39,7 +39,7 @@
             </span>
         </div>
 
-        <div class="form-group" id="availableTickets" style="display:none;">
+        <div class="form-group" id="availableTickets" style="display:none;background:black">
             <label for="radioOption">Available Tickets:</label>
             <div class="form-check mb-2" id="radioOption"></div>
 
