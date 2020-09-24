@@ -21,10 +21,6 @@ use Barryvdh\DomPDF\Facade as PDF;
 class TicketController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -85,13 +81,7 @@ class TicketController extends Controller
      * @return int
      */
 
-    public function checkRoute(Request $request){
-        $destination = $request->input('destination');
-        $destination1= DB::table('destinations')->where('name', '=', $destination)->get();
-        $data = $destination1->count();
-        return $data;
 
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -116,6 +106,7 @@ class TicketController extends Controller
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
         $id = Auth::user()->id;
+        if(Auth::user()== 0)
         $userDetails = DB::table('users')
             ->select('email','firstName','lastName', 'phoneNumber')
             ->where('id','=', $id)->first();

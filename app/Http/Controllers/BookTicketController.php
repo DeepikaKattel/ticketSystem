@@ -31,6 +31,8 @@ class BookTicketController extends Controller
 
         return view('welcome', compact('vehicleType', 'route', 'ticket','seat'));
     }
+
+
     public function index(Request $request)
     {
         $bookTicket = BookTicket::orderBy('id');

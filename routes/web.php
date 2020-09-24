@@ -19,11 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'BookTicketController@welcome');
 
+
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('/guest', 'GuestController');
 
 Route::get('/sendMail', 'TicketController@store');
 
@@ -32,7 +31,7 @@ Route::get('/setLimit/{id}', 'PageController@setLimit')->name('set.setLimit');
 Route::resource('/bookTicket', 'BookTicketController');
 Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
 
-Route::post('/tickets/checkRoute','TicketController@checkRoute');
+Route::get('/route/checkRoute','RouteController@checkRoute');
 Route::post('/tickets/check','TicketController@checkTicket');
 Route::get('/tickets/book', 'TicketController@bookTicket')->name('book');
 Route::resource('tickets','TicketController');

@@ -137,4 +137,22 @@ class RouteController extends Controller
         return redirect()->back()->with('message', 'Status of'.' '.$data->name.' '.'has been changed successfully');
 
     }
+
+    public function checkRoute(Request $request){
+        $destination1= $request->input('destination1');
+        $destination2 = $request->input('destination2');
+        $routes = Route::where([
+            ['start_point', '=', $destination1],
+            ['end_point', '=', $destination2],
+        ])->get();
+        $routesList = [];
+        foreach ($routes as $route) {
+            array_push($routesList, $route);
+        }
+        $data = [
+            'routesList' => $routesList
+        ];
+        return response()->json($data, 200);
+
+    }
 }
