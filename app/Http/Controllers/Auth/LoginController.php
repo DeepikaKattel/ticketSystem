@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -49,5 +51,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        return redirect('/');
+    }
+    protected function authenticated(Request $request)
+    {
+
+        if ( Session::get('book') ) {
+            return redirect('book');
+        }
+
+        return redirect('/');
     }
 }

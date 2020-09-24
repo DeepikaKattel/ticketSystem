@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-
+use Illuminate\Support\Facades\Session;
 use App\Mail\SendMail;
 use App\Model\Destination;
 use App\Model\Vehicle;
@@ -105,28 +105,35 @@ class TicketController extends Controller
 
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
-        $id = Auth::user()->id;
-        if(Auth::user()== 0)
-        $userDetails = DB::table('users')
-            ->select('email','firstName','lastName', 'phoneNumber')
-            ->where('id','=', $id)->first();
-        $ticket->email = $userDetails->email;
-        $ticket->name = $userDetails->firstName . $userDetails->lastName;
-        $ticket->phoneNumber = $userDetails->phoneNumber;
-        $trip->save();
-        $ticket->save();
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $userDetails = DB::table('users')
+                ->select('email','firstName','lastName', 'phoneNumber')
+                ->where('id','=', $id)->first();
+            $ticket->email = $userDetails->email;
+            $ticket->name = $userDetails->firstName . $userDetails->lastName;
+            $ticket->phoneNumber = $userDetails->phoneNumber;
+            $trip->save();
+            $ticket->save();
 
-        $bookMessage = [
-            'title' => 'Booking Confirmation',
-            'body' => 'Your appointment has been booked.'
-        ];
+            $bookMessage = [
+                'title' => 'Booking Confirmation',
+                'body' => 'Your appointment has been booked.'
+            ];
 
-        $pdf = PDF::loadView('ticket',['userDetails'=>$userDetails,'ticket'=>$ticket]);
+            $pdf = PDF::loadView('ticket',['userDetails'=>$userDetails,'ticket'=>$ticket]);
 
-        $message = new SendMail($bookMessage);
-        $message->attachData($pdf->output(), "ticket.pdf");
-        Mail::to($userDetails->email)->send($message);
-        return redirect()->back()->with("success","Your appointment has been booked.");
+            $message = new SendMail($bookMessage);
+            $message->attachData($pdf->output(), "ticket.pdf");
+            Mail::to($userDetails->email)->send($message);
+            return redirect()->back()->with("success","Your appointment has been booked.");
+        }else{
+            Session::put('book', $ticket);
+            return redirect()->route('login');
+        }
+        Session::forget('book');
+
+
     }
 
     /**

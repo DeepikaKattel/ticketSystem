@@ -39,7 +39,7 @@
             </span>
         </div>
 
-        <div class="form-group" id="availableTickets" style="display:none;background:black">
+        <div class="form-group" id="availableTickets" style="display:none;">
             <label for="radioOption">Available Tickets:</label>
             <div class="form-check mb-2" id="radioOption"></div>
 
@@ -48,7 +48,7 @@
             <div class="window window--back"></div>
             <div class="form-check" id="vehicleLayout"></div>
             <div class="exit exit--back fuselage"></div>
-            <div style="display: none;" id="vehicleLayoutsHidden">  <div id="all"></div><div id="new"></div></div>
+            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">  <div id="all"></div><div id="new"></div></div>
 
             <div class="form-group mt-5">
                 <input type="submit" value="Book" class="btn btn-primary">
@@ -81,7 +81,7 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<input class='form-check-input' id='' type='radio' name='trip' value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> " + message.available_seats + " seats available for " +  message.vehicle.name + message.vehicle.reg_number + "<br>");
+                    $('#radioOption').append("<input class='form-check-input' id='' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> " + message.available_seats + " seats available for " +  message.vehicle.name + message.vehicle.reg_number + "<br>");
                 });
                 $('#availableTickets').show();
             }
