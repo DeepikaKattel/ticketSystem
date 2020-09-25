@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -60,7 +60,6 @@ class LoginController extends Controller
     }
     protected function authenticated(Request $request)
     {
-
         if ( Session::get('book') ) {
             return redirect('book');
         }

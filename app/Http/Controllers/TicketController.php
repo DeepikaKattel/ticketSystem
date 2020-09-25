@@ -39,10 +39,15 @@ class TicketController extends Controller
      */
     public function bookTicket()
     {
-        $route = Route::all();
+        $data =  Session::get('key');
+        $data1 = Session::get('key2');
+        $routes = Route::where([
+            ['start_point', '=', $data],
+            ['end_point', '=', $data1],
+        ])->get();
         $vehicleType = VehicleType::all();
         $vehicle = Vehicle::all();
-        return view('bookTicket.bookTicket', compact('route', 'vehicleType','vehicle'));
+        return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle'));
     }
 
     /**

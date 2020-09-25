@@ -7,10 +7,9 @@
         @csrf
 
         <div class="form-group">
-            <label for="route">Select Route:</label>
+            <label for="route">Route:</label>
             <select class="form-control mr-sm-2" id="route" name="route">
-                <option>------</option>
-                @foreach($route as $r)
+                @foreach($routes as $r)
                     <option value="{{$r->id}}">{{$r->start_point}} - {{$r->end_point}}</option>
                 @endforeach
             </select>
@@ -43,12 +42,13 @@
             <label for="radioOption">Available Tickets:</label>
             <div class="form-check mb-2" id="radioOption"></div>
 
+            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">
             <label for="radioOption">Choose YourSeat:</label>
             <div class="exit exit--back fuselage"></div>
             <div class="window window--back"></div>
             <div class="form-check" id="vehicleLayout"></div>
             <div class="exit exit--back fuselage"></div>
-            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">  <div id="all"></div><div id="new"></div></div>
+            <div id="all"></div><div id="new"></div></div>
 
             <div class="form-group mt-5">
                 <input type="submit" value="Book" class="btn btn-primary">

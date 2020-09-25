@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Model\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class RouteController extends Controller
 {
@@ -144,7 +145,8 @@ class RouteController extends Controller
         $routes = Route::where([
             ['start_point', '=', $destination1],
             ['end_point', '=', $destination2],
-        ])->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)->get();
+        ])->get();
+//            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
         $routesList = [];
         foreach ($routes as $route) {
             array_push($routesList, $route);
@@ -152,6 +154,8 @@ class RouteController extends Controller
         $data = [
             'routesList' => $routesList
         ];
+        Session::put('key', $destination1);
+        Session::put('key2', $destination2);
         return response()->json($data, 200);
 
     }

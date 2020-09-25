@@ -57,7 +57,6 @@
             transform: rotate(90deg);
             transform-origin: left top 0;
 
-
         }
         .window:before{
             left:0
@@ -94,6 +93,7 @@
             height: 30px;
             width: 40px;
         }
+
 
         .btn{
             background: #f2a407;
