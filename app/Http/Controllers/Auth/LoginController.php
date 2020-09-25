@@ -61,7 +61,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request)
     {
         if ( Session::get('book') ) {
-            return redirect('book');
+            return redirect('/tickets/book');
         }
 
         return redirect('/');
