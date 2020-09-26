@@ -45,16 +45,17 @@
             <label for="radioOption"><h3 class="card-header pl-4" style="color:black;margin-left:20px">Available Buses:</h3></label>
             <div class="form-check mb-2" id="radioOption"></div>
 
-            <label for="radioOption">Choose YourSeat:</label>
-            <div class="exit exit--back fuselage"></div>
-            <div class="window window--back"></div>
-            <div class="form-check" id="vehicleLayout"></div>
-            <div class="exit exit--back fuselage"></div>
+            <label for="radioOption" class="ml-4">Choose YourSeat:</label>
+            <div class="exit exit--back fuselage ml-4"></div>
+            <div class="window window--back ml-4"></div>
+            <div class="form-check ml-4" id="vehicleLayout"></div>
+            <div class="exit exit--back fuselage ml-4"></div>
             <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden"><div id="all"></div><div id="new"></div></div>
-
-            <div class="form-group mt-5">
+            <div class="form-group mt-5 ml-4">
                 <input type="submit" value="Book" class="btn btn-primary">
             </div>
+
+
         </div>
     </form>
 
@@ -106,7 +107,7 @@ function displayAllocatedSeats(row, col, list){
                 $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"'>");
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='0' checked>");
             } else {
-                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' disabled>");
+                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;background:red' type='checkbox' disabled>");
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='1' checked>")
             }
             $('#new').append("<input type='checkbox' name='new_allocated_seats[]' value='0' checked>");
