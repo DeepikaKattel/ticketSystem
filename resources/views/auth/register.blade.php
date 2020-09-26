@@ -49,11 +49,12 @@
                              </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-                            <div class="col-md-14">
-                                <div class="form-check" id="radioOption">
+                        <div class="form-group row ml-1">
+                            <label for="role">{{ __('Role') }}</label>
+                                <div class="form-check ml-2 mr-2" id="radioOption">
                                     <input class='form-check-input' type='radio' name='role_id' value='2'>Customer<br>
+                                </div>
+                                <div class="form-check" id="radioOption">
                                     <input class='form-check-input' type='radio' name='role_id' value='3'>Travel Agent
                                 </div>
 
@@ -62,7 +63,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
 
                         <div class="form-group">
