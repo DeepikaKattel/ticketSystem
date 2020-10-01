@@ -6,17 +6,25 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <link rel="stylesheet" href="{{asset('css/frontEnd.css')}}">
  <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+ <link type="text/css" rel="stylesheet" href="{{asset('css/bookForm.css')}}" />
+
+
 
  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Cantata+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Imprima" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="{{asset('css/bootstrap-social.css')}}">
 
 <script src="{{ asset('js/app.js') }}" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="{{ asset('js/bootstrap-combobox.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+</style>
 </head>
 
 <body>
@@ -87,35 +95,57 @@
     <h1 class="heading">JhunJhun Travels</h1>
     <div class="row justify">
         <h4>We prioritize convenience for customers by providing the best service!</h3>
-        <div class="row" style="margin-left:350px">
-            <div class="card">
-                <div class="card-body" style="color:white">
-                    <form class="form-inline"  id="checkDestination" method="POST">
-                    @csrf
-                    <div class="form-row">
-                        <div class="form-group">
-                         <i class="fa fa-lg fa-bus"></i>
-                            <input  class="form-control mr-sm-4" type="text" id="destination1"name="destination1" required placeholder="First Destination"><i class="fa fa-exchange"></i>
-                        </div>
-                         <div class="form-group">
-                            <i class="fa fa-exchange"></i><input  class="form-control mr-sm-4 " type="text" id="destination2"name="destination2" required required placeholder="Second Destination">
-                         </div>
+        <div id="booking" class="section">
+        		<div class="section-center">
+        			<div class="container">
+        				<div class="row">
+        					<div class="booking-form">
+        						<form id="checkDestination">
+        						@csrf
+        							<div class="col-md-3">
+        								<div class="form-group"  style="box-shadow:5px 5px">
+        									<span class="form-label">From</span>
+        									<select class="form-control" id="destination1"name="destination1" required >
+        										@foreach($route as $r)
+                                                    <option value="{{$r->start_point}}">{{$r->start_point}}</option>
+                                                @endforeach
+        									</select>
+        									<span class="select-arrow"></span>
+        								</div>
+        							</div>
+        							<div class="col-md-3">
+                                        <div class="form-group" style="box-shadow:5px 5px">
+                                            <span class="form-label">From</span>
+                                            <select class="form-control" id="destination2" name="destination2" required>
+                                                @foreach($route as $r)
+                                                    <option value="{{$r->end_point}}">{{$r->end_point}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
 
-                        <div class="form-group m-4">
-                            <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px" onclick="checkRoute()">Check Availability</button>
-                            <span class="pl-2" id="notAvailable" style="display:none;">
-                                Sorry, not available. Try again.
-                            </span>
-                        </div>
-                         <div class="col-12 col-sm-3 align-self-center" id="available" style="display:none;">
-                            <a role="button" class="btn btn-block nav-link btn-warning" style="background: #f2a407;" href="{{route('book')}}">Book Ticket</a>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-         </div>
-     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group" style="box-shadow:5px 5px">
+                                            <span class="form-label">Departure Date</span>
+                                            <input class="form-control" type="date" name="date" id="date" required>
+                                        </div>
+                                    </div>
+        							<div class="col-md-3">
+        								<div class="form-btn" style="box-shadow:5px 5px">
+        									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:60px;" onclick="checkRoute()">Check Availability</button>
+        								    <span class="pl-2" id="notAvailable" style="display:none;color:white;font-weight:bolder">
+                                                Sorry, no buses available. Try again.
+                                            </span>
+        								</div>
+        							</div>
+        						</form>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
 </div>
 <div class="about">
  <div class="row row-content align-items-center" id="about">
@@ -130,10 +160,10 @@
      </div>
  </div>
 </div>
-<div class="row row-content" id="popular" style="margin-bottom:20px;width:800px">
-<h2 style="margin-left:300px">Popular Destination</h2>
+<div class="row row-content" id="popular" style="margin-bottom:20px;width:800px;">
+<h2 style="margin-left:300px;color:white">Popular Destination</h2>
     <div class="col">
-        <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <div id="mycarousel" class="carousel slide" data-ride="carousel" style="box-shadow:10px 10px">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <img class="d-block img-fluid"
@@ -232,6 +262,7 @@
           var formData = {
               'destination1' : $('#destination1').val(),
               'destination2' : $('#destination2').val(),
+              'date' : $('#date').val(),
           };
           $.ajax({
               type: 'GET',
@@ -244,8 +275,7 @@
                   if (data.routesList.length == 0) {
                       $('#notAvailable').show();
                   }else{
-                      $('#available').show();
-                       $('#check').hide();
+                      window.location.href = "{{route('book')}}"
                   }
               },
               error: function (data) {

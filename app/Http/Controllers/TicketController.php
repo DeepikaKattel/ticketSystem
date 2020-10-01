@@ -37,17 +37,18 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function bookTicket()
+    public function bookTicket(Request $request)
     {
         $data =  Session::get('key');
         $data1 = Session::get('key2');
+        $date2 = Session::get('key3');
         $routes = Route::where([
             ['start_point', '=', $data],
             ['end_point', '=', $data1],
         ])->get();
         $vehicleType = VehicleType::all();
         $vehicle = Vehicle::all();
-        return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle'));
+        return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle','date2'));
     }
 
     /**
@@ -58,7 +59,7 @@ class TicketController extends Controller
      */
     public function checkTicket(Request $request)
     {
-        $booking = $request->input('bookingDate');
+        $booking = $request->input('booking_date');
         $route = +$request->input('route');
         $vehicleType = +$request->input('vehicleType');
         $trips = Trip::where([

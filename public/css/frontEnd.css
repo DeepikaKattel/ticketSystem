@@ -1,6 +1,9 @@
-.image {
-    background-color: #490D40;
+body{
     background: url("../images/nature.jpg") no-repeat center center;
+    background-size: cover;
+}
+.image {
+
     background-size: cover;
     height: 570px;
     margin-top: -20px;
@@ -95,6 +98,9 @@
     height: 300px;
     text-align: center;
     margin:10px;
+    border-radius: 50px;
+    box-shadow: 10px 10px;
+
 }
 
 h4{

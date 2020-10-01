@@ -29,7 +29,7 @@
 
                     <div class="form-group">
                         <label>Stoppage Points</label>
-                        <select class="form-control" id="stoppage_points" name="stoppage_points" required >
+                        <select class="form-control" id="stoppage_points" name="stoppage_points[]" required multiple="multiple">
                             @foreach($destination as $dest)
                                 <option value="{{$dest->name}}">{{$dest->name}}</option>
                             @endforeach

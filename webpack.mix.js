@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js');
 mix.sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/seatLayout.scss', 'public/css');
+mix.less('public/less/combobox.less', 'public/css');
 mix.scripts([
     'public/js/bootstrap.min.js',
     'public/js/jquery.slim.min.js'

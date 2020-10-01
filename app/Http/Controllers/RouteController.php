@@ -139,24 +139,31 @@ class RouteController extends Controller
 
     }
 
-    public function checkRoute(Request $request){
-        $destination1= $request->input('destination1');
+    public function checkRoute(Request $request)
+    {
+        $destination1 = $request->input('destination1');
         $destination2 = $request->input('destination2');
-        $routes = Route::where([
-            ['start_point', '=', $destination1],
-            ['end_point', '=', $destination2],
-        ])->get();
-//            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
-        $routesList = [];
-        foreach ($routes as $route) {
-            array_push($routesList, $route);
+        $date = $request->input('date');
+        $tripDate = DB::table('trips')->where('departure_date','=',$date)->count();
+        if ($tripDate > 0) {
+            $routes = Route::where([
+                ['start_point', '=', $destination1],
+                ['end_point', '=', $destination2],
+            ])->get();
+            //            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
+            $routesList = [];
+            foreach ($routes as $route) {
+                array_push($routesList, $route);
+            }
+            $data = [
+                'routesList' => $routesList
+            ];
+            Session::put('key', $destination1);
+            Session::put('key2', $destination2);
+            Session::put('key3', $date);
+            return response()->json($data, 200);
         }
-        $data = [
-            'routesList' => $routesList
-        ];
-        Session::put('key', $destination1);
-        Session::put('key2', $destination2);
-        return response()->json($data, 200);
+
 
     }
 }

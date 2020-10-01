@@ -2,7 +2,6 @@
 @section('content')
 
     <h2>Booking Form</h2>
-
     <form action="/tickets" method="POST">
         @csrf
         <div class="form-group">
@@ -15,28 +14,28 @@
         </div>
 
         <div class="form-group row">
-            <div class="col">
+            <div class="col-md-5">
                 <label for="fleet">Vehicle Type</label>
-                <select class="form-control mr-sm-2" id="vehicleType" name="vehicleType" value={{old('vehicleType')}}>
-                    <option>------</option>
+                <select style="height:40px;font-weight:bolder"  class="form-control" id="vehicleType" name="vehicleType" value={{old('vehicleType')}}>
                     @foreach($vehicleType as $v)
                         <option value="{{$v->id}}">{{$v->name}}</option>
                     @endforeach
                 </select>
+                <span class="select-arrow"></span>
             </div>
 
 
-            <div class="col">
+            <div class="col-md-3">
                 <label for="booking_date">Booking Date: </label><br>
-                <input type="date" id="bookingDate" name="booking_date" required>
+                <input style="height:40px;font-weight:bolder" type="date" id="booking_date" name="booking_date" value="{{$date2}}"required>
              </div>
 
 
 
-            <div class="col mt-4">
-                <button type="button" class="btn btn-primary" onclick="checkTicket()">Check for ticket</button>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary mt-4" onclick="checkTicket()" style="height:45px;">Select Bus</button>
                 <span class="pl-2" id="noTickets" style="display:none;">
-                    No tickets available
+                    Tickets not available. Please select another vehicle type.
                 </span>
             </div>
         </div>
@@ -67,7 +66,7 @@ function checkTicket() {
         headers: {'X-CSRF-TOKEN': '<?php echo csrf_token() ?>'}
     });
     var formData = {
-        'bookingDate' : $('#bookingDate').val(),
+        'booking_date' : $('#booking_date').val(),
         'route' : $('#route').val(),
         'vehicleType' : $('#vehicleType').val()
     };
@@ -80,7 +79,7 @@ function checkTicket() {
             $('#radioOption').html("");
             $('#noTickets').hide();
             $('#availableTickets').hide();
-            emptyLayout();
+             emptyLayout();
             if (data.listTickets.length == 0) {
                 $('#noTickets').show();
             }else{
