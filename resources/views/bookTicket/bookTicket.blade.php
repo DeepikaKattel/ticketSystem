@@ -44,7 +44,7 @@
             <label for="radioOption"><h3 class="card-header pl-4 mt-2" style="color:black;margin-left:20px;border-top-left-radius:20px;border-top-right-radius:20px;border:solid 2px black">Available Buses:</h3></label>
             <div class="form-check mb-2" id="radioOption"></div>
 
-            <label for="radioOption" class="ml-4">Choose YourSeat:</label>
+
             {{--<div class="exit exit--back fuselage ml-4"></div>--}}
             <div class="window window--back ml-4"></div>
             <div class="form-check ml-4" id="vehicleLayout"></div>

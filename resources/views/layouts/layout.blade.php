@@ -98,21 +98,23 @@
           -moz-appearance: none;
           -o-appearance: none;
           appearance: none;
-          outline: 1px solid gray;
+          outline: 1px solid green;
           box-shadow: none;
           font-size: 0.8em;
           text-align: center;
           line-height: 1em;
           background: #a2e681;
-          content: '✔';
         }
 
         input[type='checkbox']:checked{
           background: url("https://img.icons8.com/officel/40/000000/occupied-theatre-seat.png") no-repeat center center;
+           outline: 1px solid red;
           color: white;
         }
+
         input[type='checkbox']:not(:checked){
           background: url("https://img.icons8.com/ultraviolet/40/000000/theatre-seat.png") no-repeat center center;
+          outline: 1px solid green;
           color: white;
         }
 
