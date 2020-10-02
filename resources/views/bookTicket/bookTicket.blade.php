@@ -44,7 +44,6 @@
             <label for="radioOption"><h3 class="card-header pl-4 mt-2" style="color:black;margin-left:20px;border-top-left-radius:20px;border-top-right-radius:20px;border:solid 2px black">Available Buses:</h3></label>
             <div class="form-check mb-2" id="radioOption"></div>
 
-
             {{--<div class="exit exit--back fuselage ml-4"></div>--}}
             <div class="window window--back ml-4"></div>
             <div class="form-check ml-4" id="vehicleLayout"></div>
@@ -106,7 +105,7 @@ function displayAllocatedSeats(row, col, list){
                 $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"'>");
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='0' checked>");
             } else {
-                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;background:#b33319' type='checkbox' disabled>");
+                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;background:#b33319' type='checkbox' data-title='Seat Already Booked' disabled>");
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='1' checked>")
             }
             $('#new').append("<input type='checkbox' name='new_allocated_seats[]' value='0' checked>");

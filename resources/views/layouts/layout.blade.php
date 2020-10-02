@@ -143,6 +143,31 @@
           display: inline-block;
           opacity:0;
         }
+       [data-title]:hover:after {
+           opacity: 1;
+           transition: all 0.1s ease 0.5s;
+           visibility: visible;
+       }
+       [data-title]:after {
+           content: attr(data-title);
+           background-color: red;
+           color: white;
+           height:25px;
+           font-size: 150%;
+           position: absolute;
+           padding: 5px;
+           bottom: -1.6em;
+           left: 100%;
+           white-space: nowrap;
+           box-shadow: 1px 1px 3px #222222;
+           opacity: 0;
+           border: 1px solid #111111;
+           z-index: 99999;
+           visibility: hidden;
+       }
+       [data-title] {
+           position: relative;
+       }
 
         .btn{
             background: #f2a407;
