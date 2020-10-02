@@ -91,7 +91,8 @@ address {
     padding:0px;
 }
 #about{
-    padding:40px;
+    padding:20px;
+    margin: 50px;
     border-radius: 50px;
 }
 

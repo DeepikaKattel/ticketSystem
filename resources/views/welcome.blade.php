@@ -93,7 +93,7 @@
 
 <div class="image">
     <h1 class="heading">JhunJhun Travels</h1>
-    <div class="row justify">
+    <div class="justify">
         <h4>We prioritize convenience for customers by providing the best service!</h3>
         <div id="booking" class="section">
         		<div class="section-center">

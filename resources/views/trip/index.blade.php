@@ -22,6 +22,7 @@
                     <th scope="col">S.N</th>
                     <th scope="col">Title</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Departure Time</th>
                     <th scope="col">Vehicle</th>
                     <th scope="col">Route</th>
                     <th scope="col">Price</th>
@@ -36,6 +37,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$t->title}}</td>
                         <td>{{$t->departure_date}}</td>
+                          <td>{{$t->time}}</td>
                         <td>{{$t->vehicle->reg_number}}-{{$t->vehicle->name}}-{{$t->vehicle->vehicleType->name}}</td>
                         <td>{{$t->route->name}}</td>
                         <td>{{$t->price}}</td>

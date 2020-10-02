@@ -49,6 +49,7 @@ class TripController extends Controller
         $trip = new Trip();
         $trip->title = request('title');
         $trip->departure_date = request('date');
+        $trip->time = request('time');
         $trip->vehicle_id = request('vehicle');
         $trip->route_id = request('route');
         $trip->price = request('price');
@@ -86,8 +87,8 @@ class TripController extends Controller
     public function edit($id)
     {
         $trip = Trip::find($id);
-        $vehicle = DB::table('vehicle')->get();
-        $route = DB::table('route')->get();
+        $vehicle = DB::table('vehicles')->get();
+        $route = DB::table('routes')->get();
         return view('trip.edit', compact('trip','vehicle','route'));
     }
 
@@ -103,6 +104,7 @@ class TripController extends Controller
         $trip = Trip::find($id);
         $trip->title = request('title');
         $trip->departure_date = request('date');
+        $trip->time = request('time');
         $trip->vehicle_id = request('vehicle');
         $trip->route_id = request('route');
         $trip->save();

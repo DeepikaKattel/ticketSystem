@@ -39,12 +39,13 @@
         .exit{
             position:relative;
             height:20px;
-            width:220px
+            width:280px
         }
+
         .window{
             position:relative;
-            height:20px;
-            width:290px
+            width:350px;
+            opacity:0;
         }
         .window:after,.window:before{
             content:"WINDOW";
@@ -89,162 +90,57 @@
         .fuselage{border-right:5px solid #d8d8d8;
             border-left:5px solid #d8d8d8
         }
+        input[type='checkbox']{
+          width: 50px !important;
+          height: 50px !important;
+          margin: 5px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearance: none;
+          appearance: none;
+          outline: 1px solid gray;
+          box-shadow: none;
+          font-size: 0.8em;
+          text-align: center;
+          line-height: 1em;
+          background: #a2e681;
+          content: '✔';
+        }
 
-        input[type=checkbox]{
+        input[type='checkbox']:checked{
+          background: url("https://img.icons8.com/officel/40/000000/occupied-theatre-seat.png") no-repeat center center;
+          color: white;
+        }
+        input[type='checkbox']:not(:checked){
+          background: url("https://img.icons8.com/ultraviolet/40/000000/theatre-seat.png") no-repeat center center;
+          color: white;
+        }
+
+        {{--input[type=checkbox]{
             box-sizing: border-box;
             padding: 0;
-            height: 30px;
-            width: 40px;
+            height: 50px;
+            width: 50px;
+            margin:5px;
         }
-        .section {
-        	position: relative;
-        	height: 60vh;
-        }
+        input[type="checkbox" i] {
+            background-color: green;
+        }--}}
 
-        .section .section-center {
-        	position: absolute;
-        	top: 20%;
-        	left: 0;
-        	right: 0;
-        	-webkit-transform: translateY(-50%);
-        	transform: translateY(-50%);
-        }
-
-        #booking {
-        	font-family: 'Imprima', sans-serif;
-        	background-size: cover;
-        	background-position: center;
+        input[type=radio] {
+          margin-left:1px;
+          -webkit-appearance: none;
+          outline: 0.1em solid black;
+          outline-offset: 0.1em;
+          height: 130px;
+          width: 940px;
+          opacity:0;
         }
 
-        .booking-form .form-group {
-        	position: relative;
-        	height: 60px;
-        	margin-bottom: 10px;
-        	margin-right: -10px;
-        	margin-left: -10px;
+        input[type=radio]:checked {
+          display: inline-block;
+          opacity:0;
         }
-
-        .booking-form .form-control {
-        	font-family: 'Cantata One', serif;
-        	background-color: transparent;
-        	border-radius: 0px;
-        	border: none;
-        	height: 60px;
-        	-webkit-box-shadow: none;
-        	box-shadow: none;
-        	font-size: 24px;
-        	color: #333;
-        	font-weight: 300;
-        	background: rgba(255, 255, 255, 0.85);
-        	padding-top: 15px;
-        	-webkit-transition: 0.2s background;
-        	transition: 0.2s background;
-        }
-
-        .booking-form .form-control:focus {
-        	background: rgba(255, 255, 255, 1);
-        	-webkit-box-shadow: none;
-        	box-shadow: none;
-        }
-
-        .booking-form .form-control::-webkit-input-placeholder {
-        	color: rgba(51, 51, 51, 0.3);
-        }
-
-        .booking-form .form-control:-ms-input-placeholder {
-        	color: rgba(51, 51, 51, 0.3);
-        }
-
-        .booking-form .form-control::placeholder {
-        	color: rgba(51, 51, 51, 0.3);
-        }
-
-        .booking-form input[type="date"].form-control:invalid {
-        	color: rgba(51, 51, 51, 0.3);
-        }
-
-
-        .booking-form select.form-control {
-        	-webkit-appearance: none;
-        	-moz-appearance: none;
-        	appearance: none;
-        }
-
-        select {
-            font-family: 'FontAwesome', 'Second Font name', serif;
-        }
-
-        .booking-form select.form-control+.select-arrow {
-        	position: absolute;
-        	right: 0px;
-            top:0px;
-        	bottom: 0px;
-        	width: 24px;
-        	text-align: center;
-        	pointer-events: none;
-        	background: rgba(255, 255, 255, 0.3);
-        	height: 60px;
-        	line-height: 80px;
-        }
-
-        .booking-form select.form-control+.select-arrow:after {
-        	content: '\279C';
-        	display: block;
-        	-webkit-transform: rotate(90deg);
-        	transform: rotate(90deg);
-        	color: #333;
-        	font-size: 14px;
-        }
-
-        .booking-form .form-label {
-        	color: #f2a407;
-        	display: block;
-        	font-weight: 700;
-        	height: 30px;
-        	line-height: 30px;
-        	font-size: 14px;
-        	letter-spacing: 0.6px;
-        	position: absolute;
-        	left: 10px;
-        	top: 0px;
-        }
-
-        .booking-form .form-btn {
-        	height: 60px;
-        	margin-right: -10px;
-        	margin-left: -10px;
-        	margin-bottom: 10px;
-        }
-
-        .booking-form .submit-btn {
-        	background: #8c5d28;
-        	border: none;
-        	font-weight: 300;
-        	text-transform: uppercase;
-        	letter-spacing: 0.6px;
-        	height: 60px;
-        	border-radius: 0px;
-        	font-size: 18px;
-        	width: 100%;
-        	color: #fff;
-        }
-
-        .booking-cta {
-        	text-align: center;
-        }
-
-        .booking-cta {
-        	margin-bottom: 30px;
-        }
-
-        .booking-cta h1 {
-        	font-family: 'Cantata One', serif;
-        	color: #fff;
-        	margin: 0px;
-        	font-size: 52px;
-        	font-weight: 700;
-        }
-
 
         .btn{
             background: #f2a407;
@@ -275,7 +171,7 @@
         </div>
     @endif
     <div class="container m-5 p-5">
-        <div class="col-lg-10 col-md-7 col-offset-6 centered">
+        <div class="col">
             @yield('content')
         </div>
     </div>

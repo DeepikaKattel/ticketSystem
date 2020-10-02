@@ -15,6 +15,10 @@
                         <label>Departure Date</label>
                         <input type="date" name="date" class="form-control" required>
                     </div>
+                    <div class="form-group">
+                        <label>Departure Time</label>
+                        <input type="time" name="time" class="form-control" required>
+                    </div>
 
                     <div class="form-group">
                         <label>Vehicle Type</label>
