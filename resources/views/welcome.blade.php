@@ -134,7 +134,7 @@
         							<div class="col-md-3">
         								<div class="form-btn" style="box-shadow:5px 5px">
         									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:60px;" onclick="checkRoute()">Check Availability</button>
-        								    <span class="pl-2" id="notAvailable" style="display:none;color:white;font-weight:bolder">
+        								    <span id="notAvailable" style="display:none;color:red;font-weight:bolder;">
                                                 Sorry, no buses available. Try again.
                                             </span>
         								</div>
