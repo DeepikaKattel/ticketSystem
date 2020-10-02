@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'BookTicketController@welcome');
+Route::get('/', 'BookTicketController@welcome')->name('/');
 
 
 Auth::routes(['verify'=>true]);

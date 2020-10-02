@@ -12,6 +12,7 @@ body{
     color: white;
     text-align: center;
     padding-top: 200px;
+    font-family: 'FontAwesome', 'Second Font name', serif;
 }
 .image p {
     text-align: center;
@@ -106,6 +107,7 @@ body{
 h4{
     color:white;
     margin-left:340px;
+    font-family: 'FontAwesome', 'Second Font name', serif;
 }
 
 

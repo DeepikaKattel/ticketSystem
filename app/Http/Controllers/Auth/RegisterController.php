@@ -37,7 +37,7 @@ class RegisterController extends Controller
             return('/adminOnlyPage');
         }
         elseif (Auth::check() && Auth::user()->role_id == '2') {
-            return('/customerOnlyPage');
+            return('/');
         }
         elseif (Auth::check() && Auth::user()->role_id == '3') {
             return('/travelAgentOnlyPage');
@@ -69,6 +69,7 @@ class RegisterController extends Controller
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phoneNumber' => ['required','string','min:10','max:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }

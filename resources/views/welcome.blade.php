@@ -133,7 +133,7 @@
                                     </div>
         							<div class="col-md-3">
         								<div class="form-btn" style="box-shadow:5px 5px">
-        									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:60px;" onclick="checkRoute()">Check Availability</button>
+        									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px;border-radius:15px" onclick="checkRoute()">Check Availability</button>
         								    <span id="notAvailable" style="display:none;color:red;font-weight:bolder;">
                                                 Sorry, no buses available. Try again.
                                             </span>
@@ -160,7 +160,8 @@
      </div>
  </div>
 </div>
-<div class="row row-content" id="popular" style="margin-bottom:20px;width:800px;">
+
+{{--<div class="row row-content" id="popular" style="margin-bottom:20px;width:800px;">
 <h2 style="margin-left:300px;color:white">Popular Destination</h2>
     <div class="col">
         <div id="mycarousel" class="carousel slide" data-ride="carousel" style="box-shadow:10px 10px">
@@ -203,7 +204,7 @@
             </a>
         </div>
     </div>
-</div>
+</div>--}}
 
 
 
@@ -248,7 +249,7 @@
             </div>
         </div>
     </div>
-        </footer>
+    </footer>
 </body>
  <script src="{{asset('js/jquery.slim.min.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>

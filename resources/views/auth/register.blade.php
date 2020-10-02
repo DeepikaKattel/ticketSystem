@@ -87,13 +87,14 @@
                         </div>
                          <div class="form-group">
                             <label for="phone" class="sr-only">{{ __('Phone Number') }}</label>
-
                             <div class="col-md-14">
-                                <input id="phone" type="number" class="form-control" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="Phone Number">
+                                <input id="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="Phone Number">
 
-                                <span class="invalid-feedback" role="alert" id="phoneError">
-                                <strong></strong>
-                            </span>
+                                @error('phoneNumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
