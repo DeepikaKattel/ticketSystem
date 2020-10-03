@@ -144,6 +144,7 @@ class RouteController extends Controller
         $destination1 = $request->input('destination1');
         $destination2 = $request->input('destination2');
         $date = $request->input('date');
+        $vehicleType = $request->input('vehicleType');
         $tripDate = DB::table('trips')->where('departure_date','=',$date)->count();
         if ($tripDate > 0) {
             $routes = Route::where([
@@ -161,6 +162,7 @@ class RouteController extends Controller
             Session::put('key', $destination1);
             Session::put('key2', $destination2);
             Session::put('key3', $date);
+            Session::put('key4', $vehicleType);
             return response()->json($data, 200);
         }
 

@@ -102,7 +102,7 @@
         					<div class="booking-form">
         						<form id="checkDestination">
         						@csrf
-        							<div class="col-md-3">
+        							<div class="col-md-4">
         								<div class="form-group"  style="box-shadow:5px 5px">
         									<span class="form-label">From</span>
         									<select class="form-control" id="destination1"name="destination1" required >
@@ -113,9 +113,9 @@
         									<span class="select-arrow"></span>
         								</div>
         							</div>
-        							<div class="col-md-3">
+        							<div class="col-md-4">
                                         <div class="form-group" style="box-shadow:5px 5px">
-                                            <span class="form-label">From</span>
+                                            <span class="form-label">To</span>
                                             <select class="form-control" id="destination2" name="destination2" required>
                                                 @foreach($route as $r)
                                                     <option value="{{$r->end_point}}">{{$r->end_point}}</option>
@@ -124,21 +124,33 @@
                                             <span class="select-arrow"></span>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" style="box-shadow:5px 5px">
+                                            <span class="form-label">Fleet</span>
+                                            <select class="form-control" id="vehicleType" name="vehicleType" >
+                                                @foreach($vehicleType as $v)
+                                                    <option value="{{$v->id}}">{{$v->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-8">
                                         <div class="form-group" style="box-shadow:5px 5px">
                                             <span class="form-label">Departure Date</span>
                                             <input class="form-control" type="date" name="date" id="date" required>
                                         </div>
                                     </div>
-        							<div class="col-md-3">
+        							<div class="col-md-4">
         								<div class="form-btn" style="box-shadow:5px 5px">
-        									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:50px;border-radius:15px" onclick="checkRoute()">Check Availability</button>
+        									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:40px" onclick="checkRoute()">Check Availability</button>
         								    <span id="notAvailable" style="display:none;color:red;font-weight:bolder;">
                                                 Sorry, no buses available. Try again.
                                             </span>
         								</div>
         							</div>
+
         						</form>
         					</div>
         				</div>
@@ -264,6 +276,7 @@
               'destination1' : $('#destination1').val(),
               'destination2' : $('#destination2').val(),
               'date' : $('#date').val(),
+              'vehicleType' : $('#vehicleType').val(),
           };
           $.ajax({
               type: 'GET',

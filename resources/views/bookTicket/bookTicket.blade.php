@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-    <h2>Booking Form</h2>
+    <h2>Seat Selection</h2>
     <form action="/tickets" method="POST">
         @csrf
         <div class="form-group">
@@ -15,8 +15,8 @@
 
         <div class="form-group row">
             <div class="col-md-5">
-                <label for="fleet">Vehicle Type</label>
-                <select style="height:55px;font-weight:bolder;padding:10px;border:solid 2px"  class="form-control" id="vehicleType" name="vehicleType" value={{old('vehicleType')}}>
+                {{--<label for="fleet">Vehicle Type</label>--}}
+                <select class="form-control" id="vehicleType" name="vehicleType" hidden>
                     @foreach($vehicleType as $v)
                         <option value="{{$v->id}}">{{$v->name}}</option>
                     @endforeach
@@ -26,22 +26,23 @@
 
 
             <div class="col-md-3">
-                <label for="booking_date">Booking Date: </label><br>
-                <input style="height:55px;font-weight:bolder;padding:10px;border:solid 2px" type="date" id="booking_date" name="booking_date" value="{{$date2}}"required>
+                {{--<label for="booking_date">Booking Date: </label><br>--}}
+                <input style="height:55px;font-weight:bolder;padding:10px;border:solid 2px" type="date" id="booking_date" name="booking_date" value="{{$date2}}"required hidden>
              </div>
 
 
 
-            <div class="col-md-4">
-                <button type="button" class="btn btn-primary mt-4" onclick="checkTicket()" style="height:60px;width:120px;padding:10px;border:solid 2px">Select Bus</button>
+
+        </div>
+
+        <div class="form-group card pr-3" id="availableTickets" style="border-radius:20px">
+            <label for="radioOption" ><h3 class="card-header pl-4 mt-2" style="color:black;margin-left:20px;border-top-left-radius:20px;border-top-right-radius:20px;border:solid 2px black">Available Buses:</h3></label>
+             <div class="col-md-12" id="hideButton">
+                <button type="button" class="btn btn-primary"  onclick="checkTicket()" style="height:60px;padding:10px;border:solid 2px;font-size:25px;font-weight:bolder">Display All Available Buses</button>
                 <span class="pl-2" id="noTickets" style="display:none;">
                     Tickets not available. Please select another vehicle type.
                 </span>
             </div>
-        </div>
-
-        <div class="form-group card pr-3" id="availableTickets" style="display:none;border-radius:20px">
-            <label for="radioOption"><h3 class="card-header pl-4 mt-2" style="color:black;margin-left:20px;border-top-left-radius:20px;border-top-right-radius:20px;border:solid 2px black">Available Buses:</h3></label>
             <div class="form-check mb-2" id="radioOption"></div>
 
             {{--<div class="exit exit--back fuselage ml-4"></div>--}}
@@ -49,7 +50,7 @@
             <div class="form-check ml-4" id="vehicleLayout"></div>
             {{--<div class="exit exit--back fuselage ml-4"></div>--}}
             <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden"><div id="all"></div><div id="new"></div></div>
-            <div class="form-group mt-5 ml-4">
+            <div class="form-group mt-5 ml-4" >
                 <input type="submit" value="Book" class="btn btn-primary">
             </div>
 
@@ -77,7 +78,8 @@ function checkTicket() {
         success: function(data){
             $('#radioOption').html("");
             $('#noTickets').hide();
-            $('#availableTickets').hide();
+            $('#availableTickets').show();
+            $('#hideButton').show();
              emptyLayout();
             if (data.listTickets.length == 0) {
                 $('#noTickets').show();
@@ -86,6 +88,7 @@ function checkTicket() {
                     $('#radioOption').append("<div class='card pl-3 pr-3 pb-3 pt-2 radiodiv mb-2' onclick=selected(this) style='color:black;border:2px solid black;'><input class='form-check-input' id='' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> "+ "<table>" + "<thead>"+ "<tr>"+ "<th>"+ "<h5 style='display:inline;clear:none'>" + "Vehicle" + "</h5>" + "</th>" + "<th>" + "<h5 style='display: inline;clear:none'>" + " Available Seats:" + "</h5>" + "</th>" +  "<th>" + "<h5 style='display: inline;clear:none'>" + "Departure Time:" + "</h5>" + "</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<p>" + "<td>" + message.vehicle.name + ' ' + message.vehicle.reg_number +"</p>" + "</td>" + "<p>" + "<td>" + message.available_seats + "</p>" + "</td>" +  "<p>" + "<td>" + message.time + "</p>" + "</td>" +"</tr>" + "</tbody>" + "</table>" + "<br><div>");
                 });
                 $('#availableTickets').show();
+                $('#hideButton').hide();
             }
         },
         error: function (data) {
