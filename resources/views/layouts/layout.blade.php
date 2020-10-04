@@ -45,14 +45,13 @@
         .window{
             position:relative;
             width:350px;
-            opacity:0;
         }
         .window:after,.window:before{
             content:"WINDOW";
             font-size:10px;
             line-height:20px;
             padding:0 2px;font-family:Arial Narrow,Arial,sans-serif;
-            margin-top: 50px;
+            margin-top: 120px;
             display:block;
             position:absolute;
             background:green;
