@@ -43,6 +43,7 @@ class TicketController extends Controller
         $data1 = Session::get('key2');
         $date2 = Session::get('key3');
         $vehicleTypeS = Session::get('key4');
+        $destination = DB::table('destinations')->where('name','=',$data1)->value('image');
         $routes = Route::where([
             ['start_point', '=', $data],
             ['end_point', '=', $data1],
@@ -51,7 +52,7 @@ class TicketController extends Controller
             ['id', '=', $vehicleTypeS],
         ])->get();
         $vehicle = Vehicle::all();
-        return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle','date2'));
+        return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle','date2','destination'));
     }
 
     /**

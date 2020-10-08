@@ -1,5 +1,5 @@
 a{
-    color: rgba(255,255,255,.5);
+    color: white;
 }
 a:hover{
     color: white;
@@ -43,7 +43,7 @@ a:hover{
 }
 
 .footer {
-  background-color: black;
+  background-color: #4c6792;
   margin: 0px auto;
   padding: 20px 0px;
   color: white;

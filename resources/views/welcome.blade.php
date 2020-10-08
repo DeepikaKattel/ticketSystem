@@ -2,6 +2,9 @@
 <head>
 <meta charset="utf-8">
 <title>Jhun Jhun Travels</title>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
+<link href="{{asset('css/form.css')}}" rel="stylesheet" />
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <link rel="stylesheet" href="{{asset('css/frontEnd.css')}}">
@@ -90,88 +93,83 @@
             {!! session('error') !!}
         </div>
     @endif
+   <div class="s002">
+        <form  id="checkDestination">
+           <fieldset>
+             <legend>Jhun Jhun Travels</legend>
+           </fieldset>
+           <div class="inner-form">
+             <div class="input-field first-wrap">
+               <div class="icon-wrap">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                 </svg>
+               </div>
+               <input list="firstPlace" id="destination1" name="destination1" type="text" placeholder="From" />
+               <datalist id="firstPlace">
+                  @foreach($route as $r)
+                      <option value="{{$r->start_point}}">{{$r->start_point}}</option>
+                  @endforeach
+               </datalist>
+             </div>
+             <div class="input-field first-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                  </svg>
+                </div>
+                <input list="secondPlace" id="destination2" name="destination2" type="text" placeholder="To" />
+                 <datalist id="secondPlace">
+                     @foreach($route as $r)
+                        <option value="{{$r->end_point}}">{{$r->end_point}}</option>
+                    @endforeach
+                  </datalist>
+              </div>
+             <div class="input-field second-wrap">
+               <div class="icon-wrap">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                   <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+                 </svg>
+               </div>
+               <input class="datepicker" type="date" name="date" id="date" placeholder="Departure" />
+             </div>
+             <div class="input-field fouth-wrap">
+               <div class="icon-wrap">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                 </svg>
+               </div>
+               <select data-trigger="" id="vehicleType" name="vehicleType">
+                   @foreach($vehicleType as $v)
+                         <option value="{{$v->id}}">{{$v->name}}</option>
+                    @endforeach
+               </select>
+             </div>
+             <div class="input-field fifth-wrap">
+                <button id="check" type="button" class="btn-search" onclick="checkRoute()">Search Bus</button>
+                <span id="notAvailable" style="display:none;color:red;font-size:10px">
+                       Sorry, no buses available. Try again.
+                 </span>
+             </div>
+           </div>
+        </form>
+   </div>
 
-<div class="image">
-    <h1 class="heading">JhunJhun Travels</h1>
-    <div class="justify">
-        <h4>We prioritize convenience for customers by providing the best service!</h3>
-        <div id="booking" class="section">
-        		<div class="section-center">
-        			<div class="container">
-        				<div class="row">
-        					<div class="booking-form">
-        						<form id="checkDestination">
-        						@csrf
-        							<div class="col-md-4">
-        								<div class="form-group"  style="box-shadow:5px 5px">
-        									<span class="form-label">From</span>
-        									<select class="form-control" id="destination1"name="destination1" required >
-        										@foreach($route as $r)
-                                                    <option value="{{$r->start_point}}">{{$r->start_point}}</option>
-                                                @endforeach
-        									</select>
-        									<span class="select-arrow"></span>
-        								</div>
-        							</div>
-        							<div class="col-md-4">
-                                        <div class="form-group" style="box-shadow:5px 5px">
-                                            <span class="form-label">To</span>
-                                            <select class="form-control" id="destination2" name="destination2" required>
-                                                @foreach($route as $r)
-                                                    <option value="{{$r->end_point}}">{{$r->end_point}}</option>
-                                                @endforeach
-                                            </select>
-                                            <span class="select-arrow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group" style="box-shadow:5px 5px">
-                                            <span class="form-label">Fleet</span>
-                                            <select class="form-control" id="vehicleType" name="vehicleType" >
-                                                @foreach($vehicleType as $v)
-                                                    <option value="{{$v->id}}">{{$v->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <span class="select-arrow"></span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-8">
-                                        <div class="form-group" style="box-shadow:5px 5px">
-                                            <span class="form-label">Departure Date</span>
-                                            <input class="form-control" type="date" name="date" id="date" required>
-                                        </div>
-                                    </div>
-        							<div class="col-md-4">
-        								<div class="form-btn" style="box-shadow:5px 5px">
-        									 <button id="check" type="button" class="btn btn-primary form-control mr-sm-4" style="background:#f2a407;height:40px" onclick="checkRoute()">Check Availability</button>
-        								    <span id="notAvailable" style="display:none;color:red;font-weight:bolder;">
-                                                Sorry, no buses available. Try again.
-                                            </span>
-        								</div>
-        							</div>
 
-        						</form>
-        					</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </div>
-</div>
-<div class="about">
- <div class="row row-content align-items-center" id="about">
-     <div class="col-12 col-sm-4 order-sm-last col-md-3">
-         <h3>Founder</h3>
-         <p class="d-none d-sm-block">"We have been established with the motive of providing the best travel service"</p>
+    <div class="about">
+     <div class="row row-content align-items-center" id="about">
+         <div class="col-12 col-sm-4 order-sm-last col-md-3">
+             <h3>Founder</h3>
+             <p class="d-none d-sm-block">"We have been established with the motive of providing the best travel service"</p>
+         </div>
+         <div class="col col-sm order-sm-first col-md">
+             <h2 class="mt-0">About Us</h2>
+             <p class="d-none d-sm-block">Our motive is to keep customer satisfaction the top most priority.
+                 We make sure that each customer is safe and adopt the necessary measures.</p>
+         </div>
      </div>
-     <div class="col col-sm order-sm-first col-md">
-         <h2 class="mt-0">About Us</h2>
-         <p class="d-none d-sm-block">Our motive is to keep customer satisfaction the top most priority.
-             We make sure that each customer is safe and adopt the necessary measures.</p>
-     </div>
- </div>
-</div>
+    </div>
 
 {{--<div class="row row-content" id="popular" style="margin-bottom:20px;width:800px;">
 <h2 style="margin-left:300px;color:white">Popular Destination</h2>
@@ -267,6 +265,21 @@
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+ <script src="{{asset('js/extention/choices.js')}}"></script>
+ <script src="{{asset('js/extention/flatpickr.js')}}"></script>
+    <script>
+      flatpickr(".datepicker",
+      {});
+
+    </script>
+    <script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+
+    </script>
 <script defer>
      function checkRoute() {
          $.ajaxSetup({

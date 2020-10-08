@@ -166,6 +166,10 @@ class BookTicketController extends Controller
     {
 
     }
+    public function card()
+    {
+        return view('card');
+    }
 
     /**
      * Show the form for editing the specified resource.

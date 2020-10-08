@@ -2,6 +2,9 @@ body{
     background: url("../images/nature.jpg") no-repeat center center;
     background-size: cover;
 }
+a{
+    color:rgba(40,215,226);
+}
 .image {
 
     background-size: cover;
@@ -45,34 +48,34 @@ body{
     color: white;
 }
 .navbar-default .navbar-brand:hover {
-    color: #f2a407;
-    border: 1px solid #f2a407;
+    color: #4c6792;
+    border: 1px solid #4c6792;
 }
 .navbar-default .navbar-nav > li > a {
     color: white !important;
     margin: 10px 5px 5px 5px;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus {
-    color: #f2a407;
-    border: 1px solid #f2a407;
+    color: #4c6792;
+    border: 1px solid #4c6792;
 }
 .navbar-default .navbar-nav > li > a:visited {
-    color: #f2a407;
+    color: #4c6792;
     text-decoration: none;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: transparent;
-    color: #f2a407;
+    color: #4c6792;
 }
 .navbar-default .navbar-toggle {
-    border-color: #f2a407;
+    border-color: #4c6792;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
     background-color: black;
 }
 .navbar-default .navbar-toggle .icon-bar {
-    color: #f2a407;
-    background-color: #f2a407;
+    color: #4c6792;
+    background-color: #4c6792;
 }
 .navbar-default .navbar-collapse.collapse.in ul {
     background-color: black;
@@ -80,16 +83,16 @@ body{
 
 /* Solid class attached on scroll past first section */
 .navbar.solid {
-    background-color: black;
+    background-color: white;
     transition: background-color 1s ease 0s;
     box-shadow: 0 0 4px grey;
 }
 .navbar.solid .navbar-brand {
-    color: #f2a407;
+    color:  #4c6792;
     transition: color 1s ease 0s;
 }
 .navbar.solid .navbar-nav > li > a {
-    color: #f2a407 !important;
+    color: #4c6792 !important;
     transition: color 1s ease 0s;
 }
 

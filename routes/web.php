@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'BookTicketController@welcome')->name('/');
+Route::get('card', 'BookTicketController@card')->name('card');
+Route::get('form', 'BookTicketController@form')->name('form');
 
 
 Auth::routes(['verify'=>true]);

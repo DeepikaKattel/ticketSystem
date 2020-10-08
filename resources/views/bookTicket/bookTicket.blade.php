@@ -1,6 +1,128 @@
 @extends('layouts.layout')
 @section('content')
+<style>
+* {
+	box-sizing: border-box;
+}
 
+.outer {
+	position: relative;
+	background: #fff;
+	height: 350px;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	border-radius:20px;
+}
+
+img {
+	position: absolute;
+	top: 0px;
+	right: -20px;
+	z-index: 0;
+	animation-delay: 0.5s;
+}
+
+.content {
+	animation-delay: 0.3s;
+	position: absolute;
+	left: 20px;
+	z-index: 3
+
+}
+
+h1 {
+	color: #111;
+}
+
+p {
+	width: 280px;
+	font-size: 13px;
+	line-height: 1.4;
+	color: #aaa;
+	margin: 20px 0;
+
+}
+
+.bg {
+	display: inline-block;
+	color: #fff;
+	background: cornflowerblue;
+	padding: 5px 10px;
+	border-radius: 50px;
+	font-size: .7em;
+}
+.button {
+	width: fit-content;
+	height: fit-content;
+	margin-top: 10px;
+
+
+
+}
+
+.button a {
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	font-size: 11px;
+	color: #111;
+	text-decoration: none;
+	padding: 10px 15px;
+	border: 1px solid #aaa;
+	font-weight: bold;
+
+
+}
+
+.button a:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	right: -10px;
+	width: 0%;
+	background: #111;
+	height: 100%;
+	z-index: -1;
+	transition: width 0.3s ease-in-out;
+	transform: skew(-25deg);
+	transform-origin: right;
+}
+
+.button a:hover:after {
+	width: 150%;
+	left: -10px;
+	transform-origin: left;
+
+}
+
+.button a:hover {
+	color: #fff;
+	transition: all 0.5s ease;
+}
+
+
+.button a:nth-of-type(1) {
+	border-radius: 50px 0 0 50px;
+	border-right: none;
+}
+
+.button a:nth-of-type(2) {
+	border-radius: 0px 50px 50px 0;
+}
+
+.cart-icon {
+	padding-right: 8px;
+
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+</style>
     <h2>Seat Selection</h2>
     <form action="/tickets" method="POST">
         @csrf
@@ -30,10 +152,24 @@
                 <input style="height:55px;font-weight:bolder;padding:10px;border:solid 2px" type="date" id="booking_date" name="booking_date" value="{{$date2}}"required hidden>
              </div>
 
+             	<div class="outer">
+             		<div class="content animated fadeInLeft">
+             			<span class="bg animated fadeInDown">EXCLUSIVE</span>
+             			<h1>Afro<br/> baseball hair</h1>
+             			<p>Shadow your real allegiance to New York</p>
+
+             			<div class="button">
+             				<a href="#">$115</a><a class="cart-btn" href="#"><i class="cart-icon ion-bag"></i>ADD TO CART</a>
+             			</div>
+
+             		</div>
+             		<img src="{{asset('images/').'/'.$destination}}" width="350px" height="200px" class="animated fadeInRight">
+             	</div>
 
 
 
         </div>
+
 
         <div class="form-group card pr-3" id="availableTickets" style="border-radius:20px">
             <label for="radioOption" ><h3 class="card-header pl-4 mt-2" style="color:black;margin-left:20px;border-top-left-radius:20px;border-top-right-radius:20px;border:solid 2px black">Available Buses:</h3></label>

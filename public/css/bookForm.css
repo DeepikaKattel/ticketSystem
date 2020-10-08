@@ -101,7 +101,7 @@ select {
 }
 
 .booking-form .form-label {
-	color: #f2a407;
+	color: rgba(40,215,226);
 	display: block;
 	font-weight: 600;
 	height: 20px;
