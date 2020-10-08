@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Trip;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +36,8 @@ class TripController extends Controller
     {
         $vehicle = DB::table('vehicles')->get();
         $route = DB::table('routes')->get();
-        return view('trip.create', compact('vehicle','route'));
+        $dateToday = Carbon::today()->toDateString();
+        return view('trip.create', compact('vehicle','route','dateToday'));
     }
 
     /**
@@ -89,7 +91,8 @@ class TripController extends Controller
         $trip = Trip::find($id);
         $vehicle = DB::table('vehicles')->get();
         $route = DB::table('routes')->get();
-        return view('trip.edit', compact('trip','vehicle','route'));
+        $dateToday = Carbon::today()->toDateString();
+        return view('trip.edit', compact('trip','vehicle','route','dateToday'));
     }
 
     /**

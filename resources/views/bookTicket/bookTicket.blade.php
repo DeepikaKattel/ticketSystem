@@ -180,7 +180,7 @@ p {
             <div class="window window--back ml-4" id="window" style="display:none"></div>
             <div class="form-check ml-4" id="vehicleLayout"></div>
             <div class="exit exit--back fuselage ml-4" id="exit1" style="display:none"></div>
-            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">]
+            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">
                 <div id="all"></div>
                 <div id="new"></div>
             </div>
@@ -246,7 +246,7 @@ function displayAllocatedSeats(row, col, list){
                 $('#exit').show();
                 $('#exit1').show();
                 $('#window').show();
-                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"'>");
+                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"' required>");
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='0' checked>");
             } else {
                 $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;background:#b33319' type='checkbox' data-title='Seat Already Booked' disabled>");

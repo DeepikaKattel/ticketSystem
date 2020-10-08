@@ -12,7 +12,7 @@
                     </div>
                     <div class="form-group">
                         <label>Departure Date</label>
-                        <input type="date" name="date" class="form-control" required>
+                        <input type="date" name="date" class="form-control" required min="{{$dateToday}}">
                     </div>
                     <div class="form-group">
                         <label>Departure Time</label>

@@ -6,6 +6,7 @@ use App\Mail\SendMail;
 use App\Model\BookTicket;
 use App\Model\Ticket;
 use App\Model\Trip;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -26,10 +27,11 @@ class BookTicketController extends Controller
         $vehicleType = DB::table('vehicle_type')->get();
         $route = DB::table('routes')->get();
         $ticket = DB::table('tickets')->get();
+        $dateToday = Carbon::today()->toDateString();
         $seat = DB::table('book_tickets')
             ->pluck('seat');
 
-        return view('welcome', compact('vehicleType', 'route', 'ticket','seat'));
+        return view('welcome', compact('vehicleType', 'route', 'ticket','seat','dateToday'));
     }
 
 
