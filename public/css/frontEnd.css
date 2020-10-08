@@ -1,10 +1,17 @@
 body{
-    background: url("../images/nature.jpg") no-repeat center center;
+    background: url("../images/nature.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 a{
     color:rgba(40,215,226);
 }
+h3{
+    font-family: "Constantia",sans-serif;
+}
+p{
+    font-family: "Constantia",sans-serif;
+}
+
 .image {
 
     background-size: cover;
@@ -48,19 +55,22 @@ a{
     color: white;
 }
 .navbar-default .navbar-brand:hover {
-    color: #4c6792;
-    border: 1px solid #4c6792;
+    color: rgba(40,215,226);
+    border: 1px solid rgba(40,215,226);
+    height: 80px;
 }
 .navbar-default .navbar-nav > li > a {
     color: white !important;
     margin: 10px 5px 5px 5px;
+    font-size: 18px;
+    font-family: "Algerian",sans-serif;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus {
-    color: #4c6792;
-    border: 1px solid #4c6792;
+    color: rgba(40,215,226);
+    border: 1px solid rgba(40,215,226);
 }
 .navbar-default .navbar-nav > li > a:visited {
-    color: #4c6792;
+    color: rgba(40,215,226);
     text-decoration: none;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {

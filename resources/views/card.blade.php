@@ -8,12 +8,7 @@
 <!--font awesome bootstrap CDN-->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: #250008;
-    font-family: sans-serif;
-}
+
 .card {
     position: absolute;
     top: 50%;
@@ -110,6 +105,7 @@ body {
   <div class="card">
     <div class="image">
       <img src="{{asset('images/lumbini.jpg')}}"/>
+      <h1>About<br><span>US</span></h1>
     </div>
     <div class="details">
       <div class="center">

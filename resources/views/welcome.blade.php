@@ -26,13 +26,116 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="{{ asset('js/bootstrap-combobox.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--font awesome bootstrap CDN-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
 
+.card {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top:80px;
+    background:white;
+    border-radius:20px;
+}
+
+#about{
+    margin-bottom:200px;
+    padding:100px;
+
+}
+.card .imageAbout {
+       overflow: hidden;
+       padding:20px;
+}
+.card .imageAbout img {
+    width: 400px;
+    transition: .5s;
+}
+.card:hover .imageAbout img {
+    opacity: .5;
+    transform: translateX(30%);/*100%*/
+}
+.card:hover .imageAbout h3{
+    opacity: .5;
+    transform: translateX(30%);/*100%*/
+}
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;/*100%*/
+    height: 100%;
+    background: rgba(40,215,226);
+    transition: .5s;
+    transform-origin: left;
+    transform: perspective(2000px) rotateY(-90deg);
+}
+.card:hover .details {
+    transform: perspective(2000px) rotateY(0deg);
+}
+.card .details .center {
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.card .details .center h1 {
+    margin: 0;
+    padding: 0;
+    color: #ff3636;
+    line-height: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.card .details .center h1 span {
+    font-size: 14px;
+    color: #262626;
+}
+.card .details .center p {
+    margin: 10px 0;
+    padding: 0;
+    color: #262626;
+}
+.card .details .center ul {
+    margin: 10px auto 0;
+    padding: 0;
+    display: table;
+}
+.card .details .center ul li {
+    list-style: none;
+    margin: 0 5px;
+    float: left;
+}
+.card .details .center ul li a {
+    display: block;
+    background: #262626;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    transform: .5s;
+}
+.card .details .center ul li a:hover {
+    background: #ff3636;
+}
 </style>
+
+
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+
 </head>
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -131,7 +234,7 @@
                    <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
                  </svg>
                </div>
-               <input class="datepicker" type="date" name="date" id="date" placeholder="Departure" />
+               <input class="datepicker" name="date" id="date" placeholder="Departure" />
              </div>
              <div class="input-field fouth-wrap">
                <div class="icon-wrap">
@@ -146,18 +249,36 @@
                </select>
              </div>
              <div class="input-field fifth-wrap">
-                <button id="check" type="button" class="btn-search" onclick="checkRoute()">Search Bus</button>
-                <span id="notAvailable" style="display:none;color:red;font-size:10px">
-                       Sorry, no buses available. Try again.
-                 </span>
+                <button id="check" type="button" class="btn-search" onclick="checkRoute()"><i class="fa fa-search">Search Bus</i></button>
              </div>
+               <span class="badge alert-danger" id="notAvailable" style="display:none;font-size:15px;margin-left:5px;padding:5px;width:270px">
+                     Sorry, no buses available.
+               </span>
            </div>
         </form>
    </div>
+   <fieldset>
+     <legend>About US</legend>
+     </fieldset>
+   <div id="about">
+       <div class="card" style="width:800px">
+           <div class="imageAbout">
+             <h3>Our motive is to keep customer satisfaction the top most priority.
+              We make sure that each customer is safe and adopt the necessary measures.</h3>
+             <img src="{{asset('images/lumbini.jpg')}}"/>
+           </div>
+           <div class="details">
+             <div class="center">
+               <h1>Founder<br><span>and team</span></h1>
+               <p>"We have been established with the motive of providing the best travel service"</p>
+             </div>
+           </div>
+        </div>
+    </div>
 
 
 
-    <div class="about">
+    {{--<div class="about">
      <div class="row row-content align-items-center" id="about">
          <div class="col-12 col-sm-4 order-sm-last col-md-3">
              <h3>Founder</h3>
@@ -169,7 +290,7 @@
                  We make sure that each customer is safe and adopt the necessary measures.</p>
          </div>
      </div>
-    </div>
+    </div>--}}
 
 {{--<div class="row row-content" id="popular" style="margin-bottom:20px;width:800px;">
 <h2 style="margin-left:300px;color:white">Popular Destination</h2>
@@ -221,7 +342,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-4 offset-1 col-sm-2">
+            {{--<div class="col-4 offset-1 col-sm-2">
                 <h5>Links</h5>
                 <ul class="list-unstyled">
                     <li><a href="#">Home</a></li>
@@ -240,24 +361,18 @@
                     <i class="fa fa-envelope fa-lg"></i>
                     <a href="mailto:jhunTravels@travel.net">jhunTravels@travel.net</a>
                 </address>
+            </div>--}}
+            <div class="text-center">
+                <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                <h3>© Copyright 2020 Jhun Travels</h3>
             </div>
-            <div class="col-12 col-sm-4 align-self-center">
-                <div class="text-center">
-                    <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
-                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
-                    <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
-                    <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                </div>
+        </div>
 
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <p>© Copyright 2020 Jhun Travels</p>
-            </div>
-        </div>
     </div>
     </footer>
 </body>
@@ -280,6 +395,7 @@
       });
 
     </script>
+
 <script defer>
      function checkRoute() {
          $.ajaxSetup({
@@ -318,7 +434,7 @@
         // Transition effect for navbar
         $(window).scroll(function() {
           // checks if window is scrolled more than 500px, adds/removes solid class
-          if($(this).scrollTop() > 500) {
+          if($(this).scrollTop() > 200) {
               $('.navbar').addClass('solid');
           } else {
               $('.navbar').removeClass('solid');

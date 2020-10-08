@@ -1,8 +1,16 @@
 a{
     color: white;
+    font-size: 18px;
+    font-family: "Algerian",sans-serif;
 }
 a:hover{
     color: white;
+}
+legend {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    color:white;
 }
 
 .seatStyle {
@@ -41,11 +49,15 @@ a:hover{
   border-bottom: 1px ridge;
   min-height: 400px;
 }
+fieldset{
+    font-family: "Berlin Sans FB",sans-serif;
+}
 
 .footer {
   background-color: #4c6792;
   margin: 0px auto;
   padding: 20px 0px;
+  font-family: "Berlin Sans FB",sans-serif;
   color: white;
 }
 
@@ -90,11 +102,7 @@ address {
     min-height: 300px;
     padding:0px;
 }
-#about{
-    padding:20px;
-    margin: 50px;
-    border-radius: 50px;
-}
+
 
 
 /*input:checked + label {*/
