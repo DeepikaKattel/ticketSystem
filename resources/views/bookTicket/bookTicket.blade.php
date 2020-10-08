@@ -152,7 +152,7 @@ p {
                 <input style="height:55px;font-weight:bolder;padding:10px;border:solid 2px" type="date" id="booking_date" name="booking_date" value="{{$date2}}"required hidden>
              </div>
 
-             	<div class="outer">
+             	{{--<div class="outer">
              		<div class="content animated fadeInLeft">
              			<span class="bg animated fadeInDown">EXCLUSIVE</span>
              			<h1>Afro<br/> baseball hair</h1>
@@ -164,7 +164,7 @@ p {
 
              		</div>
              		<img src="{{asset('images/').'/'.$destination}}" width="350px" height="200px" class="animated fadeInRight">
-             	</div>
+             	</div>--}}
 
 
 
@@ -173,19 +173,21 @@ p {
 
         <div class="form-group card pr-3" id="availableTickets" style="border-radius:20px">
             <label for="radioOption" ><h3 class="card-header pl-4 mt-2" style="color:black;margin-left:20px;border-top-left-radius:20px;border-top-right-radius:20px;border:solid 2px black">Available Buses:</h3></label>
-             <div class="col-md-12 ml-1" id="hideButton">
-                <button type="button" class="btn btn-primary"  onclick="checkTicket()" style="height:60px;padding:10px;border:solid 2px;font-size:25px;font-weight:bolder;color:black;">Display All Available Buses</button>
-                <span class="pl-2" id="noTickets" style="display:none;">
-                    Tickets not available. Please select another vehicle type.
-                </span>
-            </div>
+
             <div class="form-check mb-2" id="radioOption"></div>
 
             <div class="exit exit--back fuselage ml-4" id="exit" style="display:none"></div>
             <div class="window window--back ml-4" id="window" style="display:none"></div>
             <div class="form-check ml-4" id="vehicleLayout"></div>
             <div class="exit exit--back fuselage ml-4" id="exit1" style="display:none"></div>
-            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden"><div id="all"></div><div id="new"></div></div>      </div>
+            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">]
+                <div id="all"></div>
+                <div id="new"></div>
+            </div>
+             <div class="form-group mt-5 ml-4">
+                <input type="submit" value="Book" class="btn btn-primary">
+            </div>
+        </div>
     </form>
 <script>
 window.onload = function() {
