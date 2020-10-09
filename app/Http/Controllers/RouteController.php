@@ -146,10 +146,12 @@ class RouteController extends Controller
         $date = $request->input('date');
         $vehicleType = $request->input('vehicleType');
         $tripDate = DB::table('trips')->where('departure_date','=',$date)->count();
+        $tripRoute = DB::table('trips')->select('route_id')->value('route_id');
         if ($tripDate > 0) {
             $routes = Route::where([
                 ['start_point', '=', $destination1],
                 ['end_point', '=', $destination2],
+                ['id', '=', $tripRoute],
             ])->get();
             //            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
             $routesList = [];
