@@ -225,8 +225,7 @@ class BookTicketController extends Controller
      */
     public function destroy($id)
     {
-        $bookTicket = BookTicket::find($id)->delete();
-        return redirect('/bookTicket')->with('status','Deleted Successfully');
+
     }
 
     public function status($id){

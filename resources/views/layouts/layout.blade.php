@@ -18,6 +18,7 @@
 
     <!-- Font Awesome Icons-->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -136,6 +137,7 @@
           height: 130px;
           width: 940px;
           opacity:0;
+          bottom:0px;
         }
 
         input[type=radio]:checked {
@@ -169,22 +171,155 @@
        }
 
         .btn{
-            background: #f2a407;
+            background: rgba(40,215,226);
+            height:50px;
+            width:100px;
         }
+        .btn:hover{
+            background:#4c6792;
+        }
+        img {
+        	position: absolute;
+        	top: 15px;
+        	z-index: 0;
+
+        }
+
+        * {
+        	box-sizing: border-box;
+        }
+
+
+        .outer {
+        	position: relative;
+        	background: #fff;
+        	height: 200px;
+        	width: 100%;
+        	overflow: hidden;
+        	display: flex;
+        	align-items: center;
+
+        }
+
+        .big-icon {
+            font-size: 100px;
+            margin-left:1000px;
+        }
+
+        .content {
+        	animation-delay: 0.3s;
+        	position: absolute;
+        	left: 20px;
+
+        	z-index: 3
+
+        }
+
+        h1 {
+        	color: #111;
+        }
+
+        p {
+        	width: 280px;
+        	font-size: 13px;
+        	line-height: 1.4;
+        	color: #aaa;
+        	margin: 20px 0;
+
+        }
+
+        .bg {
+        	display: inline-block;
+        	color: #fff;
+        	background: cornflowerblue;
+        	padding: 5px 10px;
+        	border-radius: 50px;
+        	font-size: .7em;
+        }
+        .button {
+        	width: fit-content;
+        	height: fit-content;
+        }
+
+        .button a {
+        	display: inline-block;
+        	overflow: hidden;
+        	position: relative;
+        	font-size: 15px;
+        	color: #111;
+        	text-decoration: none;
+        	padding: 5px 5px;
+        	border: 1px solid #aaa;
+        	font-weight: bold;
+
+
+        }
+
+        .button a:after{
+        	content: "";
+        	position: absolute;
+        	top: 0;
+        	right: -10px;
+        	width: 0%;
+        	background: #111;
+        	height: 100%;
+        	z-index: -1;
+        	transition: width 0.3s ease-in-out;
+        	transform: skew(-25deg);
+        	transform-origin: right;
+        }
+
+        .button a:hover:after {
+        	width: 150%;
+        	left: -10px;
+        	transform-origin: left;
+
+        }
+
+        .button a:hover {
+        	color: #fff;
+        	transition: all 0.5s ease;
+        }
+
+
+        .button a:nth-of-type(1) {
+        	border-radius: 50px 0 0 50px;
+        	border-right: none;
+        }
+
+        .button a:nth-of-type(2) {
+        	border-radius: 0px 50px 50px 0;
+        }
+
+
+
+        .footer {
+        	position: absolute;
+        	bottom: 0;
+        	right: 0;
+        }
+
+        h2{
+           color: #4c6792;
+           display:inline-block;
+           margin-left:200px;
+           font-family:"Berlin Sans FB",sans-serif;
+        }
+         h3{
+           color: #4c6792;
+           font-family:"Berlin Sans FB",sans-serif;
+        }
+         h4{
+           color: #4c6792;
+           display:inline-block;
+           font-family:"Arial",sans-serif;
+        }
+
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'JhunJhun Travels') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
     @if (session('success'))
         <div class="alert alert-success" role="alert">
             {!! session('success') !!}
@@ -196,10 +331,7 @@
             {!! session('error') !!}
         </div>
     @endif
-    <div class="container m-5 p-5">
-        <div class="col">
-            @yield('content')
-        </div>
+    @yield('content')
     </div>
     <div class="row justify-content-center mr-5">
         <div class="col-auto">

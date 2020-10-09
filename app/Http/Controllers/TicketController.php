@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Model\BookTicket;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use App\Mail\SendMail;
@@ -155,7 +156,8 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-
+        $ticket = Ticket::find($id)->delete();
+        return redirect('/tickets')->with('status','Deleted Successfully');
     }
 
     public function status($id){

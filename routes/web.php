@@ -31,12 +31,13 @@ Route::get('/sendMail', 'TicketController@store');
 Route::get('/setLimit/{id}', 'PageController@setLimit')->name('set.setLimit');
 
 Route::resource('/bookTicket', 'BookTicketController');
-Route::get('/bookTicket/destroy/{id}', 'BookTicketController@destroy')->name('b.destroy');
+
 
 Route::get('/route/checkRoute','RouteController@checkRoute');
 Route::post('/tickets/check','TicketController@checkTicket');
 Route::get('/tickets/book', 'TicketController@bookTicket')->name('book');
 Route::resource('tickets','TicketController');
+Route::get('/tickets/destroy/{id}', 'TicketController@destroy')->name('t.destroy');
 
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
