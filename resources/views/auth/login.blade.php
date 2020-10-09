@@ -50,13 +50,13 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-block login-btn btn-primary" style="background:#f2a407">
+                            <button type="submit" class="btn btn-block login-btn btn-primary" style="background:rgba(40,215,226)">
                                 {{ __('Login') }}
                             </button>
                             @if (Route::has('password.request'))
-                             <a href="{{ route('password.request')}}" style="color:#f2a407" class="forgot-password-link">Forgot password?</a>
+                             <a href="{{ route('password.request')}}" style="color:rgba(40,215,226)" class="forgot-password-link">Forgot password?</a>
                             @endif
-                             <p class="login-card-footer-text">Don't have an account? <a href="{{ route('register') }}" style="color:#f2a407">Register here</a></p>
+                             <p class="login-card-footer-text">Don't have an account? <a href="{{ route('register') }}" style="color:rgba(40,215,226)">Register here</a></p>
                         </div>
                     </form>
 

@@ -52,13 +52,13 @@
                         <div class="form-group row ml-1">
                             <label for="role">{{ __('Role') }}</label>
                                 <div class="form-check ml-2 mr-2" id="radioOption">
-                                    <input class='form-check-input' type='radio' name='role_id' value='2'>Customer<br>
+                                    <input id="role_id" class="form-check-input  @error('radio_id') is-invalid @enderror" type="radio" name="role_id" value="2" required>Customer<br>
                                 </div>
                                 <div class="form-check" id="radioOption">
-                                    <input class='form-check-input' type='radio' name='role_id' value='3'>Travel Agent
+                                    <input id="role_id" class="form-check-input  @error('radio_id') is-invalid @enderror" type="radio" name="role_id" value="3">Travel Agent
                                 </div>
 
-                                @error('role')
+                                @error("role_id")
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-block login-btn btn-primary" style="background:#f2a407">
+                            <button type="submit" class="btn btn-block login-btn btn-primary" style="background:rgba(40,215,226)">
                                 {{ __('Register') }}
                             </button>
                         </div>
