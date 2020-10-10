@@ -150,7 +150,6 @@
           <ul class="nav navbar-nav navbar-right">
            <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-           <li class="nav-item"><a class="nav-link" href="#popular">Popular Destinations</a></li>
            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
            </ul>
            <div style="margin-top:30px;font-weight:bolder">
@@ -208,12 +207,7 @@
                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
                  </svg>
                </div>
-               <input class="form-control @error('firstPlace') is-invalid @enderror" list="firstPlace" id="destination1" name="destination1" type="text" placeholder="From" required/>
-               @error('firstPlace')
-                   <span class="invalid-feedback" role="alert">
-                       <strong>{{ $message }}</strong>
-                   </span>
-               @enderror
+               <input class="form-control" list="firstPlace" id="destination1" name="destination1" type="text" placeholder="From"/>
                <datalist id="firstPlace">
                   @foreach($route as $r)
                       <option value="{{$r->start_point}}">{{$r->start_point}}</option>
@@ -226,7 +220,7 @@
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
                   </svg>
                 </div>
-                <input list="secondPlace" id="destination2" name="destination2" type="text" placeholder="To" required/>
+                <input list="secondPlace" id="destination2" name="destination2" type="text" placeholder="To"/>
                  <datalist id="secondPlace">
                      @foreach($route as $r)
                         <option value="{{$r->end_point}}">{{$r->end_point}}</option>
@@ -239,7 +233,7 @@
                    <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
                  </svg>
                </div>
-               <input class="datepicker" type="date" name="date" id="date" placeholder="Departure" min="{{$dateToday}}" required/>
+               <input class="datepicker" type="date" name="date" id="date" placeholder="Departure" min="{{$dateToday}}"/>
              </div>
              <div class="input-field fouth-wrap">
                <div class="icon-wrap">

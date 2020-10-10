@@ -68,7 +68,6 @@ class TicketController extends Controller
         $booking = $request->input('booking_date');
         $route = +$request->input('route');
         $vehicleType = +$request->input('vehicleType');
-
         $trips = Trip::where([
             ['departure_date', '=', $booking],
             ['route_id', '=', $route],

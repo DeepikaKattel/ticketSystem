@@ -50,7 +50,7 @@ class RouteController extends Controller
         $route = new Route();
         $route->start_point = request('start_point');
         $route->end_point = request('end_point');
-        $route->name = $route->start_point. '' .$route->end_point;
+        $route->name = $route->start_point. ' - ' .$route->end_point;
         $route->stoppage_points = request('stoppage_points');
         $route->distance = request('distance');
         $route->child_seat = request('child_seat');
