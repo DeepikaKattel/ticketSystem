@@ -143,8 +143,8 @@
           -webkit-appearance: none;
           outline: 0.1em solid black;
           outline-offset: 0.1em;
-          height: 130px;
-          width: 940px;
+          height: 40px;
+          width: 95px;
           opacity:0;
           bottom:0px;
         }

@@ -95,9 +95,9 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<div class='outer radiodiv' onclick=selected(this) style='color:black;border:1px solid grey;padding-top:10px'><div class='content animated fadeInLeft'><input class='form-check-input' id='' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'> "+ "<span class='bg animated fadeInDown'>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}">{{$v->name}}</option>@endforeach' + "</span>" + "<br>"+
+                    $('#radioOption').append("<div class='outer radiodiv' style='color:black;border:1px solid grey;padding-top:10px'><div class='content animated fadeInLeft'> "+ "<span class='bg animated fadeInDown'>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}">{{$v->name}}</option>@endforeach' + "</span>" + "<br>"+
                     "<h3>" +  message.vehicle.name + ' ' + message.vehicle.reg_number + "</h3>" + "<p>" + " Available Seats:" +' '+ message.available_seats + "<br>" + "Departure Time:" +' '+ message.time + "</p>" +
-                    "<div class='button'><a href='#'>" + "RS." + message.price + "</a><a class='cart-btn' href='#' ><i class='fa fa-seat'></i>VIEW SEATS</a></div></div><i class='fa fa-bus big-icon'></i></div>");
+                    "<div class='button'><a href='#'>" + "RS." + message.price + "</a><a href='#' onclick=selected(this)><input class='form-check-input' id='' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div></div><i class='fa fa-bus big-icon'></i></div>");
                     });
                 $('#availableTickets').show();
 
