@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color:white;height:80px">
      <div class="container">
@@ -15,7 +15,7 @@
      </div>
    </nav>
 
-    <form action="/tickets" method="POST" class="mx-5">
+    <form action="/tickets" method="POST" id="form" class="mx-5">
         @csrf
 
         <div class="form-group">
@@ -255,19 +255,9 @@ function clear() {
     total_ammount_price();
   });
 
-  function total_ammount_price() {
-    var sum = 0;
-    $('.cost').each(function(){
-      var value = $(this).val();
-      if(value.length != 0)
-      {
-        sum += parseFloat(value);
-      }
-    });
-    $('#estimated_ammount').val(sum);
-  }
 
 </script>
+
 @endsection
 
 

@@ -18,6 +18,7 @@ use App\Model\Ticket;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade as PDF;
+Use RealRashid\SweetAlert\Facades\Alert;
 
 
 class TicketController extends Controller
@@ -54,6 +55,10 @@ class TicketController extends Controller
             ['id', '=', $vehicleTypeS],
         ])->get();
         $vehicle = Vehicle::all();
+        if(session('success_message')){
+            Alert::success('Success!', session('success_message'));
+        }
+
         return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle','date2','destination'));
     }
 
@@ -133,7 +138,7 @@ class TicketController extends Controller
                 $ticket->name = json_encode($request->name);
                 $ticket->phoneNumber = json_encode($request->phoneNumber);
                 $ticket->save();
-                $pdf = PDF::loadView('ticket',['ticket'=>$ticket]);
+
             }
 
             $bookMessage = [
@@ -141,11 +146,11 @@ class TicketController extends Controller
                 'body' => 'Your ticket has been booked.'
             ];
 
-
+            $pdf = PDF::loadView('ticket',['ticket'=>$ticket]);
             $message = new SendMail($bookMessage);
             $message->attachData($pdf->output(), "ticket.pdf");
             Mail::to($userDetails->email)->send($message);
-            return redirect()->back()->with("success","Your ticket has been booked. Please check your mail.");
+            return redirect()->back()->withSuccessMessage("Your ticket has been booked. Please check your mail.");
         }else{
             Session::put('book', $ticket);
             return redirect()->route('login');

@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -329,7 +330,7 @@
 </head>
 <body>
 
-    @if (session('success'))
+    {{--@if (session('success'))
         <div class="alert alert-success" role="alert">
             {!! session('success') !!}
         </div>
@@ -339,7 +340,8 @@
         <div class="alert alert-error" role="alert" style="background: red">
             {!! session('error') !!}
         </div>
-    @endif
+    @endif--}}
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     @yield('content')
     </div>
     <div class="row justify-content-center mr-5">
