@@ -58,16 +58,13 @@ class LoginController extends Controller
         $this->guard()->logout();
         return redirect('/');
     }
-//    protected function authenticated(Request $request)
-//    {
-//        if ( Session::get('book') ) {
-//            return redirect('/tickets/book');
-//        }
-//        elseif (Auth::check() && Auth::user()->role_id == '1') {
-//            return('/adminOnlyPage');
-//        }
-//        else{
-//            return('/');
-//        }
-//    }
+    protected function authenticated(Request $request)
+    {
+        if ( Session::get('book') ) {
+            return redirect('/tickets/book');
+        }
+        else{
+            return('/');
+        }
+    }
 }

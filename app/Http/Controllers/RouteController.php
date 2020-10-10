@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Model\Route;
+use App\Model\Trip;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -144,28 +146,33 @@ class RouteController extends Controller
         $destination1 = $request->input('destination1');
         $destination2 = $request->input('destination2');
         $date = $request->input('date');
+        $dateToday = Carbon::now();
         $vehicleType = $request->input('vehicleType');
-        $tripDate = DB::table('trips')->where('departure_date','=',$date)->count();
-        $tripRoute = DB::table('trips')->select('route_id')->value('route_id');
+        $tripDate = DB::table('trips')->where('departure_date','=',$date)->where('departure_date','>',$dateToday)->count();
+        $tripRoute = DB::table('trips')->where('available_seats','>',0)->select('route_id')->value('route_id');
+        $trip = Trip::first();
+        $vehicleTypeTrip = $trip->vehicle->vehicleType_id;
         if ($tripDate > 0) {
-            $routes = Route::where([
-                ['start_point', '=', $destination1],
-                ['end_point', '=', $destination2],
-                ['id', '=', $tripRoute],
-            ])->get();
-            //            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
-            $routesList = [];
-            foreach ($routes as $route) {
-                array_push($routesList, $route);
+            if($vehicleTypeTrip == $vehicleType) {
+                $routes = Route::where([
+                    ['start_point', '=', $destination1],
+                    ['end_point', '=', $destination2],
+                    ['id', '=', $tripRoute],
+                ])->get();
+                //            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
+                $routesList = [];
+                foreach ($routes as $route) {
+                    array_push($routesList, $route);
+                }
+                $data = [
+                    'routesList' => $routesList
+                ];
+                Session::put('key', $destination1);
+                Session::put('key2', $destination2);
+                Session::put('key3', $date);
+                Session::put('key4', $vehicleType);
+                return response()->json($data, 200);
             }
-            $data = [
-                'routesList' => $routesList
-            ];
-            Session::put('key', $destination1);
-            Session::put('key2', $destination2);
-            Session::put('key3', $date);
-            Session::put('key4', $vehicleType);
-            return response()->json($data, 200);
         }
 
 

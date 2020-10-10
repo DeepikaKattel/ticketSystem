@@ -10,8 +10,12 @@ class Ticket extends Model
 {
     public $timestamps = false;
     protected $casts = [
-        'allocated_seats' => 'array'
+        'allocated_seats' => 'array',
     ];
+    protected $fillable = ([
+        'name[]','phoneNumber[]'
+    ]);
+
     public function trip(){
     	return $this->belongsTo(Trip::class);
     }

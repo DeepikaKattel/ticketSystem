@@ -108,13 +108,16 @@ class TicketController extends Controller
         $this->validate($request, [
             'trip' => 'required',
         ]);
+        $request->validate([
+            'name' => 'required',
+            'phoneNumber' => 'required'
+        ]);
 
         $ticket = new Ticket();
         $ticket->trip_id = $request->input('trip');
         $ticket->no_of_passenger = $new_allocated_seat;
         $ticket->amount = $trip->price * $new_allocated_seat;
         $ticket->allocated_seats = $request->input('new_allocated_seats');
-
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
         if (Auth::check()) {
@@ -122,23 +125,27 @@ class TicketController extends Controller
             $userDetails = DB::table('users')
                 ->select('email','firstName','lastName', 'phoneNumber')
                 ->where('id','=', $id)->first();
+
             $ticket->email = $userDetails->email;
-            $ticket->name = $userDetails->firstName . $userDetails->lastName;
-            $ticket->phoneNumber = $userDetails->phoneNumber;
             $trip->save();
-            $ticket->save();
+            $count = count((is_countable($request->name)?$request->name:[]));
+            for ($i=0; $i < $count; $i++) {
+                $ticket->name = json_encode($request->name);
+                $ticket->phoneNumber = json_encode($request->phoneNumber);
+                $ticket->save();
+                $pdf = PDF::loadView('ticket',['ticket'=>$ticket]);
+            }
 
             $bookMessage = [
                 'title' => 'Booking Confirmation',
-                'body' => 'Your appointment has been booked.'
+                'body' => 'Your ticket has been booked.'
             ];
 
-            $pdf = PDF::loadView('ticket',['userDetails'=>$userDetails,'ticket'=>$ticket]);
 
             $message = new SendMail($bookMessage);
             $message->attachData($pdf->output(), "ticket.pdf");
             Mail::to($userDetails->email)->send($message);
-            return redirect()->back()->with("success","Your appointment has been booked.");
+            return redirect()->back()->with("success","Your ticket has been booked. Please check your mail.");
         }else{
             Session::put('book', $ticket);
             return redirect()->route('login');

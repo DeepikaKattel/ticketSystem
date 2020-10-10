@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color:white;height:80px">
      <div class="container">
        <div class="navbar-header">
@@ -46,8 +46,7 @@
 
         </div>
 
-
-        <div class="card p-2" id="availableTickets">
+        <div class="card p-2" id="availableTickets" style="margin-top:100px">
             <div class="mb-2" id="radioOption" style="margin-top:10px;box-shadow:2px 2px black"></div>
             <div class="exit exit--back fuselage ml-4" id="exit" style="display:none"></div>
             <div class="window window--back ml-4" id="window" style="display:none"></div>
@@ -58,6 +57,36 @@
                 <div id="new"></div>
             </div>
              <div class="form-group mt-5 ml-4" id="bookBtn" style="display:none">
+                <div class="row">
+                     <div class="col-md-2">
+                         <label for="">Passenger Name</label>
+                         <input type="text" placeholder="Enter Name" class="form-control form-control-sm" name="name"  id="name" value="" required>
+                         <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
+                     </div>
+                     <div class="col-md-2">
+                         <label for="">Phone Number</label>
+                         <input type="text" placeholder="Enter Phone Number" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" value="" required>
+                         <font style="color:red"> {{ $errors->has('phoneNumber') ?  $errors->first('phoneNumber') : '' }} </font>
+                     </div>
+                     <div class="col-md-2" style="margin-top:26px;">
+                         <h4 id="addMore">Add More </h4>
+                     </div>
+                  </div>
+                  <table class="table table-sm table-bordered" style="display: none;">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Cost</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+
+                      <tbody id="addRow" class="addRow">
+
+                      </tbody>
+
+
+                      </table>
                 <input type="submit" value="Book" class="btn btn-primary">
             </div>
         </div>
@@ -176,6 +205,67 @@ function clear() {
         item.style.backgroundColor = '';
     }
 }
+
+</script>
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+
+<script id="document-template" type="text/x-handlebars-template">
+  <tr class="delete_add_more_item" id="delete_add_more_item">
+
+      <td>
+        <input type="text" name="name[]" value="@{{ name }}">
+      </td>
+      <td>
+        <input type="text" class="cost" name="phoneNumber[]" value="@{{ phoneNumber }}">
+      </td>
+
+      <td>
+       <i class="removeaddmore" style="cursor:pointer;color:red;">Remove</i>
+      </td>
+
+  </tr>
+ </script>
+
+<script type="text/javascript">
+
+ $(document).on('click','#addMore',function(){
+
+     $('.table').show();
+
+     var name = $("#name").val();
+     var phoneNumber = $("#phoneNumber").val();
+     var source = $("#document-template").html();
+     var template = Handlebars.compile(source);
+
+     var data = {
+        name: name,
+        phoneNumber: phoneNumber
+     }
+
+     var html = template(data);
+     $("#addRow").append(html)
+
+     total_ammount_price();
+ });
+
+  $(document).on('click','.removeaddmore',function(event){
+    $(this).closest('.delete_add_more_item').remove();
+    total_ammount_price();
+  });
+
+  function total_ammount_price() {
+    var sum = 0;
+    $('.cost').each(function(){
+      var value = $(this).val();
+      if(value.length != 0)
+      {
+        sum += parseFloat(value);
+      }
+    });
+    $('#estimated_ammount').val(sum);
+  }
 
 </script>
 @endsection
