@@ -214,11 +214,13 @@
         	align-items: center;
 
         }
-
+        table th{
+            width:250px;
+        }
         .big-icon {
             font-size: 50px;
             margin-left:1020px;
-            top:0px;
+            margin-top:50px;
 
         }
         .content {
@@ -235,7 +237,7 @@
         }
 
         p {
-        	width: 280px;
+        	width: 480px;
         	font-size: 13px;
         	line-height: 1.1;
         	color: #aaa;
@@ -257,7 +259,7 @@
         	width: fit-content;
         	height: fit-content;
         	margin-left:960px;
-        	top:0px;
+        	margin-top:5px;
         }
 
         .button a{
@@ -353,10 +355,8 @@
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     @yield('content')
     </div>
-    <div class="row justify-content-center mr-5">
-        <div class="col-auto">
-            <p>© Copyright 2020 Jhun Travels</p>
-        </div>
+    <div class="row justify-content-center mt-5">
+         <p>© Copyright 2020 Jhun Travels</p>
     </div>
 </body>
 </html>

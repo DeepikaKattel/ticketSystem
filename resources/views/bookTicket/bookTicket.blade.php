@@ -53,13 +53,13 @@
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">Select Seat</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="exit exit--back fuselage ml-4" id="exit" style="display:none"></div>
                         <div class="window window--back ml-4" id="window" style="display:none"></div>
-                        <div class="form-check ml-4" id="vehicleLayout"></div>
+                        <div class="form-check ml-5" id="vehicleLayout"></div>
                         <div class="exit exit--back fuselage ml-4" id="exit1" style="display:none"></div>
                         <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">
                             <div id="all"></div>
@@ -67,25 +67,25 @@
                         </div>
                          <div class="form-group mt-5 ml-4" id="bookBtn" style="display:none">
                             <div class="row">
-                                 <div class="col-md-2">
+                                 <div class="col-md-5">
                                      <label for="">Passenger Name</label>
-                                     <input type="text" placeholder="Enter Name" class="form-control form-control-sm" name="name"  id="name" value="" required>
+                                     <input type="text" placeholder="Name" class="form-control form-control-sm" name="name"  id="name" required>
                                      <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
                                  </div>
-                                 <div class="col-md-2">
+                                 <div class="col-md-5">
                                      <label for="">Phone Number</label>
-                                     <input type="text" placeholder="Enter Phone Number" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" value="" required>
+                                     <input type="text" placeholder="Number" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" required>
                                      <font style="color:red"> {{ $errors->has('phoneNumber') ?  $errors->first('phoneNumber') : '' }} </font>
                                  </div>
                                  <div class="col-md-2" style="margin-top:26px;">
-                                     <h4 id="addMore">Add</h4>
+                                     <h4 id="addMore" style="color:green">Add</h4>
                                  </div>
                               </div>
                               <table class="table table-sm table-bordered" style="display: none;">
                                   <thead>
                                       <tr>
-                                          <th>Name</th>
-                                          <th>Cost</th>
+                                          <th>Passenger Name</th>
+                                          <th>Phone Number</th>
                                           <th>Action</th>
                                       </tr>
                                   </thead>
@@ -137,7 +137,7 @@ function checkTicket() {
             }else{
                 data.listTickets.forEach(function(message){
                     $('#radioOption').append("<div class='outer radiodiv' style='color:black;border:1px solid grey;padding-top:5px'><i class='fa fa-bus big-icon'></i><div class='content'> "+ "<span class='bg animated fadeInDown'>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}">{{$v->name}}</option>@endforeach' + "</span>" +
-                    "<h3>" +  message.vehicle.name + ' ' + message.vehicle.reg_number + "</h3>" + "<p>" + " Available Seats:" +' '+ message.available_seats + "<br>" + "Departure Time:" +' '+ message.time + "</p>" +
+                    "<table>"+"<thead>"+"<tr>"+"<th>"+"<h4>" + "Vehicle Name" + "</h4>" + "</th>" + "<th>"+"<h4>" + "Available Seats" + "</h4>" + "</th>" + "<th>"+"<h4>" + "Departure Time" + "</h4>" + "</th>" + "<th>"+"<h4>" + "Arrival Time" + "</h4>" + "</th>" + "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</td>" + "<td>" + message.available_seats  + "</td>" + "<td>" + message.time + "</td>" + "<td>" + message.arrival_time + "</td>" +"</tbody>" +
                     "<div class='button'><a href='#'>" + "RS." + message.price + "</a><a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div></div></div>");
                     });
                 $('#availableTickets').show();
@@ -227,10 +227,10 @@ function clear() {
   <tr class="delete_add_more_item" id="delete_add_more_item">
 
       <td>
-        <input type="text" name="name[]" value="@{{ name }}">
+        <input type="text" name="name[]" value="@{{ name }}" style="width:120px">
       </td>
       <td>
-        <input type="text" class="cost" name="phoneNumber[]" value="@{{ phoneNumber }}">
+        <input type="text" class="cost" name="phoneNumber[]" value="@{{ phoneNumber }}" style="width:120px">
       </td>
 
       <td>
