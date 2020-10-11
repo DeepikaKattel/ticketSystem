@@ -198,7 +198,7 @@
    <div class="s002">
         <form  id="checkDestination">
            <fieldset>
-             <legend>Jhun Jhun Travels</legend>
+             <legend>Auto Bus Sewa</legend>
            </fieldset>
            <div class="inner-form">
              <div class="input-field first-wrap">
@@ -358,7 +358,7 @@
                     <i class="fa fa-phone fa-lg"></i> +977 4124124<br>
                     <i class="fa fa-fax fa-lg"></i> +977 26534232<br>
                     <i class="fa fa-envelope fa-lg"></i>
-                    <a href="mailto:jhunTravels@travel.net">jhunTravels@travel.net</a>
+                    <a href="mailto:autoBusSewa@travel.net">autoBusSewa@travel.net</a>
                 </address>
             </div>--}}
             <div class="text-center">
@@ -368,7 +368,7 @@
                 <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
                 <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
                 <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                <h3>© Copyright 2020 Jhun Travels</h3>
+                <h3>© Copyright 2020 Auto Bus Sewa</h3>
             </div>
         </div>
 

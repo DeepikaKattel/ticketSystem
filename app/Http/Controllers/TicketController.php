@@ -142,6 +142,8 @@ class TicketController extends Controller
                 'body' => 'Your ticket has been booked.'
             ];
 
+
+
             $pdf = PDF::loadView('ticket',['ticket'=>$ticket]);
             $message = new SendMail($bookMessage);
             $message->attachData($pdf->output(), "ticket.pdf");

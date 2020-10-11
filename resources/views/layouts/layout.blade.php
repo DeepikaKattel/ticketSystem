@@ -20,6 +20,10 @@
     <!-- Font Awesome Icons-->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{asset('css/bootstrap-social.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -203,7 +207,7 @@
         .outer {
         	position: relative;
         	background: #fff;
-        	height: 200px;
+        	height: 150px;
         	width: 100%;
         	overflow: hidden;
         	display: flex;
@@ -212,17 +216,18 @@
         }
 
         .big-icon {
-            font-size: 100px;
-            margin-left:1000px;
-        }
+            font-size: 50px;
+            margin-left:1020px;
+            top:0px;
 
+        }
         .content {
         	animation-delay: 0.3s;
         	position: absolute;
         	left: 20px;
-
-        	z-index: 3
-
+            height:150px;
+        	z-index: 3;
+        	display:inline-block;
         }
 
         h1 {
@@ -232,7 +237,7 @@
         p {
         	width: 280px;
         	font-size: 13px;
-        	line-height: 1.4;
+        	line-height: 1.1;
         	color: #aaa;
         	margin: 20px 0;
 
@@ -240,22 +245,26 @@
 
         .bg {
         	display: inline-block;
-        	color: #fff;
-        	background: cornflowerblue;
-        	padding: 5px 10px;
-        	border-radius: 50px;
-        	font-size: .7em;
+            color: #fff;
+            background: cornflowerblue;
+            padding: 5px 50px;
+            margin-top:5px;
+            margin-left:950px;
+            border-radius: 50px;
+            font-size: .6em;
         }
         .button {
         	width: fit-content;
         	height: fit-content;
+        	margin-left:960px;
+        	top:0px;
         }
 
-        .button a {
+        .button a{
         	display: inline-block;
         	overflow: hidden;
         	position: relative;
-        	font-size: 15px;
+        	font-size: 10px;
         	color: #111;
         	text-decoration: none;
         	padding: 5px 5px;
