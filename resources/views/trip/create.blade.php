@@ -18,6 +18,18 @@
                         <label>Departure Time</label>
                         <input type="time" name="time" class="form-control" required>
                     </div>
+                     <div class="form-group">
+                        <label>Arrival Time</label>
+                        <input type="time" name="arrival_time" class="form-control" required>
+                    </div>
+                     <div class="form-group">
+                        <label>Pick Up</label>
+                        <input type="text" name="pickUp" class="form-control" required>
+                    </div>
+                     <div class="form-group">
+                        <label>Drop Up</label>
+                        <input type="text" name="dropUp" class="form-control" required>
+                    </div>
                     <div class="form-group">
                         <label>Vehicle</label>
                         <select class="form-control" id="vehicle" name="vehicle" required >

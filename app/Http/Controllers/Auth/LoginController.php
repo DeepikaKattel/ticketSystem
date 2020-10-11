@@ -38,7 +38,7 @@ class LoginController extends Controller
             return('/customerOnlyPage');
         }
         else{
-            return('/');
+            return redirect('/');
         }
     }
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -64,7 +64,7 @@ class LoginController extends Controller
             return redirect('/tickets/book');
         }
         else{
-            return('/');
+            return redirect('/');
         }
     }
 }

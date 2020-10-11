@@ -55,9 +55,6 @@ class TicketController extends Controller
             ['id', '=', $vehicleTypeS],
         ])->get();
         $vehicle = Vehicle::all();
-        if(session('success_message')){
-            Alert::success('Success!', session('success_message'));
-        }
 
         return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle','date2','destination'));
     }
@@ -138,7 +135,6 @@ class TicketController extends Controller
                 $ticket->name = json_encode($request->name);
                 $ticket->phoneNumber = json_encode($request->phoneNumber);
                 $ticket->save();
-
             }
 
             $bookMessage = [

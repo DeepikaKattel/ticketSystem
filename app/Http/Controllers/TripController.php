@@ -52,6 +52,9 @@ class TripController extends Controller
         $trip->title = request('title');
         $trip->departure_date = request('date');
         $trip->time = request('time');
+        $trip->arrival_time = request('arrival_time');
+        $trip->pickUp = request('pickUp');
+        $trip->dropUp = request('dropUp');
         $trip->vehicle_id = request('vehicle');
         $trip->route_id = request('route');
         $trip->price = request('price');
@@ -108,6 +111,9 @@ class TripController extends Controller
         $trip->title = request('title');
         $trip->departure_date = request('date');
         $trip->time = request('time');
+        $trip->arrival_time = request('arrival_time');
+        $trip->pickUp = request('pickUp');
+        $trip->dropUp = request('dropUp');
         $trip->vehicle_id = request('vehicle');
         $trip->route_id = request('route');
         $trip->save();
