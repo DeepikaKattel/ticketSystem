@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'JhunJhun Travels') }}</title>
+    <title>{{ config('app.name', 'Auto Bus Sewa') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -356,7 +356,7 @@
     @yield('content')
     </div>
     <div class="row justify-content-center mt-5">
-         <p>© Copyright 2020 Jhun Travels</p>
+         <p>© Copyright 2020 Auto Bus Sewa</p>
     </div>
 </body>
 </html>

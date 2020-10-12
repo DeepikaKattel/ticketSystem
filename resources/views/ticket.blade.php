@@ -5,10 +5,11 @@
 </head>
 <body>
     <h1 class="text-center">Auto Bus Sewa Ticket</h1>
+    <img src="{{asset('images/jhunLogo.png')}}" height="50" width="100">
 
     <p class="row">
         <hr style="margin-top: 10px;">
-            <table class="table">
+            <table class="table" style="display: inline-block;">
                 <thead class="thead-dark">
                 <tr style="font-size: 14px">
                     <th scope="col">Passenger Name</th>
@@ -22,7 +23,7 @@
                 @endforeach
                 </tbody>
             </table>
-            <table class="table">
+            <table class="table" style="display: inline-block;">
                 <thead class="thead-dark">
                 <tr style="font-size: 14px">
                     <th scope="col">Phone Number</th>

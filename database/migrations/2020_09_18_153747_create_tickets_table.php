@@ -22,6 +22,10 @@ class CreateTicketsTable extends Migration
             $table->integer('no_of_passenger');
             $table->float('amount', 8,2);
             $table->text('allocated_seats');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('trip_type');
+            $table->date('return_date');
             $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
             $table->boolean('status')->nullable();
             $table->timestamps();
