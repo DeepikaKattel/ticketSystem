@@ -200,8 +200,6 @@
         	box-sizing: border-box;
         }
 
-
-
         .outer {
         	position: relative;
         	background: #fff;
@@ -236,7 +234,7 @@
         }
 
         p {
-        	width: 480px;
+        	width: 400px;
         	font-size: 15px;
         	font-weight:bolder;
         	line-height: 1.1;
