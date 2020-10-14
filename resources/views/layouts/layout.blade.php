@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Auto Bus Sewa') }}</title>
+    <title>Auto Bus Sewa</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -207,7 +207,7 @@
         .outer {
         	position: relative;
         	background: #fff;
-        	height: 150px;
+        	height: 120px;
         	width: 100%;
         	overflow: hidden;
         	display: flex;
@@ -220,14 +220,15 @@
         .big-icon {
             font-size: 50px;
             margin-left:1020px;
-            margin-top:50px;
+            margin-top:10px;
 
         }
         .content {
         	animation-delay: 0.3s;
         	position: absolute;
         	left: 20px;
-            height:150px;
+            height:120px;
+            top: 10px;
         	z-index: 3;
         	display:inline-block;
         }
@@ -249,16 +250,14 @@
         	display: inline-block;
             color: #fff;
             background: cornflowerblue;
-            padding: 5px 50px;
-            margin-top:5px;
-            margin-left:950px;
+            padding: 5px 15px;
             border-radius: 50px;
-            font-size: .6em;
+            font-size: .9em;
         }
         .button {
         	width: fit-content;
-        	height: fit-content;
-        	margin-left:960px;
+        	height: 10px;
+        	margin-left:1050px;
         	margin-top:5px;
         }
 
@@ -304,16 +303,9 @@
 
 
         .button a:nth-of-type(1) {
-        	border-radius: 50px 0 0 50px;
-        	border-right: none;
+        	border-radius: 50px;
+        	border:solid 2px #337ab7;
         }
-
-        .button a:nth-of-type(2) {
-        	border-radius: 0px 50px 50px 0;
-        }
-
-
-
         .footer {
         	position: absolute;
         	bottom: 0;

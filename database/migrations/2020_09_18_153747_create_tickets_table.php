@@ -25,7 +25,7 @@ class CreateTicketsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('trip_type');
-            $table->date('return_date');
+            $table->date('return_date')->nullable();
             $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
             $table->boolean('status')->nullable();
             $table->timestamps();

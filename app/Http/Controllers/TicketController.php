@@ -117,8 +117,15 @@ class TicketController extends Controller
 
         $ticket = new Ticket();
         $ticket->trip_id = $request->input('trip');
+        $ticket->trip_type =  Session::get('key5');
+        $ticket->return_date = Session::get('key6');
         $ticket->no_of_passenger = $new_allocated_seat;
-        $ticket->amount = $trip->price * $new_allocated_seat;
+        if($ticket->trip_type === 'Round Trip') {
+            $ticket->amount = 2 * ($trip->price * $new_allocated_seat);
+        }else{
+            $ticket->amount = $trip->price * $new_allocated_seat;
+        }
+
         $ticket->allocated_seats = $request->input('new_allocated_seats');
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
@@ -127,7 +134,7 @@ class TicketController extends Controller
             $userDetails = DB::table('users')
                 ->select('email','firstName','lastName', 'phoneNumber')
                 ->where('id','=', $id)->first();
-
+            $ticket->user_id = $id;
             $ticket->email = $userDetails->email;
             $trip->save();
             $count = count((is_countable($request->name)?$request->name:[]));

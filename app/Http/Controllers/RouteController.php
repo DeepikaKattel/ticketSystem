@@ -148,6 +148,9 @@ class RouteController extends Controller
         $date = $request->input('date');
         $dateToday = Carbon::now();
         $vehicleType = $request->input('vehicleType');
+        $trip_type = $request->input('trip_type');
+        $return_date = $request->input('return_date');
+
         $tripDate = DB::table('trips')->where('departure_date','=',$date)->where('departure_date','>',$dateToday)->count();
         $tripRoute = DB::table('trips')->where('available_seats','>',0)->select('route_id')->value('route_id');
         $trip = Trip::first();
@@ -171,6 +174,8 @@ class RouteController extends Controller
                 Session::put('key2', $destination2);
                 Session::put('key3', $date);
                 Session::put('key4', $vehicleType);
+                Session::put('key5', $trip_type);
+                Session::put('key6', $return_date);
                 return response()->json($data, 200);
             }
         }

@@ -6,7 +6,7 @@
      <div class="container">
        <div class="navbar-header">
           <a class="navbar-brand" href="/"><img src="{{asset('images/jhunLogo.png')}}" height="50" width="100"></a>
-           <h2>@foreach($routes as $r)<option value="{{$r->id}}">{{$r->start_point}} --> {{$r->end_point}}</option>@endforeach</h2>
+           <h2>@foreach($routes as $r)<option value="{{$r->id}}">{{$r->start_point}} -- {{$r->end_point}}</option>@endforeach</h2>
            <h2>Departure:{{$date2}}</h2>
        </div>
        <div id="navbar" class="collapse navbar-collapse">
@@ -47,13 +47,13 @@
         </div>
 
         <div class="card p-2" id="availableTickets" style="margin-top:100px">
-            <div class="mb-2" id="radioOption" style="margin-top:10px;box-shadow:2px 2px black"></div>
+            <div id="radioOption"></div>
             <div id="seatModal" class="modal fade" role="dialog">
              <div class="modal-dialog">
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Select Seat</h4>
+                        <h6 class="modal-title">Select Seat</h6>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -68,25 +68,25 @@
                          <div class="form-group mt-5 ml-4" id="bookBtn" style="display:none">
                             <div class="row">
                                  <div class="col-md-5">
-                                     <label for="">Passenger Name</label>
-                                     <input type="text" placeholder="Name" class="form-control form-control-sm" name="name"  id="name" required>
+                                     <label for="" style="font-size:12px">Passenger Name</label>
+                                     <input style="height:25px"  type="text" class="form-control form-control-sm" name="name"  id="name" required>
                                      <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
                                  </div>
                                  <div class="col-md-5">
-                                     <label for="">Phone Number</label>
-                                     <input type="text" placeholder="Number" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" required>
+                                     <label for="" style="font-size:12px">Phone Number</label>
+                                     <input style="height:25px" type="text" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" required>
                                      <font style="color:red"> {{ $errors->has('phoneNumber') ?  $errors->first('phoneNumber') : '' }} </font>
                                  </div>
                                  <div class="col-md-2" style="margin-top:26px;">
-                                     <h4 id="addMore" style="color:green">Add</h4>
+                                     <span class="bg" id="addMore">Add</span>
                                  </div>
                               </div>
                               <table class="table table-sm table-bordered" style="display: none;">
                                   <thead>
                                       <tr>
-                                          <th>Passenger Name</th>
-                                          <th>Phone Number</th>
-                                          <th>Action</th>
+                                          <th style="font-size:12px">Passenger Name</th>
+                                          <th style="font-size:12px">Phone Number</th>
+                                          <th style="font-size:12px">Action</th>
                                       </tr>
                                   </thead>
 
@@ -136,9 +136,9 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<div class='outer radiodiv' style='color:black;border:1px solid grey;padding-top:5px'><i class='fa fa-bus big-icon'></i><div class='content'> "+ "<span class='bg animated fadeInDown'>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}">{{$v->name}}</option>@endforeach' + "</span>" +
-                    "<table>"+"<thead>"+"<tr>"+"<th>"+"<h4>" + "Vehicle Name" + "</h4>" + "</th>" + "<th>"+"<h4>" + "Available Seats" + "</h4>" + "</th>" + "<th>"+"<h4>" + "Departure Time" + "</h4>" + "</th>" + "<th>"+"<h4>" + "Arrival Time" + "</h4>" + "</th>" + "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</td>" + "<td>" + message.available_seats  + "</td>" + "<td>" + message.time + "</td>" + "<td>" + message.arrival_time + "</td>" +"</tbody>" +
-                    "<div class='button'><a href='#'>" + "RS." + message.price + "</a><a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div></div></div>");
+                    $('#radioOption').append("<div class='outer radiodiv' style='color:black;border:1px solid grey'><i class='fa fa-bus big-icon'></i><div class='content'> "+ "<span class='bg animated fadeInDown'>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}">{{$v->name}}</option>@endforeach' + "</span>" + ' ' + "<a href='#'>" + "RS." + message.price + "</a>" +
+                    "<table>"+"<thead>"+"<tr>"+"<th>"+"<h6>" + "Vehicle Name" + "</h6>" + "</th>" + "<th>"+"<h6>" + "Available Seats" + "</h6>" + "</th>" + "<th>"+"<h6>" + "Departure Time" + "</h6>" + "</th>" + "<th>"+"<h6>" + "Arrival Time" + "</h6>" + "</th>" + "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</td>" + "<td>" + message.available_seats  + "</td>" + "<td>" + message.time + "</td>" + "<td>" + message.arrival_time + "</td>" +"</tbody>" +
+                    "<div class='button'> <a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div></div></div>");
                     });
                 $('#availableTickets').show();
 
@@ -227,14 +227,14 @@ function clear() {
   <tr class="delete_add_more_item" id="delete_add_more_item">
 
       <td>
-        <input type="text" name="name[]" value="@{{ name }}" style="width:120px">
+        <input type="text" name="name[]" value="@{{ name }}" style="width:120px;height:25px" required>
       </td>
       <td>
-        <input type="text" class="cost" name="phoneNumber[]" value="@{{ phoneNumber }}" style="width:120px">
+        <input type="text" name="phoneNumber[]" value="@{{ phoneNumber }}" style="width:120px;height:25px" required>
       </td>
 
       <td>
-       <i class="removeaddmore" style="cursor:pointer;color:red;">Remove</i>
+       <span class="removeaddmore bg" style="cursor:pointer;color:white;background:darkred">Remove</span>
       </td>
 
   </tr>

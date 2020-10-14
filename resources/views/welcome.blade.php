@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Jhun Jhun Travels</title>
+<title>Auto Bus Sewa</title>
  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
 <link href="{{asset('css/form.css')}}" rel="stylesheet" />
@@ -24,7 +24,7 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="{{ asset('js/bootstrap-combobox.js') }}"></script>
+ <script src="{{ asset('js/date.js') }}" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--font awesome bootstrap CDN-->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -60,6 +60,7 @@
     opacity: .5;
     transform: translateX(30%);/*100%*/
 }
+
 .card .details {
     position: absolute;
     top: 0;
@@ -247,10 +248,32 @@
                     @endforeach
                </select>
              </div>
+             <div class="input-field fouth-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                  </svg>
+                </div>
+                <select data-trigger="" id="trip_type" name="trip_type">
+                    <option value="Single Trip">Single Trip</option>
+                    <option value="Round Trip">Round Trip</option>
+                </select>
+              </div>
+
+            <div id="ifYes" class="input-field second-wrap" style="display:none">
+              <div class="icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+                </svg>
+              </div>
+              <input class="datepicker" type="date" name="return_date" id="return_date" placeholder="Return" min="{{$dateToday}}"/>
+            </div>
+
+
              <div class="input-field fifth-wrap">
                 <button id="check" type="button" class="btn-search" onclick="checkRoute()"><i class="fa fa-search">Search Bus</i></button>
              </div>
-               <span class="badge alert-danger" id="notAvailable" style="display:none;font-size:15px;margin-left:5px;padding:5px;width:270px">
+               <span class="badge alert-danger" id="notAvailable" style="display:none;font-size:15px;margin-left:5px;padding:5px;width:500px">
                      Sorry, no buses available.
                </span>
            </div>
@@ -404,6 +427,8 @@
               'destination2' : $('#destination2').val(),
               'date' : $('#date').val(),
               'vehicleType' : $('#vehicleType').val(),
+              'trip_type' : $('#trip_type').val(),
+              'return_date' : $('#return_date').val(),
           };
           $.ajax({
               type: 'GET',
