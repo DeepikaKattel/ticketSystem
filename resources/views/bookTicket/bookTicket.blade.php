@@ -6,14 +6,14 @@
      <div class="container">
        <div class="navbar-header">
           <a class="navbar-brand" href="/"><img src="{{asset('images/jhunLogo.png')}}" height="50" width="100"></a>
-           <h2>@foreach($routes as $r)<option value="{{$r->id}}">{{$r->start_point}} -- {{$r->end_point}}</option>@endforeach</h2>
-           <h2>Departure:{{$date2}}</h2>
+           <h3 style="margin-left:900px">@foreach($routes as $r)<option value="{{$r->id}}" style="color: #4c6792;">{{$r->start_point}} ---- {{$r->end_point}}</option>@endforeach</h3>
        </div>
        <div id="navbar" class="collapse navbar-collapse">
 
        </div><!--/.nav-collapse -->
      </div>
    </nav>
+
 
     <form action="/tickets" method="POST" id="form" class="mx-5">
         @csrf
@@ -45,43 +45,56 @@
              </div>
 
         </div>
+        <div class="card px-5 py-2" style="margin-top:75px;background:#d9d9d9">
+            <table>
+                <thead>
+                    <th>Vehicle <i class="fa fa-bus"></i></th>
+                    <th>Departure <i class="fa fa-arrow-down"></i></th>
+                    <th>Arrival <i class="fa fa-arrow-up"></i></th>
+                    <th>Price Per Person <i class="fa fa-rupee"></i></th>
+                    <th><i class="fa fa-calendar"></i> Date: {{$date2}}</th>
+                </thead>
+            </table>
+        </div>
 
-        <div class="card p-2" id="availableTickets" style="margin-top:100px">
+        <div id="availableTickets" style="margin-top:10px;">
             <div id="radioOption"></div>
             <div id="seatModal" class="modal fade" role="dialog">
              <div class="modal-dialog">
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
-                        <h6 class="modal-title">Select Seat</h6>
+                        <h6 class="modal-title" style="font-size:15px">Select Seat</h6>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="exit exit--back fuselage ml-4" id="exit" style="display:none"></div>
-                        <div class="window window--back ml-4" id="window" style="display:none"></div>
-                        <div class="form-check ml-5" id="vehicleLayout"></div>
-                        <div class="exit exit--back fuselage ml-4" id="exit1" style="display:none"></div>
-                        <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">
-                            <div id="all"></div>
-                            <div id="new"></div>
-                        </div>
+                        <div style="padding-left:70px">
+                            <div class="exit exit--back fuselage ml-4" id="exit" style="display:none"></div>
+                            <div class="window window--back ml-4" id="window" style="display:none"></div>
+                            <div class="form-check ml-5" id="vehicleLayout"></div>
+                            <div class="exit exit--back fuselage ml-4" id="exit1" style="display:none"></div>
+                            <div class="mb-5" style="display: none;" id="vehicleLayoutsHidden">
+                                <div id="all"></div>
+                                <div id="new"></div>
+                            </div>
+                         </div>
                          <div class="form-group mt-5 ml-4" id="bookBtn" style="display:none">
                             <div class="row">
-                                 <div class="col-md-5">
-                                     <label for="" style="font-size:12px">Passenger Name</label>
-                                     <input style="height:25px"  type="text" class="form-control form-control-sm" name="name"  id="name" required>
+                                 <div class="col-md-5 mt-2">
+                                     <label for="" style="font-size:12px;font-family:"Karla", sans-serif">Passenger Name</label>
+                                     <input style="height:28px;font-family:"Karla", sans-serif"  type="text" class="form-control form-control-sm" name="name"  id="name" required>
                                      <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
                                  </div>
-                                 <div class="col-md-5">
-                                     <label for="" style="font-size:12px">Phone Number</label>
-                                     <input style="height:25px" type="text" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" required>
+                                 <div class="col-md-5 mt-2">
+                                     <label for="" style="font-size:12px;font-family:"Karla", sans-serif">Phone Number</label>
+                                     <input style="height:28px;font-family:"Karla", sans-serif" type="text" class="form-control form-control-sm" name="phoneNumber"  id="phoneNumber" required>
                                      <font style="color:red"> {{ $errors->has('phoneNumber') ?  $errors->first('phoneNumber') : '' }} </font>
                                  </div>
                                  <div class="col-md-2" style="margin-top:26px;">
-                                     <span class="bg" id="addMore">Add</span>
+                                     <span class="bg" id="addMore" style="cursor:pointer">Add</span>
                                  </div>
                               </div>
-                              <table class="table table-sm table-bordered" style="display: none;">
+                              <table class="table table-sm table-bordered" style="display: none;margin-top:10px">
                                   <thead>
                                       <tr>
                                           <th style="font-size:12px">Passenger Name</th>
@@ -96,7 +109,7 @@
 
 
                                   </table>
-                            <input type="submit" value="Book" class="btn btn-primary">
+                            <input type="submit" value="Book" class="btn btn-primary mt-3">
                         </div>
                      </div>
                   </div>
@@ -136,8 +149,8 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<div class='outer radiodiv' style='color:black;border:1px solid grey'><i class='fa fa-bus big-icon'></i><div class='content'> "+ "<span class='bg animated fadeInDown'>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}">{{$v->name}}</option>@endforeach' + "</span>" + ' ' + "<a href='#'>" + "RS." + message.price + "</a>" +
-                    "<table>"+"<thead>"+"<tr>"+"<th>"+"<h6>" + "Vehicle Name" + "</h6>" + "</th>" + "<th>"+"<h6>" + "Available Seats" + "</h6>" + "</th>" + "<th>"+"<h6>" + "Departure Time" + "</h6>" + "</th>" + "<th>"+"<h6>" + "Arrival Time" + "</h6>" + "</th>" + "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</td>" + "<td>" + message.available_seats  + "</td>" + "<td>" + message.time + "</td>" + "<td>" + message.arrival_time + "</td>" +"</tbody>" +
+                    $('#radioOption').append("<div class='outer radiodiv' style='margin-bottom:10px'><i class='fa fa-bus big-icon'></i><div class='content'> "+
+                    "<table>"+"<thead>"+"<tr>"+"<th>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</th>" + "<th>"+ message.time +  "</th>" + "<th>"  + message.arrival_time + "</th>" + "<th>"  + "<p style='font-size:15px'>" + "<i class='fa fa-rupee'></i>" + ' ' + message.price + "</p>" + "</th>" +  "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}" style="color:rgba(40,215,226);font-weight:bold">{{$v->name}}</option>@endforeach' +"</td>"+"</tbody>" +
                     "<div class='button'> <a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div></div></div>");
                     });
                 $('#availableTickets').show();
@@ -208,7 +221,7 @@ var divItems = document.getElementsByClassName("radiodiv");
 
 function selected(item) {
     this.clear();
-    item.style.backgroundColor = '#d9fce3';
+    item.style.backgroundColor = 'darkred';
 }
 
 function clear() {

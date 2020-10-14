@@ -40,7 +40,7 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function bookTicket(Request $request)
+    public function bookTicket()
     {
         $data =  Session::get('key');
         $data1 = Session::get('key2');
@@ -55,6 +55,7 @@ class TicketController extends Controller
             ['id', '=', $vehicleTypeS],
         ])->get();
         $vehicle = Vehicle::all();
+
 
         return view('bookTicket.bookTicket', compact('routes', 'vehicleType','vehicle','date2','destination'));
     }
@@ -129,6 +130,8 @@ class TicketController extends Controller
         $ticket->allocated_seats = $request->input('new_allocated_seats');
         $trip->allocated_seats = $request->input('all_allocated_seats');
         $trip->available_seats = $trip->available_seats - $new_allocated_seat;
+
+
         if (Auth::check()) {
             $id = Auth::user()->id;
             $userDetails = DB::table('users')

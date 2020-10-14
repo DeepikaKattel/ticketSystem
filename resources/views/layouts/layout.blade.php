@@ -33,15 +33,7 @@
 
 
     <style>
-        body, html {
-            color:white;
-            font-weight: bolder;
-            background: url({{asset("images/nature.jpg")}}) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
+
         body:before{
             content: '';
             position: absolute;
@@ -49,23 +41,28 @@
             right: 0;
             left: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.3);
+            background: #eee;
+        }
+        nav {
+            position: fixed;
+            left: 0;
+            right: 0;
         }
         .exit{
             position:relative;
             height:20px;
-            width:280px
+            width:260px
         }
 
         .window{
             position:relative;
-            width:350px;
+            width:330px;
         }
         .window:after,.window:before{
             content:"WINDOW";
             font-size:10px;
             line-height:20px;
-            padding:0 2px;font-family:Arial Narrow,Arial,sans-serif;
+            padding:0 2px;
             margin-top: 120px;
             display:block;
             position:absolute;
@@ -87,7 +84,7 @@
             content:"EXIT";
             font-size:10px;
             line-height:10px;
-            padding:0 2px;font-family:Arial Narrow,Arial,sans-serif;
+            padding:0 2px;
             display:block;
             position:absolute;
             background:red;
@@ -204,24 +201,25 @@
         }
 
 
+
         .outer {
         	position: relative;
         	background: #fff;
-        	height: 120px;
+        	height: 90px;
         	width: 100%;
         	overflow: hidden;
         	display: flex;
         	align-items: center;
+        	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
         }
         table th{
             width:250px;
         }
         .big-icon {
-            font-size: 50px;
+            font-size: 40px;
             margin-left:1020px;
             margin-top:10px;
-
         }
         .content {
         	animation-delay: 0.3s;
@@ -239,9 +237,10 @@
 
         p {
         	width: 480px;
-        	font-size: 13px;
+        	font-size: 15px;
+        	font-weight:bolder;
         	line-height: 1.1;
-        	color: #aaa;
+        	color: #4c6792;
         	margin: 20px 0;
 
         }
@@ -249,28 +248,32 @@
         .bg {
         	display: inline-block;
             color: #fff;
-            background: cornflowerblue;
+            background: #4c6792;
             padding: 5px 15px;
-            border-radius: 50px;
+            border-radius: 5px;
             font-size: .9em;
         }
         .button {
         	width: fit-content;
-        	height: 10px;
-        	margin-left:1050px;
-        	margin-top:5px;
+        	height: 5px;
+        	margin-left:1060px;
+        	margin-top:20px;
+        	border-radius:5px;
         }
 
         .button a{
         	display: inline-block;
         	overflow: hidden;
+        	cursor: pointer;
         	position: relative;
+        	border-radius:5px;
         	font-size: 10px;
-        	color: #111;
+        	color: white;
+        	background: #4c6792;
         	text-decoration: none;
-        	padding: 5px 5px;
-        	border: 1px solid #aaa;
+        	padding: 10px 25px;
         	font-weight: bold;
+        	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 
         }
@@ -278,34 +281,35 @@
         .button a:after{
         	content: "";
         	position: absolute;
+        	cursor: pointer;
         	top: 0;
         	right: -10px;
         	width: 0%;
-        	background: #111;
+        	background: #4c6792;
         	height: 100%;
         	z-index: -1;
         	transition: width 0.3s ease-in-out;
         	transform: skew(-25deg);
         	transform-origin: right;
+        	text-decoration: none;
         }
 
         .button a:hover:after {
         	width: 150%;
         	left: -10px;
         	transform-origin: left;
+        	text-decoration: none;
 
         }
 
         .button a:hover {
-        	color: #fff;
+        	color: black;
         	transition: all 0.5s ease;
+        	text-decoration: none;
         }
 
 
-        .button a:nth-of-type(1) {
-        	border-radius: 50px;
-        	border:solid 2px #337ab7;
-        }
+
         .footer {
         	position: absolute;
         	bottom: 0;
@@ -315,17 +319,26 @@
         h2{
            color: #4c6792;
            display:inline-block;
-           margin-left:200px;
-           font-family:"Berlin Sans FB",sans-serif;
+           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         }
          h3{
            color: #4c6792;
-           font-family:"Berlin Sans FB",sans-serif;
+           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         }
          h4{
            color: #4c6792;
            display:inline-block;
-           font-family:"Arial",sans-serif;
+           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        .outer {
+          transition: box-shadow .3s;
+          background: #fff;
+          border-radius:5px;
+
+
+        }
+        .outer:hover {
+          box-shadow: 5px 5px 20px rgba(33,33,33,.2);
         }
 
 
