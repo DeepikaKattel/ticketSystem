@@ -60,8 +60,10 @@ class TripController extends Controller
         $trip->price = request('price');
         $time1 = strtotime($trip->arrival_time);
         $time2 = strtotime($trip->time);
-        $difference = round(abs($time2 - $time1) / 3600,2);
-        $trip->duration = $difference . 'h';
+        $difference = round(abs($time2 - $time1) / 60);
+        $hour = floor($difference / 60);
+        $mins = $difference % 60;
+        $trip->duration = $hour . 'h' .' ' . $mins . 'm';
         $no_of_seats = $trip->vehicle->vehicleType->row * $trip->vehicle->vehicleType->column;
         $trip->available_seats = $no_of_seats;
         $trip->allocated_seats = array_fill(0, $no_of_seats, 0);
