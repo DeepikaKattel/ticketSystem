@@ -147,11 +147,11 @@ class RouteController extends Controller
         $destination2 = $request->input('destination2');
         $date = $request->input('date');
         $dateToday = Carbon::now();
+        $time = $dateToday->toTimeString();
         $vehicleType = $request->input('vehicleType');
         $trip_type = $request->input('trip_type');
         $return_date = $request->input('return_date');
-
-        $tripDate = DB::table('trips')->where('departure_date','=',$date)->where('departure_date','>',$dateToday)->count();
+        $tripDate = DB::table('trips')->where('departure_date','=',$date)->where('departure_date','>=',$dateToday)->where('time','>',$time)->count();
         $tripRoute = DB::table('trips')->where('available_seats','>',0)->select('route_id')->value('route_id');
         $trip = Trip::first();
         $vehicleTypeTrip = $trip->vehicle->vehicleType_id;
