@@ -146,17 +146,18 @@ class RouteController extends Controller
         $destination1 = $request->input('destination1');
         $destination2 = $request->input('destination2');
         $date = $request->input('date');
-        $dateToday = Carbon::now();
-        $time = $dateToday->toTimeString();
+//        $dateToday = Carbon::now();
+//        $time = $dateToday->toTimeString();
         $vehicleType = $request->input('vehicleType');
         $trip_type = $request->input('trip_type');
         $return_date = $request->input('return_date');
-        $tripDate = DB::table('trips')->where('departure_date','=',$date)->where('departure_date','>=',$dateToday)->where('time','>',$time)->count();
+        $tripDate = DB::table('trips')->where('departure_date','=',$date)->count();
         $tripRoute = DB::table('trips')->where('available_seats','>',0)->select('route_id')->value('route_id');
-        $trip = Trip::first();
-        $vehicleTypeTrip = $trip->vehicle->vehicleType_id;
+        $trip = Trip::where([
+            ['departure_date', '=', $date],
+            ['route_id', '=', $tripRoute],
+        ])->get();
         if ($tripDate > 0) {
-            if($vehicleTypeTrip == $vehicleType) {
                 $routes = Route::where([
                     ['start_point', '=', $destination1],
                     ['end_point', '=', $destination2],
@@ -165,7 +166,11 @@ class RouteController extends Controller
                 //            ->orWhere('stoppage_points', '=', $destination1)->orWhere('stoppage_points', '=', $destination2)
                 $routesList = [];
                 foreach ($routes as $route) {
-                    array_push($routesList, $route);
+                    foreach ($trip as $t) {
+                        if ($t->vehicle->vehicleType_id == $vehicleType) {
+                            array_push($routesList, $route);
+                        }
+                    }
                 }
                 $data = [
                     'routesList' => $routesList
@@ -177,7 +182,7 @@ class RouteController extends Controller
                 Session::put('key5', $trip_type);
                 Session::put('key6', $return_date);
                 return response()->json($data, 200);
-            }
+
         }
 
 
