@@ -74,8 +74,8 @@ p{
 .navbar-default .navbar-nav > li > a {
     color: white !important;
     margin: 10px 5px 5px 5px;
-    font-size: 18px;
-    font-family: "Algerian",sans-serif;
+    font-size: 20px;
+    font-family: "Sitka Heading",sans-serif;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus {
     color: rgba(40,215,226);
