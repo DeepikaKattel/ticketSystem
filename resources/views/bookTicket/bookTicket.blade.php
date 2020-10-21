@@ -80,7 +80,7 @@
                             </div>
                          </div>
                          <div class="form-group mt-5 ml-4" id="bookBtn" style="display:none">
-                            <div class="row">
+                            <div class="row" id="passengerName" style="display:none">
                                  <div class="col-md-5 mt-2">
                                      <label for="" style="font-size:12px;font-family:"Karla", sans-serif">Passenger Name</label>
                                      <input style="height:28px;font-family:"Karla", sans-serif"  type="text" class="form-control form-control-sm" name="name"  id="name" required>
@@ -177,7 +177,7 @@ function displayAllocatedSeats(row, col, list){
                 $('#exit1').show();
                 $('#window').show();
                 $('#bookBtn').show();
-                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"'>");
+                $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;' type='checkbox' value='"+index+"' onclick='displayPassenger()'>");
                 $('#all').append("<input type='checkbox' name='all_allocated_seats[]' value='0' checked>");
             } else {
                 $('#vehicleLayout').append("<input class='mr-1 seat' style='cursor:pointer;background:#b33319' type='checkbox' data-title='Seat Already Booked' disabled>");
@@ -195,6 +195,9 @@ function emptyLayout() {
     $("#all").empty();
     $("#new").empty();
     $('#vehicleLayout').empty();
+}
+function displayPassenger() {
+     $('#passengerName').show();
 }
 
 $(document).ready(function(){
@@ -222,7 +225,7 @@ var divItems = document.getElementsByClassName("radiodiv");
 
 function selected(item) {
     this.clear();
-    item.style.backgroundColor = 'darkred';
+    item.style.backgroundColor = 'grey';
 }
 
 function clear() {

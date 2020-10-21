@@ -26,7 +26,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($facility as $f)
+                @foreach($facility as $f)b
                     <tr style="font-size: 14px">
                         <td>{{$loop->iteration}}</td>
                         <td>{{$f->name}}</td>
