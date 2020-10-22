@@ -25,6 +25,7 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -192,28 +193,34 @@
         	box-sizing: border-box;
         }
 
-        .outer {
-        	position: relative;
-        	background: #fff;
+        .card{
         	height: 90px;
-        	width: 100%;
-        	overflow: hidden;
-        	display: flex;
         	align-items: center;
         	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
         }
-        table th{
-           width:300px;
-           font-size:11px;
+         .table_wrapper{
+            display: block;
+            overflow: auto;
+
+        }
+         .table_wrapper table {
+            width: 100%;
+            white-space: nowrap;
+
+        }
+        .table_wrapper th{
+            text-align: center;
+            padding-left:5px;
+            padding-right:5px;
+            width:300px;
+        }
+         .table_wrapper td{
+            text-align: center;
         }
 
-        .content {
-        	position: absolute;
-        	left: 20px;
-        	z-index: 3;
-        	display:inline-block;
-        }
+
+
 
         h1 {
         	color: #111;
@@ -298,14 +305,16 @@
            display:inline-block;
            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         }
-        .outer {
+        .card{
           transition: box-shadow .3s;
           background: #fff;
           border-radius:5px;
+          padding-top:20px;
+          }
 
 
         }
-        .outer:hover {
+        .card:hover {
           box-shadow: 5px 5px 20px rgba(33,33,33,.2);
         }
 

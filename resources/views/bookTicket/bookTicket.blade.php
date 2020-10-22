@@ -38,23 +38,22 @@
              </div>
 
         </div>
-        <div class="outer" style="margin-top:80px;background:#c4c4c4;height:60px">
-            <div class="content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Vehicle <i class="fa fa-bus"></i></th>
-                            <th>Departure <i class="fa fa-arrow-down"></i></th>
-                            <th>Duration</th>
-                            <th>Arrival<i class="fa fa-arrow-up"></i></th>
-                            <th>Price Per Person <i class="fa fa-rupee"></i></th>
-                            <th>@foreach($routes as $r)<option value="{{$r->id}}" style="font-weight:bold">{{$r->start_point}} -- {{$r->end_point}}</option>@endforeach</th>
-                            <th><i class="fa fa-calendar"></i> Date: {{$date2}}</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+        <div class="table_wrapper" style="margin-top:80px;background:#c4c4c4;height:70px">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle <i class="fa fa-bus"></i></th>
+                        <th>Departure <i class="fa fa-arrow-down"></i></th>
+                        <th>Duration</th>
+                        <th>Arrival<i class="fa fa-arrow-up"></i></th>
+                        <th>Price <i class="fa fa-rupee"></i></th>
+                       @foreach($routes as $r)<option value="{{$r->id}}" style="font-weight:bold"> <th>{{$r->start_point}} -- {{$r->end_point}}</th></option>@endforeach
+                        <th><i class="fa fa-calendar"></i> Date: {{$date2}}</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
+
 
         <div id="availableTickets" style="margin-top:10px;">
             <div id="radioOption"></div>
@@ -148,9 +147,9 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<div class='outer radiodiv' style='margin-bottom:10px'><div class='content'> "+
+                    $('#radioOption').append("<div class='table_wrapper card radiodiv' style='margin-bottom:10px'>"+
                     "<table>"+"<thead>"+"<tr>"+"<th>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</th>" + "<th>"+ message.time +  "</th>" + "<th>" + "<i class='fa fa-long-arrow-left'></i>" + ' ' + message.duration + ' ' + "<i class='fa fa-long-arrow-right'></i>" + "</th>" + "<th>"  + message.arrival_time + "</th>" + "<th>"  + "<p style='font-size:15px'>" + "<i class='fa fa-rupee'></i>" + ' ' + message.price + "</p>" + "</th>" + "<th>" + "<i class='fa fa-bus' style='font-size:35px'></i>" + "</th>" + "<th>" + "<div class='button'> <a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div>" + "</th>" + "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}" style="color:rgba(40,215,226);font-weight:bold">{{$v->name}}</option>@endforeach' +"</td>"+"</tbody>" +
-                   "</div></div>");
+                   "</div>");
                     });
                 $('#availableTickets').show();
 
