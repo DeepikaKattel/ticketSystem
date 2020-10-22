@@ -34,15 +34,7 @@
 
     <style>
 
-        body:before{
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            background: #eee;
-        }
+
         nav {
             position: fixed;
             left: 0;
@@ -212,19 +204,13 @@
 
         }
         table th{
-            width:250px;
+           width:300px;
+           font-size:11px;
         }
-        .big-icon {
-            font-size: 40px;
-            margin-left:1020px;
-            margin-top:10px;
-        }
+
         .content {
-        	animation-delay: 0.3s;
         	position: absolute;
         	left: 20px;
-            height:120px;
-            top: 10px;
         	z-index: 3;
         	display:inline-block;
         }
@@ -232,17 +218,6 @@
         h1 {
         	color: #111;
         }
-
-        p {
-        	width: 400px;
-        	font-size: 15px;
-        	font-weight:bolder;
-        	line-height: 1.1;
-        	color: #4c6792;
-        	margin: 20px 0;
-
-        }
-
         .bg {
         	display: inline-block;
             color: #fff;
@@ -254,8 +229,6 @@
         .button {
         	width: fit-content;
         	height: 5px;
-        	margin-left:1060px;
-        	margin-top:20px;
         	border-radius:5px;
         }
 
@@ -305,9 +278,6 @@
         	transition: all 0.5s ease;
         	text-decoration: none;
         }
-
-
-
         .footer {
         	position: absolute;
         	bottom: 0;
@@ -342,7 +312,7 @@
 
     </style>
 </head>
-<body>
+<body style="background:#eee;">
 
     {{--@if (session('success'))
         <div class="alert alert-success" role="alert">
@@ -358,7 +328,7 @@
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     @yield('content')
     </div>
-    <div class="row justify-content-center mt-5">
+    <div style="text-align:center;margin:auto">
          <p>© Copyright 2020 Auto Bus Sewa</p>
     </div>
 </body>

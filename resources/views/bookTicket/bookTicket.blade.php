@@ -4,16 +4,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color:white;height:80px">
      <div class="container">
-       <div class="navbar-header">
-          <a class="navbar-brand" href="/"><img src="{{asset('images/jhunLogo.png')}}" height="50" width="100"></a>
-           <h3 style="margin-left:900px">@foreach($routes as $r)<option value="{{$r->id}}" style="color: #4c6792;">{{$r->start_point}} ---- {{$r->end_point}}</option>@endforeach</h3>
-       </div>
-       <div id="navbar" class="collapse navbar-collapse">
-
-       </div><!--/.nav-collapse -->
+          <a class="navbar-brand" href="/"><img src="{{asset('images/jhunLogo.png')}}" height="50" width="100" style="left:5%"></a>
      </div>
    </nav>
-
 
     <form action="/tickets" method="POST" id="form" class="mx-5">
         @csrf
@@ -45,17 +38,22 @@
              </div>
 
         </div>
-        <div class="card px-5 py-2" style="margin-top:75px;background:#d9d9d9">
-            <table>
-                <thead>
-                    <th>Vehicle <i class="fa fa-bus"></i></th>
-                    <th>Departure <i class="fa fa-arrow-down"></i></th>
-                    <th>Duration  <i class="fa fa-"></i></th>
-                    <th>Arrival<i class="fa fa-arrow-up"></i></th>
-                    <th>Price Per Person <i class="fa fa-rupee"></i></th>
-                    <th><i class="fa fa-calendar"></i> Date: {{$date2}}</th>
-                </thead>
-            </table>
+        <div class="outer" style="margin-top:80px;background:#c4c4c4;height:60px">
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vehicle <i class="fa fa-bus"></i></th>
+                            <th>Departure <i class="fa fa-arrow-down"></i></th>
+                            <th>Duration</th>
+                            <th>Arrival<i class="fa fa-arrow-up"></i></th>
+                            <th>Price Per Person <i class="fa fa-rupee"></i></th>
+                            <th>@foreach($routes as $r)<option value="{{$r->id}}" style="font-weight:bold">{{$r->start_point}} -- {{$r->end_point}}</option>@endforeach</th>
+                            <th><i class="fa fa-calendar"></i> Date: {{$date2}}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
 
         <div id="availableTickets" style="margin-top:10px;">
@@ -150,9 +148,9 @@ function checkTicket() {
                 $('#noTickets').show();
             }else{
                 data.listTickets.forEach(function(message){
-                    $('#radioOption').append("<div class='outer radiodiv' style='margin-bottom:10px'><i class='fa fa-bus big-icon'></i><div class='content'> "+
-                    "<table>"+"<thead>"+"<tr>"+"<th>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</th>" + "<th>"+ message.time +  "</th>" + "<th>" + "<i class='fa fa-long-arrow-left'></i>" + ' ' + message.duration + ' ' + "<i class='fa fa-long-arrow-right'></i>" + "</th>" + "<th>"  + message.arrival_time + "</th>" + "<th>"  + "<p style='font-size:15px'>" + "<i class='fa fa-rupee'></i>" + ' ' + message.price + "</p>" + "</th>" +  "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}" style="color:rgba(40,215,226);font-weight:bold">{{$v->name}}</option>@endforeach' +"</td>"+"</tbody>" +
-                    "<div class='button'> <a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div></div></div>");
+                    $('#radioOption').append("<div class='outer radiodiv' style='margin-bottom:10px'><div class='content'> "+
+                    "<table>"+"<thead>"+"<tr>"+"<th>"+ message.vehicle.name + ' ' +message.vehicle.reg_number + "</th>" + "<th>"+ message.time +  "</th>" + "<th>" + "<i class='fa fa-long-arrow-left'></i>" + ' ' + message.duration + ' ' + "<i class='fa fa-long-arrow-right'></i>" + "</th>" + "<th>"  + message.arrival_time + "</th>" + "<th>"  + "<p style='font-size:15px'>" + "<i class='fa fa-rupee'></i>" + ' ' + message.price + "</p>" + "</th>" + "<th>" + "<i class='fa fa-bus' style='font-size:35px'></i>" + "</th>" + "<th>" + "<div class='button'> <a href='#' onclick=selected(this)><input class='form-check-input' data-toggle='modal' data-target='#seatModal' type='radio' name='trip' required value='" + message.id + "' onclick='displayAllocatedSeats("+ message.row +","+ message.column +",[" + message.allocated_seats+ "])'>VIEW SEATS</a></div>" + "</th>" + "</tr>" + "</thead>" + "<tbody>"+"<tr>"+"<td>" + '@foreach($vehicleType as $v)<option value="{{$v->id}}" style="color:rgba(40,215,226);font-weight:bold">{{$v->name}}</option>@endforeach' +"</td>"+"</tbody>" +
+                   "</div></div>");
                     });
                 $('#availableTickets').show();
 
